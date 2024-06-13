@@ -1,7 +1,7 @@
 require "json"
 class BooksController < ApplicationController
     protect_from_forgery with: :null_session
-    before_action :set_book, only: %i[show]
+    before_action :set_book, only: %i[show destroy edit]
 
     def index
         return render json: Book.all
@@ -9,6 +9,23 @@ class BooksController < ApplicationController
 
     def show
         return render json: @book
+    end
+
+    def destroy
+        @book.destroy
+        render json: Book.all
+    end
+
+    def edit
+        if @book
+            @book[:title] = params[:title]
+            @book[:description] = params[:description]
+            @book[:published_at] = params[:published_at]
+            @book[:publisher] = params[:publisher]
+            @book[:updated_at] = Time.now
+            @book.save
+            render json: @book
+        end
     end
 
     def create
