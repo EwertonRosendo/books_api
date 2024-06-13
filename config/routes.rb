@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get "/home", to: "homes#index"
   get "/home/json", to: "homes#show"
   
+  
   get "/books", to: "books#index"
+  get "/books/:id", to: "books#show"
   post "/books", to: "books#create"
 
   get "up" => "rails/health#show", as: :rails_health_check
