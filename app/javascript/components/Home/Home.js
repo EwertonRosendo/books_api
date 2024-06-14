@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import "../my_subdirectory/HelloWorld.css"
-
-const HelloWorld = (props) => {
+const Home = (props) => {
   const [test, setTest] = useState("TESTE");
   const [books, setBooks] = useState([]);
 
@@ -53,8 +51,8 @@ const HelloWorld = (props) => {
   )
 }
 
-HelloWorld.propTypes = {
+Home.propTypes = {
   greeting: PropTypes.string
 };
 
-export default HelloWorld
+export default Home
