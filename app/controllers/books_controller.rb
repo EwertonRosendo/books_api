@@ -6,10 +6,6 @@ class BooksController < ApplicationController
     before_action :set_book, only: %i[show destroy edit]
 
     def index
-        
-    end
-
-    def index_json
         return render json: Book.all
     end
 

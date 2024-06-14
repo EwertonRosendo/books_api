@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-const Home = (props) => {
+const App = (props) => {
+  const navigate = useNavigate();
+
   const [test, setTest] = useState("TESTE");
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/home/json";
+    const url = "http://localhost:3000/app/json";
     fetch(url)
     .then((res) => {
       if (res.ok){
@@ -43,6 +46,9 @@ const Home = (props) => {
 
   return (
     <React.Fragment>
+      <button onClick={()=> useNavigate("/app/Books")}>
+        telar
+      </button>
       Greeting: {props.greeting}
       <div className="body">
         {allBooks}
@@ -51,8 +57,8 @@ const Home = (props) => {
   )
 }
 
-Home.propTypes = {
+App.propTypes = {
   greeting: PropTypes.string
 };
 
-export default Home
+export default App

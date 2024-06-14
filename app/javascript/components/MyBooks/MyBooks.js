@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
 const MyBooks = (props) => {
-  const baseURL = "http://localhost:3000/mybooks/json" 
+  const navigate = useNavigate()
+  const baseURL = "http://localhost:3000/Book" 
   const [myBooks, setMyBooks] = useState([])
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const MyBooks = (props) => {
   }, []);
 
   const author_name = (id) => {
-    axios.get(`http://localhost:3000/author/${id}`).then((response) => {
+    axios.get(`http://localhost:3000/Author/${id}`).then((response) => {
       //console.log(response.data.name)
       return ("Author: "+response.data.name);
       
@@ -38,7 +40,7 @@ const MyBooks = (props) => {
             <div className="book-info">
                 <p>{book["title"]}</p>
                 <p>{book["description"]}</p>
-                
+                <p>{book["id"]}</p>
                 <p>{book["author_id"]}</p>
                 <p>{book["published_at"]}</p>
                 <p>{book["publisher"]}</p>

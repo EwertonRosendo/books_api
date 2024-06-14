@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
-  #resources :homes
-  get "/home", to: "homes#index"
-  get "/home/json", to: "homes#show"
-
-  get "/author", to:"author#index"
-  get "/author/:id", to: "author#show"
   
-  get "/book", to: "books#show"
-  get "/mybooks", to: "books#index"
-  get "/mybooks/json", to: "books#index_json"
-  
-  get "/books/:id", to: "books#show"
-  delete "/books/:id", to: "books#destroy"
-  put "/books/:id", to: "books#edit"
-  post "/books", to: "books#create"
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "/app", to: "app#index" #return a react-view about the book seached
+  get "/app/json", to: "app#index_json" # return the data from google books api
+  get "/app/Books", to: "app#books" # return the data from the model Book
+
+
+  #Controller for Models only return json files
+  get "/Author", to:"author#index" #return a list of authors
+  get "/Author/:id", to: "author#show" #seach an author by id and return 
+  
+  #Controller for Models only return json files
+  get "/Book", to: "books#index"
+  get "/Book/:id", to: "books#show"
+  delete "/Book/:id", to: "books#destroy"
+  put "/Book/:id", to: "books#edit"
+  post "/Books", to: "books#create"
 
   # Defines the root path route ("/")
   # root "posts#index"

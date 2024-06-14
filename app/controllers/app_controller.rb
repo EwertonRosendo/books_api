@@ -1,17 +1,13 @@
 require "net/http"
 require "json"
 
+class AppController < ApplicationController
 
-class HomesController < ApplicationController
-  #before_action :set_home, only: %i[ show edit update destroy ]
-
-  # GET /homes or /homes.json
-  def index
-    @homes = Home.all
+  def books
+    
   end
-
-  # GET /homes/1 or /homes/1.json
-  def show
+    
+  def index_json
     #author = params[:author]
     #title = params[:title]
     #publisher = params[:publisher]
@@ -46,6 +42,12 @@ class HomesController < ApplicationController
     end
 
     render json: list_books
+    
+  end
+
+  # GET /homes/1 or /homes/1.json
+  def show
+    
   end
 
   def update
@@ -54,5 +56,4 @@ class HomesController < ApplicationController
   def destroy
 
   end
-  
 end
