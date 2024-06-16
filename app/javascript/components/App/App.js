@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const App = (props) => {
-  const navigate = useNavigate();
+  
 
   const [test, setTest] = useState("TESTE");
   const [books, setBooks] = useState([]);
@@ -38,6 +38,7 @@ const App = (props) => {
                 <p>{book["publishedDate"]}</p>
                 <p>{book["authors"]}</p>
                 <p>{book["publisher"]}</p>
+                
             </div>
         </div>
     </div>
@@ -46,8 +47,9 @@ const App = (props) => {
 
   return (
     <React.Fragment>
+      <a rel='noopener noreferrer' href="http://localhost:3000/app/Books">meus livros</a>
       <button onClick={()=> useNavigate("/app/Books")}>
-        telar
+        MAOE
       </button>
       Greeting: {props.greeting}
       <div className="body">

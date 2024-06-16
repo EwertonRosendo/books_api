@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
 
   get "/app", to: "app#index" #return a react-view about the book seached
   get "/app/json", to: "app#index_json" # return the data from google books api
   get "/app/Books", to: "app#books" # return the data from the model Book
+  get "/app/Books/:id", to:"app#books_by_id"
 
 
   #Controller for Models only return json files

@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 
 
 const MyBooks = (props) => {
-  const navigate = useNavigate()
+  
   const baseURL = "http://localhost:3000/Book" 
   const [myBooks, setMyBooks] = useState([])
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
+      console.log(response.data)
       setMyBooks(response.data);
     });
   }, []);
@@ -38,12 +38,13 @@ const MyBooks = (props) => {
                 />
             </div>
             <div className="book-info">
-                <p>{book["title"]}</p>
+                <p>{ book["title"]}</p>
                 <p>{book["description"]}</p>
                 <p>{book["id"]}</p>
-                <p>{book["author_id"]}</p>
+                <p><a href={`Books/${book["id"]}`}>details {book["id"]}</a></p>
                 <p>{book["published_at"]}</p>
                 <p>{book["publisher"]}</p>
+                
             </div>
         </div>
     </div>

@@ -3,7 +3,15 @@ require "json"
 
 class AppController < ApplicationController
 
+  def main
+
+  end
+  
   def books
+    
+  end
+
+  def books_by_id
     
   end
     
