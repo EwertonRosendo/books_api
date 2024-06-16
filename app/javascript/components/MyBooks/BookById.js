@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
+
 import axios from "axios";
 
 
 
 const BookById = (props) => {
   
+
   const baseURL = `http://localhost:3000/Book/${props.id}` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
@@ -47,6 +49,11 @@ const BookById = (props) => {
       "author":author.name
     });
     window.location.reload(false);
+  }
+
+  const delete_book = () =>{
+    axios.delete(`http://localhost:3000/Book/${book.id}`)
+    window.location.replace('http://localhost:3000/app/Books');
   }
 
   return (
@@ -106,7 +113,7 @@ const BookById = (props) => {
         </div>
 
         <div className="buttons-area">
-          <button> Delete this book</button>
+          <button onClick={delete_book}> Delete this book</button>
           <button onClick={update_book}> Update this book</button>
         </div>
       </div>
