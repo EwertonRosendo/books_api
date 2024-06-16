@@ -11,9 +11,18 @@ const BookById = (props) => {
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
 
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [publisher, setPublisher] = useState("")
+  const [published_at, setPublished_at] = useState()
+
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setBook(response.data);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+      setPublisher(response.data.publisher);
+      setPublished_at(response.data.published_at);
     });
   }, []);
 
@@ -29,19 +38,30 @@ const BookById = (props) => {
     });
   };
 
+  const update_book = () =>{
+    axios.put(`http://localhost:3000/Book/${book.id}`, {
+      "title":title,
+      "publisher":publisher,
+      "published_at":published_at,
+      "description":description,
+      "author":author.name
+    });
+    window.location.reload(false);
+  }
+
   return (
     <React.Fragment>
 
-<       div className="menu">
-            <div style={{display: 'flex'}}>
-                <p><a href={'#'}>Home</a></p>
-                <p><a href={'#'}>Info</a></p>
-            </div>
-            <div style={{display:'flex'}}>
-                <p><a href={'#'}>Login</a></p>
-                <p><a href={'#'}>Logout</a></p>
-            </div>    
+      <div className="menu">
+        <div style={{display: 'flex'}}>
+            <p><a href='https://youtube.com'>Home</a></p>
+            <p><a href={'#'}>Info</a></p>
         </div>
+        <div style={{display:'flex'}}>
+            <p><a href={'#'}>Login</a></p>
+            <p><a href={'#'}>Logout</a></p>
+        </div>    
+      </div>
 
       <div className="body">
         <div className="box">
@@ -53,14 +73,41 @@ const BookById = (props) => {
                         alt={`${book.title} image`}
                         className="bookImage"
                     />  
+            
             </div>
 
-            <div>
-                o id é:{props.id}
-                <p>book: {book.title}</p>
-                <p>author: {author.name}</p>
-                <p>react na tela de book by id</p>
+            <div className="book-info">
+              <div>
+                <label>Title:</label>
+                <input type="text" onChange={(e) => {setTitle(e.target.value)}} defaultValue={book.title} placeholder={"Book title.."}/>
+              </div>
+
+              <div>
+                <label>Author:</label>
+                <input type="text" onChange={(e) => {setAuthor.name(e.target.value)}} defaultValue={author.name} placeholder={"Author.."}/>
+              </div>
+
+              <div>
+                <label>Publisher:</label>
+                <input type="text" onChange={(e) => {setPublisher(e.target.value)}} defaultValue={book.publisher} placeholder={"Publisher.."}/>
+              </div>
+
+              <div>
+                <label>Published_at:</label>
+                <input type="text" onChange={(e) => {setPublished_at(e.target.value)}} defaultValue={book.published_at} placeholder={"Published at.."}/>
+              </div>
+
+              <div className="descrip">
+                <label>Description:</label>
+                <textarea className="description" type="text" onChange={(e) => {setDescription(e.target.value)}} defaultValue={book.description} placeholder={"Book description.."} name="" id=""></textarea>
+              </div>
+              
             </div>
+        </div>
+
+        <div className="buttons-area">
+          <button> Delete this book</button>
+          <button onClick={update_book}> Update this book</button>
         </div>
       </div>
       
