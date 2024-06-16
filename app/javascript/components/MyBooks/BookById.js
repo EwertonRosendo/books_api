@@ -59,17 +59,6 @@ const BookById = (props) => {
   return (
     <React.Fragment>
 
-      <div className="menu">
-        <div style={{display: 'flex'}}>
-            <p><a href='https://youtube.com'>Home</a></p>
-            <p><a href={'#'}>Info</a></p>
-        </div>
-        <div style={{display:'flex'}}>
-            <p><a href={'#'}>Login</a></p>
-            <p><a href={'#'}>Logout</a></p>
-        </div>    
-      </div>
-
       <div className="body">
         <div className="box">
             
@@ -113,8 +102,8 @@ const BookById = (props) => {
         </div>
 
         <div className="buttons-area">
-          <button onClick={delete_book}> Delete this book</button>
-          <button onClick={update_book}> Update this book</button>
+          <button className="delete" onClick={delete_book}> Delete this book</button>
+          <button className="update" onClick={update_book}> Update this book</button>
         </div>
       </div>
       
