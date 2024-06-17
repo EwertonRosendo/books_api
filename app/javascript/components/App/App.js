@@ -8,6 +8,8 @@ const App = (props) => {
   
   const [books, setBooks] = useState([]);
 
+  const [title, setTitle] = useState("")
+
   useEffect(() => {
     const url = "http://localhost:3000/app/json";
     fetch(url)
@@ -44,7 +46,7 @@ const App = (props) => {
                 />
             </div>
             <div className="book-info">
-                <p>{book["title"]}</p>
+                <p className="title">{book["title"]}</p>
                 <p>{book["subtitle"]}</p>
                 <p>Author: {book["authors"] ? book["authors"]: "No author"}</p>
                 <p>Published at {book["publishedDate"]}</p>
@@ -56,9 +58,20 @@ const App = (props) => {
     </div>
     ));
 
+    const handleSeachTitle = () =>{
+      axios.get(`http://localhost:3000/app/json/${title}`).then((response)=>{
+        setBooks(response.data);
+      });
+    }
+
 
   return (
     <React.Fragment>
+      <div className="seach">
+        <label>Seach book by title: </label>
+        <input type="search" onChange={(e) => {setTitle(e.target.value)}} />
+        <button onClick={handleSeachTitle}>Seach</button>
+      </div>
       <div className="body">
         {allBooks}
       </div>
