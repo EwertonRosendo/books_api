@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     before_action :set_book, only: %i[show destroy edit]
 
     def index
-        return render json: Book.all
+        return render json: Book.all.order(published_at: :desc)
     end
 
     def show
