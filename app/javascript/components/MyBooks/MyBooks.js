@@ -16,14 +16,6 @@ const MyBooks = (props) => {
     });
   }, []);
 
-  const author_name = (id) => {
-    axios.get(`http://localhost:3000/Author/${id}`).then((response) => {
-      //console.log(response.data.name)
-      return ("Author: "+response.data.name);
-      
-    });
-  };
-
   const allMyBooks = myBooks.map((book, index) => (
     <div key={index} className="box">
   

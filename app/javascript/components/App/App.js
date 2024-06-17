@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Outlet, Link } from "react-router-dom";
 
+import axios from "axios";
+
 const App = (props) => {
   
-
-  const [test, setTest] = useState("TESTE");
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,17 @@ const App = (props) => {
     .then((res) => setBooks(res))
     //.catch((er)=> Navigate("/"));
   }, []);
+
+  const handleAddGoogleBook = (book) => {
+    axios.post("http://localhost:3000/Books", {
+      "title": book.title,
+      "publisher": book.publisher,
+      "published_at": book.publishedDate,
+      "description": (""+book.subtitle ? book.subtitle : book.description),
+      "author": book.authors,
+      "url_image": book.thumbnail,
+  });
+  };
 
   const allBooks = books.map((book, index) => (
     <div key={index} className="box">
@@ -38,6 +49,7 @@ const App = (props) => {
                 <p>Author: {book["authors"] ? book["authors"]: "No author"}</p>
                 <p>Published at {book["publishedDate"]}</p>
                 <p>Publisher by {book["publisher"]}</p>
+                <button onClick={() => handleAddGoogleBook(book)}>Add Book</button>
                 
             </div>
         </div>
