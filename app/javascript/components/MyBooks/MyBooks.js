@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import axios from "axios";
 
-
+import CreateBook from "./CreateBook"
 
 const MyBooks = (props) => {
   
@@ -12,7 +12,6 @@ const MyBooks = (props) => {
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      console.log(response.data)
       setMyBooks(response.data);
     });
   }, []);
@@ -40,10 +39,9 @@ const MyBooks = (props) => {
             <div className="book-info">
                 <p>{ book["title"]}</p>
                 <p>{book["description"]}</p>
-                <p>{book["id"]}</p>
-                <p><a href={`http://localhost:3000/app/Books/${book["id"]}`}>details {book["id"]}</a></p>
-                <p>{book["published_at"]}</p>
-                <p>{book["publisher"]}</p>
+                <p><a href={`http://localhost:3000/app/Books/${book["id"]}`}>Show details</a></p>
+                <p>Published at {book["published_at"]}</p>
+                <p>Published by {book["publisher"]}</p>
                 
             </div>
         </div>
@@ -53,6 +51,7 @@ const MyBooks = (props) => {
 
   return (
     <React.Fragment>
+      <CreateBook/>
       <div className="body">
         {allMyBooks}
       </div>

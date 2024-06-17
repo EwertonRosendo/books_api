@@ -26,6 +26,7 @@ const BookById = (props) => {
       setDescription(response.data.description);
       setPublisher(response.data.publisher);
       setPublished_at(response.data.published_at);
+      setUrlImage(response.data.url_image);
     });
   }, []);
 

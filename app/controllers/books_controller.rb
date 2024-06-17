@@ -50,7 +50,8 @@ class BooksController < ApplicationController
                 :title => params[:title], 
                 :description => params[:description], 
                 :published_at => params[:published_at], 
-                :publisher => params[:publisher], 
+                :publisher => params[:publisher],
+                :url_image => params[:url_image],
                 :author => author
             }
         

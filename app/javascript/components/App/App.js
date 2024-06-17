@@ -35,9 +35,9 @@ const App = (props) => {
             <div className="book-info">
                 <p>{book["title"]}</p>
                 <p>{book["subtitle"]}</p>
-                <p>{book["publishedDate"]}</p>
-                <p>{book["authors"]}</p>
-                <p>{book["publisher"]}</p>
+                <p>Author: {book["authors"] ? book["authors"]: "No author"}</p>
+                <p>Published at {book["publishedDate"]}</p>
+                <p>Publisher by {book["publisher"]}</p>
                 
             </div>
         </div>
@@ -47,11 +47,6 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <a rel='noopener noreferrer' href="http://localhost:3000/app/Books">meus livros</a>
-      <button onClick={()=> useNavigate("/app/Books")}>
-        MAOE
-      </button>
-      Greeting: {props.greeting}
       <div className="body">
         {allBooks}
       </div>
