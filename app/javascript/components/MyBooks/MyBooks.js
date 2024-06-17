@@ -32,7 +32,7 @@ const MyBooks = (props) => {
             <div className="book-title-img">
                 <img
                     //src={book["thumbnail"]}
-                    src={"https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
+                    src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
                     alt={`${book.title} image`}
                     className="bookImage"
                 />

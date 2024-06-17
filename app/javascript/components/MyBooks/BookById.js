@@ -17,6 +17,7 @@ const BookById = (props) => {
   const [description, setDescription] = useState("")
   const [publisher, setPublisher] = useState("")
   const [published_at, setPublished_at] = useState()
+  const [url_image, setUrlImage] = useState("")
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -46,14 +47,15 @@ const BookById = (props) => {
       "publisher":publisher,
       "published_at":published_at,
       "description":description,
-      "author":author.name
+      "author":author.name,
+      "url_image":url_image,
     });
-    window.location.reload(false);
+    
   }
 
   const delete_book = () =>{
     axios.delete(`http://localhost:3000/Book/${book.id}`)
-    window.location.replace('http://localhost:3000/app/Books');
+    //window.location.replace('http://localhost:3000/app/Books');
   }
 
   return (
@@ -65,10 +67,14 @@ const BookById = (props) => {
             <div className="book-img">
                 <img
                         //src={book["thumbnail"]}
-                        src={"https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
+                        src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
                         alt={`${book.title} image`}
                         className="bookImage"
-                    />  
+                    />
+                    <div>
+                      <label>image:</label>
+                      <input type="text" onChange={(e) => {setUrlImage(e.target.value)}} placeholder={book.url_image}/>
+                    </div>  
             
             </div>
 

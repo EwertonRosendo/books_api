@@ -25,6 +25,16 @@
 .book-img{
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
+}
+
+.book-img input{
+    width: 90%;
+}
+
+.book-img div{
+    display: flex;
+    flex-direction: column;
 }
 
 .book-info{

@@ -30,6 +30,7 @@ class BooksController < ApplicationController
             @book[:published_at] = params[:published_at]
             @book[:publisher] = params[:publisher]
             @book[:updated_at] = Time.current
+            @book[:url_image] = params[:url_image]
             @book.save
             render json: @book
         end

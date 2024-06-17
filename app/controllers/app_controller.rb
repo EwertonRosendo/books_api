@@ -2,7 +2,7 @@ require "net/http"
 require "json"
 
 class AppController < ApplicationController
-
+  protect_from_forgery with: :null_session
   def main
 
   end
