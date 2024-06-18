@@ -46,7 +46,7 @@ const CreateBook = (props) => {
 
         <div>
             <label>Published_at:</label>
-            <input type="text" onChange={(e) => {setPublished_at(e.target.value)}}  placeholder={"Published at.."}/>
+            <input type="date" onChange={(e) => {setPublished_at(e.target.value)}}  placeholder={"Published at.."}/>
         </div>
 
         <div>

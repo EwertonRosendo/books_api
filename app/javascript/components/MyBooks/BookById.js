@@ -20,14 +20,17 @@ const BookById = (props) => {
   const [url_image, setUrlImage] = useState("")
 
   useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(baseURL)
+    .then((response) => {
       setBook(response.data);
       setTitle(response.data.title);
       setDescription(response.data.description);
       setPublisher(response.data.publisher);
       setPublished_at(response.data.published_at);
       setUrlImage(response.data.url_image);
-    });
+    })
+
+    .catch((e) => console.log(e));
   }, []);
 
   useEffect(() => {
@@ -37,9 +40,11 @@ const BookById = (props) => {
   }, [book]);
 
   const author_name = (id) => {
-    axios.get(`http://localhost:3000/Author/${id}`).then((response) => {
+    axios.get(`http://localhost:3000/Author/${id}`)
+    .then((response) => {
       setAuthor(response.data);
-    });
+    })
+    .catch((e) => console.log(e));
   };
 
   const update_book = () =>{

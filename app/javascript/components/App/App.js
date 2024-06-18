@@ -31,7 +31,8 @@ const App = (props) => {
       "description": (""+book.subtitle ? book.subtitle : book.description),
       "author": book.authors,
       "url_image": book.thumbnail,
-  });
+  })
+    .catch((e) => console.log(e));
   };
 
   const allBooks = books.map((book, index) => (
@@ -59,11 +60,16 @@ const App = (props) => {
     ));
 
     const handleSeachTitle = () =>{
-      axios.get(`http://localhost:3000/app/json/${title}`).then((response)=>{
-        setBooks(response.data);
+      axios.get(`http://localhost:3000/app/json/${title}`)
+      .then((response)=>{  
+        setBooks(response.data)
+      })
+      .catch((e) => {
+        console.log("Books not found")
+        setBooks([{"title": "Books weren't found", "thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1f4C-cWV03_czRXhL1THkOdS9RDnAtPxRnA&s"}])
+        console.log(e)
       });
-    }
-
+    };
 
   return (
     <React.Fragment>
@@ -73,7 +79,7 @@ const App = (props) => {
         <button onClick={handleSeachTitle}>Seach</button>
       </div>
       <div className="body">
-        {allBooks}
+        { books ? allBooks : console.log("no books doidao") } 
       </div>
     </React.Fragment>
   )

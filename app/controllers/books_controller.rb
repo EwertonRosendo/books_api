@@ -37,14 +37,8 @@ class BooksController < ApplicationController
     end
 
     def create
-        unless Author.find_by(:name => params[:author])
-            Author.create(
-                :name => params[:author], 
-                :biography => "Author without description.."
-                ) 
-        end
 
-        author = Author.find_by(:name => params[:author])
+        author = Author.find_or_create_author(params[:author])
 
         book = {
                 :title => params[:title], 

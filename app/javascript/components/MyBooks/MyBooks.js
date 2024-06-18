@@ -11,10 +11,14 @@ const MyBooks = (props) => {
   const [myBooks, setMyBooks] = useState([])
 
   useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(baseURL)
+    .then((response) => {
       setMyBooks(response.data);
-    });
-  }, []);
+    })
+
+    .catch((e) => console.log(e));
+  }
+  , []);
 
   const allMyBooks = myBooks.map((book, index) => (
     <div key={index} className="box">
