@@ -15,6 +15,7 @@ const BookById = (props) => {
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
+  const[newAuthor, setNewAuthor] = useState("")
   const [publisher, setPublisher] = useState("")
   const [published_at, setPublished_at] = useState()
   const [url_image, setUrlImage] = useState("")
@@ -53,7 +54,7 @@ const BookById = (props) => {
       "publisher":publisher,
       "published_at":published_at,
       "description":description,
-      "author":author.name,
+      "author":newAuthor,
       "url_image":url_image,
     });
     
@@ -92,7 +93,7 @@ const BookById = (props) => {
 
               <div>
                 <label>Author:</label>
-                <input type="text" onChange={(e) => {setAuthor.name(e.target.value)}} defaultValue={author.name} placeholder={"Author.."}/>
+                <input type="text" onChange={(e) => {setNewAuthor(e.target.value)}} defaultValue={author.name} placeholder={"Author.."}/>
               </div>
 
               <div>

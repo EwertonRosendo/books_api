@@ -24,11 +24,15 @@ class BooksController < ApplicationController
         #fruit.update_attributes(fruit_params)
         #render json: fruit
         
+        author = Author.find_or_create_author(params[:author])
+
+
         if @book
             @book[:title] = params[:title]
             @book[:description] = params[:description]
             @book[:published_at] = params[:published_at]
             @book[:publisher] = params[:publisher]
+            @book[:author_id] = author.id
             @book[:updated_at] = Time.current
             @book[:url_image] = params[:url_image]
             @book.save
