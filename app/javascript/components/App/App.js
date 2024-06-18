@@ -51,7 +51,7 @@ const App = (props) => {
                 <p>{book["subtitle"]}</p>
                 <p>Author: {book["authors"] ? book["authors"]: "No author"}</p>
                 <p>Published at {book["publishedDate"]}</p>
-                <p>Publisher by {book["publisher"]}</p>
+                <p>Publisher: {book["publisher"]}</p>
                 <button onClick={() => handleAddGoogleBook(book)}>Add Book</button>
                 
             </div>
