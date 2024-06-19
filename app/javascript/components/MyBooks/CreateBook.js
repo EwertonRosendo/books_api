@@ -15,6 +15,7 @@ const CreateBook = (props) => {
     const [url_image, setUrlImage] = useState("")
 
     const handleAddBook = () => {
+
         axios.post("http://localhost:3000/Books", {
             "title":title,
             "publisher":publisher,
@@ -22,7 +23,12 @@ const CreateBook = (props) => {
             "description":description,
             "author":author,
             "url_image":url_image,
-        })
+        },
+    {
+        headers:{
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+    }})
     }
 
   return (

@@ -2,7 +2,7 @@ require "json"
 require "net/http"
 
 class BooksController < ApplicationController
-    protect_from_forgery with: :null_session
+    #protect_from_forgery with: :null_session
     before_action :set_book, only: %i[show destroy edit]
 
     def index
@@ -20,14 +20,11 @@ class BooksController < ApplicationController
 
     def edit
         
-        #fruit = Fruit.find(params[:id])
-        #fruit.update_attributes(fruit_params)
-        #render json: fruit
-        
         author = Author.find_or_create_author(params[:author])
-
+        #author = Author.first_or_create(:name => params[:author])
 
         if @book
+            
             @book[:title] = params[:title]
             @book[:description] = params[:description]
             @book[:published_at] = params[:published_at]
@@ -35,6 +32,7 @@ class BooksController < ApplicationController
             @book[:author_id] = author.id
             @book[:updated_at] = Time.current
             @book[:url_image] = params[:url_image]
+            
             @book.save
             render json: @book
         end

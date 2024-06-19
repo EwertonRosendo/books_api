@@ -7,7 +7,7 @@ import axios from "axios";
 const App = (props) => {
   
   const [books, setBooks] = useState([]);
-
+  const [token, setToken] = useState("")
   const [title, setTitle] = useState("")
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const App = (props) => {
   }, []);
 
   const handleAddGoogleBook = (book) => {
+    
     axios.post("http://localhost:3000/Books", {
       "title": book.title,
       "publisher": book.publisher,
@@ -31,7 +32,12 @@ const App = (props) => {
       "description": (""+book.subtitle ? book.subtitle : book.description),
       "author": book.authors,
       "url_image": book.thumbnail,
-  })
+  }, {
+    headers:{
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+    }}
+    )
     .catch((e) => console.log(e));
   };
 
@@ -74,6 +80,7 @@ const App = (props) => {
   return (
     <React.Fragment>
       <div className="seach">
+        
         <label>Seach book by title: </label>
         <input type="search" onChange={(e) => {setTitle(e.target.value)}} />
         <button onClick={handleSeachTitle}>Seach</button>

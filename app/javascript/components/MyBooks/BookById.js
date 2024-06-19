@@ -56,12 +56,21 @@ const BookById = (props) => {
       "description":description,
       "author":newAuthor,
       "url_image":url_image,
-    });
+    },
+    {
+      headers:{
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+  }});
     
   }
 
   const delete_book = () =>{
-    axios.delete(`http://localhost:3000/Book/${book.id}`)
+    axios.delete(`http://localhost:3000/Book/${book.id}`, {
+      headers:{
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+  }})
     //window.location.replace('http://localhost:3000/app/Books');
   }
 
