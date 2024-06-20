@@ -87,6 +87,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .descrip textarea{
@@ -100,13 +101,15 @@
 
 }
 
-.create-book-container button{
+button{
     background-color:#4184d2;
     color: white;
     border-radius: 5px;
     height: 30px;
     padding: 5px;
     margin-left: 10px;
+    border: 0px;
+    cursor: pointer;
 
 }
 
@@ -143,4 +146,8 @@
 
 .pagination button{
     padding: 5px;
+}
+
+@media screen and (max-width: 730px) {
+    
 }

@@ -117,14 +117,7 @@ const App = (props) => {
       });
     };
 
-  return (
-    <React.Fragment>
-      <div className="search">
-      
-        <input type="search" placeholder={"Search book by title"} onChange={(e) => {setTitle(e.target.value)}} />
-        <button onClick={handleSeachTitle}>Search</button>
-      </div>
-
+    const pagination = () => (
       <div className="pagination-box">
         <div className="pagination">
           { prevPage ? <button onClick={prevPage}>anterior</button> : <></> }
@@ -132,6 +125,16 @@ const App = (props) => {
           { nextPage ? <button onClick={nextPage}>proximo</button> : <></> }
         </div>
       </div>
+      
+    )
+
+  return (
+    <React.Fragment>
+      <div className="search">
+        <input type="search" placeholder={"Search book by title"} onChange={(e) => {setTitle(e.target.value)}} />
+        <button onClick={handleSeachTitle}>Search</button>
+      </div>
+      
       {isOk ? <></> : wrongField()}
       <div className="body">
         { books ? allBooks : console.log("no books doidao") } 

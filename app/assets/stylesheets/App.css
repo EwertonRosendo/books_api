@@ -84,12 +84,8 @@
 .search input{
     height: 25px;
     padding: 5px;
-    
     border: 2px solid #4184d2;;
     box-sizing: border-box;
-    
-    
-    
     outline: none;
 }
 
@@ -128,4 +124,9 @@
 
 .pagination button{
     padding: 5px;
+}
+@media screen and (max-width: 730px) {
+    .search{
+        margin-left: 10px;
+    }
 }
