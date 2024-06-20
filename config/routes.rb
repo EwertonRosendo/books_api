@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+  post "/graphql", to: "graphql#execute"
+
   get '/app', to: 'app#index' # return a react-view about the book seached
   get '/app/json', to: 'app#index_json' # return the data from google books api
   get '/app/json/:title', to: 'app#index_json' # return the data from google books api
@@ -17,7 +23,4 @@ Rails.application.routes.draw do
   delete '/Book/:id', to: 'books#destroy'
   put '/Book/:id', to: 'books#edit'
   post '/Books', to: 'books#create'
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

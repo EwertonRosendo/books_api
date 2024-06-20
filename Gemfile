@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '3.3.1'
 
 # rosendo added this
-gem 'rubocop', require: false
+#gem 'rubocop', require: false
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
@@ -65,3 +65,6 @@ end
 gem 'shakapacker', '= 8.0'
 
 gem 'react-rails', '= 3.2'
+
+gem "graphql", "~> 2.3"
+gem "graphiql-rails", group: :development
