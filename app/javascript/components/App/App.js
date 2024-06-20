@@ -12,12 +12,40 @@ const App = (props) => {
 
   const [isOk, setIsOk] = useState(true)
 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(30);
+  
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = books.slice(firstPostIndex, lastPostIndex);
+
+  books.slice(firstPostIndex, lastPostIndex);
+
   const wrongField = () =>{
     return(
       <div className="wrong">
         <p >Some fields may be wrong, please check them and try again!</p>
       </div> 
     )
+  }
+
+  const nextPage = () => {
+    console.log(books.length)
+    if(currentPage+1){
+      setCurrentPage(currentPage+1)
+      return true
+    }
+    return false
+
+  }
+
+  const prevPage = () => {
+    if(currentPage-1){
+      setCurrentPage(currentPage-1)
+      return true
+    }
+    return false
   }
 
   useEffect(() => {
@@ -51,7 +79,7 @@ const App = (props) => {
     .catch((e) => console.log(e));
   };
 
-  const allBooks = books.map((book, index) => (
+  const allBooks = currentPosts.map((book, index) => (
     <div key={index} className="box">
   
         <div className="book-box">
@@ -96,10 +124,19 @@ const App = (props) => {
         <input type="search" placeholder={"Search book by title"} onChange={(e) => {setTitle(e.target.value)}} />
         <button onClick={handleSeachTitle}>Search</button>
       </div>
+
+      <div className="pagination-box">
+        <div className="pagination">
+          { prevPage ? <button onClick={prevPage}>anterior</button> : <></> }
+          <p>{currentPage}</p>
+          { nextPage ? <button onClick={nextPage}>proximo</button> : <></> }
+        </div>
+      </div>
       {isOk ? <></> : wrongField()}
       <div className="body">
         { books ? allBooks : console.log("no books doidao") } 
       </div>
+
     </React.Fragment>
   )
 }

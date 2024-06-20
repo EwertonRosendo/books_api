@@ -10,7 +10,33 @@ const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Book" 
   const [myBooks, setMyBooks] = useState([])
 
-  useEffect(() => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+  
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = myBooks.slice(firstPostIndex, lastPostIndex);
+
+   myBooks.slice(firstPostIndex, lastPostIndex);
+
+  const nextPage = () => {
+    if(myBooks[(postsPerPage*currentPage) +1] != undefined){
+      setCurrentPage(currentPage+1)
+      return true
+    }
+    return false
+
+  }
+
+  const prevPage = () => {
+    if(myBooks[(postsPerPage*currentPage) -10] != undefined){
+      setCurrentPage(currentPage-1)
+      return true
+    }
+    return false
+  }
+
+   useEffect(() => {
     axios.get(baseURL)
     .then((response) => {
       setMyBooks(response.data);
@@ -19,8 +45,9 @@ const MyBooks = (props) => {
     .catch((e) => console.log(e));
   }
   , []);
-
-  const allMyBooks = myBooks.map((book, index) => (
+  
+  //const allMyBooks = myBooks.map((book, index) => (
+    const allMyBooks = currentPosts.map((book, index) => (
     <div key={index} className="box">
   
         <div className="book-box">
@@ -48,15 +75,20 @@ const MyBooks = (props) => {
   return (
     <React.Fragment>
       <CreateBook/>
+
+      <div className="pagination-box">
+        <div className="pagination">
+          { prevPage ? <button onClick={prevPage}>anterior</button> : <></> }
+          <p>{currentPage}</p>
+          { nextPage ? <button onClick={nextPage}>proximo</button> : <></> }
+        </div>
+      </div>
+
       <div className="body">
         {allMyBooks}
       </div>
-      
     </React.Fragment>
   )
 }
-MyBooks.propTypes = {
-  greeting: PropTypes.string
-};
 
 export default MyBooks

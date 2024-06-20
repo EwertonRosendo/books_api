@@ -2,7 +2,7 @@ require "net/http"
 require "json"
 
 class AppController < ApplicationController
-  protect_from_forgery with: :null_session
+  
   def main
 
   end
@@ -16,12 +16,9 @@ class AppController < ApplicationController
   end
     
   def index_json
-    #author = params[:author]
-    #title = params[:title]
-    #publisher = params[:publisher]
+    
+    title = params[:title] ? params[:title] : "Harry%20Potter"
 
-    #url = "https://www.googleapis.com/books/v1/volumes?q=title:#{title}&inpublisher:#{publisher}&inauthor:#{author}&startIndex=0&maxResults=10&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
-    title = params[:title] ? params[:title] : "react"
     puts title
     url = "https://www.googleapis.com/books/v1/volumes?q=intitle:#{title}&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
     

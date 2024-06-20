@@ -101,8 +101,7 @@
     background-color: #4184d2;
     color: white;
     font-weight: 700;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 .search input:focus{
@@ -110,3 +109,23 @@
 
 }
 
+.pagination-box{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    margin-top:10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination p{
+    margin: 0px 20px;
+}
+
+.pagination button{
+    padding: 5px;
+}

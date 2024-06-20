@@ -75,6 +75,8 @@
     outline: none;
     margin-right: 10px;
     margin-bottom: 10px;
+    margin-left: 5px;
+    padding: 5px;
 }
 
 .create-book-container button{
@@ -89,6 +91,8 @@
 
 .descrip textarea{
     border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #4184d2;
 }
 
 .create-book-container input:focus{
@@ -120,3 +124,23 @@
     color: white;
 }
 
+.pagination-box{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    margin-top:10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination p{
+    margin: 0px 20px;
+}
+
+.pagination button{
+    padding: 5px;
+}
