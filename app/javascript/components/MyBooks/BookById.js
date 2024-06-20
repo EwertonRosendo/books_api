@@ -20,6 +20,7 @@ const BookById = (props) => {
   const [published_at, setPublished_at] = useState()
   const [url_image, setUrlImage] = useState("")
 
+
   useEffect(() => {
     axios.get(baseURL)
     .then((response) => {

@@ -10,6 +10,16 @@ const App = (props) => {
   const [token, setToken] = useState("")
   const [title, setTitle] = useState("")
 
+  const [isOk, setIsOk] = useState(true)
+
+  const wrongField = () =>{
+    return(
+      <div className="wrong">
+        <p >Some fields may be wrong, please check them and try again!</p>
+      </div> 
+    )
+  }
+
   useEffect(() => {
     const url = "http://localhost:3000/app/json";
     fetch(url)
@@ -66,25 +76,27 @@ const App = (props) => {
     ));
 
     const handleSeachTitle = () =>{
+      
       axios.get(`http://localhost:3000/app/json/${title}`)
       .then((response)=>{  
         setBooks(response.data)
+        
       })
       .catch((e) => {
         console.log("Books not found")
         setBooks([{"title": "Books weren't found", "thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1f4C-cWV03_czRXhL1THkOdS9RDnAtPxRnA&s"}])
-        console.log(e)
+        
       });
     };
 
   return (
     <React.Fragment>
-      <div className="seach">
-        
-        <label>Seach book by title: </label>
-        <input type="search" onChange={(e) => {setTitle(e.target.value)}} />
-        <button onClick={handleSeachTitle}>Seach</button>
+      <div className="search">
+      
+        <input type="search" placeholder={"Search book by title"} onChange={(e) => {setTitle(e.target.value)}} />
+        <button onClick={handleSeachTitle}>Search</button>
       </div>
+      {isOk ? <></> : wrongField()}
       <div className="body">
         { books ? allBooks : console.log("no books doidao") } 
       </div>

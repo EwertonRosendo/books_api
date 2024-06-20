@@ -53,29 +53,60 @@
 }
 
 .book-info p{
+    font-size: 18px;
     margin-top: 15px;
+    
 }
 .book-info button{
     margin-top:5px;
-    padding: 3px;
+    padding: 6px;
+    background-color: #4184d2;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    border: 0px;
+    cursor: pointer;
 }
 
 .title{
     font-weight: 700;
 }
 
-.seach{
-    margin: 20px
+.search{
+    margin-top: 20px;
+    margin-left: 20vh;
+    width: 300px;
+    background-color: #4184d2;
+    border-radius: 5px;
+
 }
 
-.seach input{
-    margin-right: 10px;
+.search input{
+    height: 25px;
     padding: 5px;
-    border-radius: 5px;
+    
+    border: 2px solid #4184d2;;
+    box-sizing: border-box;
+    
+    
+    
+    outline: none;
 }
 
-.seach button{
+.search button{
     padding: 5px;
-    border-radius: 5px;
+    height: 25px;        
+    border-radius: 0px 20px 5px 0px;
+    border: 0px;
+    background-color: #4184d2;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
     
 }
+
+.search input:focus{
+    border: 1px solid #4184d2;
+
+}
+

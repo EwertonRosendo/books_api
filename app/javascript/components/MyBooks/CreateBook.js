@@ -13,8 +13,21 @@ const CreateBook = (props) => {
     const [publisher, setPublisher] = useState("")
     const [published_at, setPublished_at] = useState()
     const [url_image, setUrlImage] = useState("")
+    const [isOk, setIsOk] = useState(true)
+
+  const wrongField = () =>{
+    return(
+      <div className="wrong">
+        <p >Some fields may be wrong, please check them and try again!</p>
+      </div> 
+    )
+  }
 
     const handleAddBook = () => {
+        if(!(title && description && author && publisher && published_at && url_image)){
+            return setIsOk(false)
+        }
+        setIsOk(true)
 
         axios.post("http://localhost:3000/Books", {
             "title":title,
@@ -33,6 +46,7 @@ const CreateBook = (props) => {
 
   return (
     <React.Fragment>
+        {isOk ? <></> : wrongField()}
       <div className="create-book-container">
 
         <div>
@@ -52,7 +66,7 @@ const CreateBook = (props) => {
 
         <div>
             <label>Published_at:</label>
-            <input type="date" onChange={(e) => {setPublished_at(e.target.value)}}  placeholder={"Published at.."}/>
+            <input type="date"  onChange={(e) => {setPublished_at(e.target.value)}}  placeholder={"Published at.."}/>
         </div>
 
         <div>
@@ -65,7 +79,7 @@ const CreateBook = (props) => {
             <textarea className="description" type="text" onChange={(e) => {setDescription(e.target.value)}} placeholder={"Book description.."} name="" id=""></textarea>
         </div>
 
-        <button onClick={handleAddBook}> Add Book</button>
+        <button onClick={handleAddBook}> Add Book</button>  
       </div>
       
     </React.Fragment>
