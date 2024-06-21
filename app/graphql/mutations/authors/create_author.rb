@@ -7,7 +7,7 @@ module Mutations
         type Types::AuthorType
   
         def resolve(name:, biography:)
-          Author.create(name: name, biography: biography)
+          Author.find_or_create_author(name, biography)
         end
       end
     end
