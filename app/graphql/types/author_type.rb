@@ -3,8 +3,8 @@
 module Types
   class AuthorType < Types::BaseObject
     field :id, ID, null: false
-    field :name, String
-    field :biography, String
+    field :name, String, null: false
+    field :biography, String, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

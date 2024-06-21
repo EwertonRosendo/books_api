@@ -8,10 +8,12 @@ module Types
     field :books,
     [Types::BookType],
     null: false,
+    
     description: "Return a list of books"
 
     def books
       Book.all
     end
+    
   end
 end
