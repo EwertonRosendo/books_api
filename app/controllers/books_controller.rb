@@ -4,15 +4,20 @@ require 'json'
 require 'net/http'
 
 class BooksController < ApplicationController
-  # protect_from_forgery with: :null_session
   before_action :set_book, only: %i[show destroy edit]
 
   def index
-    render json: Book.all.order(published_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json{ render json: Book.all.order(published_at: :desc) }
+    end
   end
 
   def show
-    render json: @book
+    respond_to do |format|
+      format.html
+      format.json{ render json: @book }
+    end
   end
 
   def destroy
@@ -26,20 +31,20 @@ class BooksController < ApplicationController
 
     return unless @book
 
-    @book[:title] = params[:title]
-    @book[:description] = params[:description]
-    @book[:published_at] = params[:published_at]
-    @book[:publisher] = params[:publisher]
-    @book[:author_id] = author.id
-    @book[:updated_at] = Time.current
-    @book[:url_image] = params[:url_image]
+    @book.title = params[:title]
+    @book.description = params[:description]
+    @book.published_at = params[:published_at]
+    @book.publisher = params[:publisher]
+    @book.author_id = author.id
+    @book.updated_at = Time.current
+    @book.url_image = params[:url_image]
 
     @book.save
     render json: @book
   end
 
   def create
-    author = Author.find_or_create_author(params[:author])
+    author = Author.find_by(name: params[:author])
 
     book = {
       title: params[:title],
@@ -49,15 +54,13 @@ class BooksController < ApplicationController
       url_image: params[:url_image],
       author:
     }
-    
     render json: Book.create(book)
-    
   end
 
   private
 
   def book_params
-    params.permit(:title, :description, :published_at, :publisher, :author, :id)
+    params.require(:book).permit(:title, :description, :published_at, :publisher, :author, :url_image, :author_id, :book)
   end
 
   def set_book

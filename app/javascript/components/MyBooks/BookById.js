@@ -9,7 +9,7 @@ import axios from "axios";
 const BookById = (props) => {
   
 
-  const baseURL = `http://localhost:3000/Book/${props.id}` 
+  const baseURL = `http://localhost:3000/Book/${props.id}.json` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
 

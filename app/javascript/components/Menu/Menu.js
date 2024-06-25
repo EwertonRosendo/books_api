@@ -9,7 +9,7 @@ const Menu = (props) => {
       <div className="menu">
         <div style={{display: 'flex'}}>
             <p><a href={'http://localhost:3000/app'}>Google API</a></p>
-            <p><a href={'http://localhost:3000/app/Books'}>My Books</a></p>
+            <p><a href={'http://localhost:3000/Books'}>My Books</a></p>
         </div>
         <div style={{display:'flex'}}>
             <p><a href={'#'}>Login</a></p>

@@ -4,16 +4,9 @@ require 'net/http'
 require 'json'
 
 class AppController < ApplicationController
-  def main; end
-
-  def books; end
-
-  def books_by_id; end
-
-  def index_json
+  def index
     title = params[:title] || 'Harry%20Potter'
 
-    puts title
     url = "https://www.googleapis.com/books/v1/volumes?q=intitle:#{title}&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
 
     uri = URI(url)
@@ -47,18 +40,10 @@ class AppController < ApplicationController
 
         list_books.push(book)
       end
-      return render json: list_books
     end
-
-    puts('no BOOKS')
-
-    render json: { status: 404 }, status: 404
+    respond_to do |format|
+      format.html
+      format.json{ render json: list_books }
+    end
   end
-
-  # GET /homes/1 or /homes/1.json
-  def show; end
-
-  def update; end
-
-  def destroy; end
 end
