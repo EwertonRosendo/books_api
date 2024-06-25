@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   end
   post "/graphql", to: "graphql#execute"
 
-  # Return a list of books from google api
+  # Return a list of books from google
   get '/app', to: 'app#index' # return a react-view about the book seached
+  get '/app/:title', to: 'app#index' # return a react-view about the book seached
 
   # Controller for Models only return json files
   get '/Author', to: 'author#index' # return a list of authors
@@ -31,5 +32,5 @@ Rails.application.routes.draw do
   get '/Book/:id', to: 'books#show'
   delete '/Book/:id', to: 'books#destroy'
   put '/Book/:id', to: 'books#edit'
-  post '/Books', to: 'books#create'
+  post '/Book/create', to: 'books#create'
 end

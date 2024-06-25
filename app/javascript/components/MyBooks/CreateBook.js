@@ -29,7 +29,7 @@ const CreateBook = (props) => {
         }
         setIsOk(true)
 
-        axios.post("http://localhost:3000/Books", {
+        axios.post("http://localhost:3000/Book/create", {
             "title":title,
             "publisher":publisher,
             "published_at":published_at,
