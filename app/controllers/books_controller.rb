@@ -49,7 +49,7 @@ class BooksController < ApplicationController
       url_image: params[:url_image],
       author:
     }
-    #redirect_to ""
+    
     render json: Book.create(book)
     
   end
