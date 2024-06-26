@@ -23,8 +23,8 @@ class BooksController < ApplicationController
   def edit
     author = Author.where(name: params[:author]).first_or_create!
     params_hash = book_params.to_h
-    params_hash["author"] = author
-    @book.update(params_hash)
+    params_hash[:author] = author
+    @book.update!(params_hash)
   end
 
   def create
@@ -34,8 +34,8 @@ class BooksController < ApplicationController
     end
     author = Author.where(name: @name).first_or_create!
     params_hash = book_params.to_h
-    params_hash["author"] = author
-    render json: Book.create(params_hash)
+    params_hash[:author] = author
+    render json: Book.create!(params_hash)
   end
 
   private
