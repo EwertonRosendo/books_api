@@ -63,7 +63,7 @@ const App = (props) => {
 
   const handleAddGoogleBook = (book) => {
     
-    axios.post("http://localhost:3000/Books", {
+    axios.post("http://localhost:3000/Book/create", {
       "title": book.title,
       "publisher": book.publisher,
       "published_at": book.publishedDate,

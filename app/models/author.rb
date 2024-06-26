@@ -4,14 +4,16 @@ class Author < ApplicationRecord
   has_many :books
   
   
-  def self.find_or_create_author(name, biography="no biography")
-    unless Author.find_by(name:)
-      Author.create(
-        name:,
-        biography: 'Author without description..'
-      )
+  def self.find_or_create_author(name)
+    unless Author.find_by(:name => name)
+        Author.create(
+            :name => name, 
+            :biography => "Author without description.."
+            ) 
     end
+    
+    author = Author.find_by(:name => name)
 
-    Author.find_by(name:)
+    author
   end
 end

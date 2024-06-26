@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/app/:title', to: 'app#index' # return a react-view about the book seached
 
   # Controller for Models only return json files
-  get '/Author', to: 'author#index' # return a list of authors
+  get '/Authors', to: 'author#index' # return a list of authors
   get '/Author/:id', to: 'author#show' # seach an author by id and return
 
   # Controller for Models only return json files
