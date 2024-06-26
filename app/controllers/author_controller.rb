@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-require 'json'
 class AuthorController < ApplicationController
 
   def index
