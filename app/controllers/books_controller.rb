@@ -4,14 +4,14 @@ class BooksController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json{ render json: Book.all.order(published_at: :desc) }
+      format.json { render json: Book.all.order(published_at: :desc) }
     end
   end
 
   def show
     respond_to do |format|
       format.html
-      format.json{ render json: @book }
+      format.json { render json: @book }
     end
   end
 
@@ -30,11 +30,10 @@ class BooksController < ApplicationController
   def create
     @name = params[:author]
     if params[:author].class != String
-      @name = params[:author] ? params[:author].join(' & ') : "No author"
+      @name = params[:author] ? params[:author].join(" & ") : "No author"
     end
-    author = Author.where(name: @name).first_or_create!
     params_hash = book_params.to_h
-    params_hash[:author] = author
+    params_hash[:author] = Author.where(name: @name).first_or_create!
     render json: Book.create!(params_hash)
   end
 

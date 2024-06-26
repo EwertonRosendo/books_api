@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -15,18 +15,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.save
-      redirect_to @user, notice: "user created"
-    end
+    return unless @user.save
+
+    redirect_to @user, notice: "user created"
   end
 
   def change
-    render :template => "/app/"
+    render template: "/app/"
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-
 end

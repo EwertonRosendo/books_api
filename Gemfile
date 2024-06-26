@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '3.3.1'
 
 # rosendo added this
-#gem 'rubocop', require: false
+gem 'rubocop', require: false
 gem 'rspec-rails', '~> 4.0.0'
 gem 'bcrypt', '~> 3.1.7'
 

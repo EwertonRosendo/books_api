@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
 
   def correct_user?
     @user = User.find_by(id: params[:id])
-    unless current_user == @user
-      redirect_to users_path
-    end
+    return if current_user == @user
+
+    redirect_to users_path
   end
 
   def authorize
-    unless logged_in?
-      redirect_to root_url
-    end
+    return if logged_in?
+
+    redirect_to root_url
   end
 end
