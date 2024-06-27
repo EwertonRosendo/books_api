@@ -5,7 +5,7 @@ class SearchGoogleApi
   def initialize(title = "rails")
     @title = ERB::Util.url_encode(title)
   end
-  
+
   def searchBookOnGoogle
     url = "https://www.googleapis.com/books/v1/volumes?q=title:#{@title}&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
     uri = URI(url)

@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const Menu = (props) => {
-  
   return (
     <React.Fragment>
-
       <div className="menu">
         <div style={{display: 'flex'}}>
             <p><a href={'http://localhost:3000/GoogleBooks'}>Google API</a></p>
@@ -16,12 +13,7 @@ const Menu = (props) => {
             <p><a href={'#'}>Logout</a></p>
         </div>    
       </div>
-
     </React.Fragment>
   )
 }
-Menu.propTypes = {
-  id: PropTypes.string
-};
-
 export default Menu

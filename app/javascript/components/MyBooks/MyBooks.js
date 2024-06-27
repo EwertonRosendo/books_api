@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-
 import axios from "axios";
-
 import CreateBook from "./CreateBook"
 
 const MyBooks = (props) => {
@@ -12,12 +9,9 @@ const MyBooks = (props) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-  
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = myBooks.slice(firstPostIndex, lastPostIndex);
-
-   myBooks.slice(firstPostIndex, lastPostIndex);
 
   const nextPage = () => {
     if(myBooks[(postsPerPage*currentPage) +1] != undefined){
@@ -25,8 +19,7 @@ const MyBooks = (props) => {
       return true
     }
     return false
-
-  }
+  };
 
   const prevPage = () => {
     if(myBooks[(postsPerPage*currentPage) -10] != undefined){
@@ -34,26 +27,21 @@ const MyBooks = (props) => {
       return true
     }
     return false
-  }
+  };
 
    useEffect(() => {
     axios.get(baseURL)
     .then((response) => {
       setMyBooks(response.data);
     })
-
     .catch((e) => console.log(e));
-  }
-  , []);
+    }, []);
   
-  //const allMyBooks = myBooks.map((book, index) => (
     const allMyBooks = currentPosts.map((book, index) => (
-    <div key={index} className="box">
-  
+      <div key={index} className="box">
         <div className="book-box">
             <div className="book-title-img">
                 <img
-                    //src={book["thumbnail"]}
                     src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
                     alt={`${book.title} image`}
                     className="bookImage"
@@ -65,17 +53,13 @@ const MyBooks = (props) => {
                 <p><a href={`http://localhost:3000/Book/${book["id"]}`}>Show details</a></p>
                 <p>Published at {book["published_at"]}</p>
                 <p>Published by {book["publisher"]}</p>
-                
             </div>
         </div>
-    </div>
+      </div>
     ));
-  
-
   return (
     <React.Fragment>
       <CreateBook/>
-
       <div className="pagination-box">
         <div className="pagination">
           { prevPage ? <button onClick={prevPage}>anterior</button> : <></> }
@@ -83,12 +67,10 @@ const MyBooks = (props) => {
           { nextPage ? <button onClick={nextPage}>proximo</button> : <></> }
         </div>
       </div>
-
       <div className="body">
         {allMyBooks}
       </div>
     </React.Fragment>
   )
-}
-
+};
 export default MyBooks

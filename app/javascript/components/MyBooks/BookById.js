@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
-
 import axios from "axios";
 
-
-
 const BookById = (props) => {
-  
 
   const baseURL = `http://localhost:3000/Book/${props.id}.json` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
-
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-  const[newAuthor, setNewAuthor] = useState("")
+  const [newAuthor, setNewAuthor] = useState("")
   const [publisher, setPublisher] = useState("")
   const [published_at, setPublished_at] = useState()
   const [url_image, setUrlImage] = useState("")
-
 
   useEffect(() => {
     axios.get(baseURL)
@@ -71,68 +64,59 @@ const BookById = (props) => {
       headers:{
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
-  }})
-    //window.location.replace('http://localhost:3000/app/Books');
-  }
+      }
+    }
+  )};
 
   return (
     <React.Fragment>
-
       <div className="body">
         <div className="box">
-            
-            <div className="book-img">
-                <img
-                        //src={book["thumbnail"]}
-                        src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
-                        alt={`${book.title} image`}
-                        className="bookImage"
-                    />
-                    <div>
-                      <label>image:</label>
-                      <input type="text" onChange={(e) => {setUrlImage(e.target.value)}} placeholder={book.url_image}/>
-                    </div>  
-            
+          
+          <div className="book-img">
+            <img
+                    src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
+                    alt={`${book.title} image`}
+                    className="bookImage"
+                />
+            <div>
+              <label>image:</label>
+              <input type="text" onChange={(e) => {setUrlImage(e.target.value)}} placeholder={book.url_image}/>
+            </div>  
+          </div>
+
+          <div className="book-info">
+            <div>
+              <label>Title:</label>
+              <input type="text" onChange={(e) => {setTitle(e.target.value)}} defaultValue={book.title} placeholder={"Book title.."}/>
             </div>
-
-            <div className="book-info">
-              <div>
-                <label>Title:</label>
-                <input type="text" onChange={(e) => {setTitle(e.target.value)}} defaultValue={book.title} placeholder={"Book title.."}/>
-              </div>
-
-              <div>
-                <label>Author:</label>
-                <input type="text" onChange={(e) => {setNewAuthor(e.target.value)}} defaultValue={author.name} placeholder={"Author.."}/>
-              </div>
-
-              <div>
-                <label>Publisher:</label>
-                <input type="text" onChange={(e) => {setPublisher(e.target.value)}} defaultValue={book.publisher} placeholder={"Publisher.."}/>
-              </div>
-
-              <div>
-                <label>Published_at:</label>
-                <input type="text" onChange={(e) => {setPublished_at(e.target.value)}} defaultValue={book.published_at} placeholder={"Published at.."}/>
-              </div>
-
-              <div className="descrip">
-                <label>Description:</label>
-                <textarea className="description" type="text" onChange={(e) => {setDescription(e.target.value)}} defaultValue={book.description} placeholder={"Book description.."} name="" id=""></textarea>
-              </div>
-              
+            <div>
+              <label>Author:</label>
+              <input type="text" onChange={(e) => {setNewAuthor(e.target.value)}} defaultValue={author.name} placeholder={"Author.."}/>
             </div>
+            <div>
+              <label>Publisher:</label>
+              <input type="text" onChange={(e) => {setPublisher(e.target.value)}} defaultValue={book.publisher} placeholder={"Publisher.."}/>
+            </div>
+            <div>
+              <label>Published_at:</label>
+              <input type="text" onChange={(e) => {setPublished_at(e.target.value)}} defaultValue={book.published_at} placeholder={"Published at.."}/>
+            </div>
+            <div className="descrip">
+              <label>Description:</label>
+              <textarea className="description" type="text" onChange={(e) => {setDescription(e.target.value)}} defaultValue={book.description} placeholder={"Book description.."} name="" id=""></textarea>
+            </div>
+          </div>
+        
         </div>
-
         <div className="buttons-area">
           <button className="delete" onClick={delete_book}> Delete this book</button>
           <button className="update" onClick={update_book}> Update this book</button>
         </div>
       </div>
-      
     </React.Fragment>
   )
-}
+};
 BookById.propTypes = {
   id: PropTypes.string
 };
