@@ -13,9 +13,7 @@
 .books{
     display: flex;
     flex-wrap: wrap;
-    
 }
-
 .book-box{
     display: flex;
     flex-direction: column;
@@ -32,10 +30,8 @@
 .book-title-img{
     display: flex;
     align-items: flex-start;
-    height: 220px;
-    
+    height: 220px;    
 }
-
 .book-title-img img{
     padding: 5px;
     border-radius: 30px;
@@ -43,7 +39,6 @@
     width: 160px;
     object-fit: cover;
 }
-
 .book-info{
     display: flex;
     height: 250px;
@@ -51,7 +46,6 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-
 .book-info p{
     font-size: 18px;
     margin-top: 15px;
@@ -67,20 +61,16 @@
     border: 0px;
     cursor: pointer;
 }
-
 .title{
     font-weight: 700;
 }
-
 .search{
     margin-top: 20px;
     margin-left: 20vh;
     width: 300px;
     background-color: #4184d2;
     border-radius: 5px;
-
 }
-
 .search input{
     height: 25px;
     padding: 5px;
@@ -88,7 +78,6 @@
     box-sizing: border-box;
     outline: none;
 }
-
 .search button{
     padding: 5px;
     height: 25px;        
@@ -99,17 +88,13 @@
     font-weight: 700;
     cursor: pointer;   
 }
-
 .search input:focus{
     border: 1px solid #4184d2;
-
 }
-
 .pagination-box{
     display: flex;
     justify-content: center;
 }
-
 .pagination{
     display: flex;
     margin-top:10px;
@@ -117,11 +102,9 @@
     justify-content: center;
     align-items: center;
 }
-
 .pagination p{
     margin: 0px 20px;
 }
-
 .pagination button{
     padding: 5px;
 }

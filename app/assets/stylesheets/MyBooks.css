@@ -45,7 +45,6 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-
 .book-info a{
     text-decoration: none;
     color:#ffffff;
@@ -55,19 +54,15 @@
     transition: 0.2s ease-in-out;
     transform: translateY(-2px);
 }
-
 .book-info a:hover{
     background-color: #4184d2;
     color: white;
 }
-
 .create-book-container{
     display: flex;
     margin: 20px;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;   
 }
-
 .create-book-container input{
     border: 2px solid #4184d2;
     border-radius: 3px;
@@ -78,7 +73,6 @@
     margin-left: 5px;
     padding: 5px;
 }
-
 .create-book-container button{
     border: 0px;
     cursor: pointer;
@@ -89,18 +83,14 @@
     align-items: flex-start;
     flex-wrap: wrap;
 }
-
 .descrip textarea{
     border-radius: 5px;
     padding: 5px;
     border: 1px solid #4184d2;
 }
-
 .create-book-container input:focus{
     border: 1px solid #4184d2;
-
 }
-
 button{
     background-color:#4184d2;
     color: white;
@@ -110,13 +100,10 @@ button{
     margin-left: 10px;
     border: 0px;
     cursor: pointer;
-
 }
-
 .title {
     font-weight: 700;
 }
-
 .wrong p{
     font-weight: 700;
     width: 75vh;
@@ -126,12 +113,10 @@ button{
     background-color: rgb(255, 43, 43);
     color: white;
 }
-
 .pagination-box{
     display: flex;
     justify-content: center;
 }
-
 .pagination{
     display: flex;
     margin-top:10px;
@@ -139,15 +124,11 @@ button{
     justify-content: center;
     align-items: center;
 }
-
 .pagination p{
     margin: 0px 20px;
 }
-
 .pagination button{
     padding: 5px;
 }
-
-@media screen and (max-width: 730px) {
-    
+@media screen and (max-width: 730px) {   
 }
