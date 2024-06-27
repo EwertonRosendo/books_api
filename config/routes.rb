@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
 
   # Return a list of books from google
-  get "/app", to: "app#index" # return a react-view about the book seached
-  get "/app/:title", to: "app#index" # return a react-view about the book seached
+  get "/GoogleBooks", to: "google_books#index" # return a react-view about the book seached
+  get "/GoogleBooks/:title", to: "google_books#index" # return a react-view about the book seached
 
   # Controller for Models only return json files
   get "/Authors", to: "author#index" # return a list of authors

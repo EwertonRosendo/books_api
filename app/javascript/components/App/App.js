@@ -49,7 +49,7 @@ const App = (props) => {
   }
 
   useEffect(() => {
-    const url = "http://localhost:3000/app.json";
+    const url = "http://localhost:3000/GoogleBooks.json";
     fetch(url)
     .then((res) => {
       if (res.ok){
@@ -105,7 +105,7 @@ const App = (props) => {
 
     const handleSeachTitle = () =>{
       
-      axios.get(`http://localhost:3000/app/${title}.json`)
+      axios.get(`http://localhost:3000/GoogleBooks/${title}.json`)
       .then((response)=>{  
         setBooks(response.data)
         
