@@ -120,5 +120,4 @@ const BookById = (props) => {
 BookById.propTypes = {
   id: PropTypes.string
 };
-
 export default BookById

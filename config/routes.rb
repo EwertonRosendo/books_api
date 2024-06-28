@@ -13,10 +13,6 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#destroy"
 
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
 
   # Return a list of books from google
   get "/GoogleBooks", to: "google_books#index" # return a react-view about the book seached

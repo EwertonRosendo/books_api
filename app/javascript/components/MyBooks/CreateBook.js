@@ -3,13 +3,15 @@ import axios from "axios";
 
 const CreateBook = (props) => {
 
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [author, setAuthor] = useState("")
-  const [publisher, setPublisher] = useState("")
-  const [published_at, setPublished_at] = useState()
-  const [url_image, setUrlImage] = useState("")
-  const [isOk, setIsOk] = useState(true)
+  const [formData, setFormData] = useState();
+
+  function handleInputChange(event){
+    const {id, value} = event.target;
+    setFormData({
+      ...formData,
+      [id]:value
+    })
+  }
 
   const wrongField = () =>{
     return(
@@ -24,12 +26,7 @@ const CreateBook = (props) => {
     }
     setIsOk(true)
     axios.post("http://localhost:3000/Book/create", {
-        "title":title,
-        "publisher":publisher,
-        "published_at":published_at,
-        "description":description,
-        "author":author,
-        "url_image":url_image,
+      formData
     },
     {
         headers:{
@@ -45,27 +42,27 @@ const CreateBook = (props) => {
       <div className="create-book-container">
         <div>
             <label>Title:</label>
-            <input type="text" onChange={(e) => {setTitle(e.target.value)}}  placeholder={"Book title.."}/>
+            <input id="title" type="text" onChange={handleInputChange}  placeholder={"Book title.."}/>
         </div>
         <div>
             <label>Author:</label>
-            <input type="text" onChange={(e) => {setAuthor(e.target.value)}}  placeholder={"Author.."}/>
+            <input id="author" type="text" onChange={handleInputChange}  placeholder={"Author.."}/>
         </div>
         <div>
             <label>Publisher:</label>
-            <input type="text" onChange={(e) => {setPublisher(e.target.value)}}  placeholder={"Publisher.."}/>
+            <input id="publisher" type="text" onChange={handleInputChange}  placeholder={"Publisher.."}/>
         </div>
         <div>
             <label>Published_at:</label>
-            <input type="date"  onChange={(e) => {setPublished_at(e.target.value)}}  placeholder={"Published at.."}/>
+            <input id="published_at" type="date"  onChange={handleInputChange}  placeholder={"Published at.."}/>
         </div>
         <div>
             <label>Image:</label>
-            <input type="text" onChange={(e) => {setUrlImage(e.target.value)}}  placeholder={"Book's image.."}/>
+            <input id="url_image" type="text" onChange={handleInputChange}  placeholder={"Book's image.."}/>
         </div>
         <div className="descrip">
             <label>Description:</label>
-            <textarea className="description" type="text" onChange={(e) => {setDescription(e.target.value)}} placeholder={"Book description.."} name="" id=""></textarea>
+            <textarea id="url_image" className="description" type="text" onChange={handleInputChange} placeholder={"Book description.."} name="" ></textarea>
         </div>
         <button onClick={handleAddBook}> Add Book</button>
       </div>
