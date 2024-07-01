@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  skip_before_action :logged?
   before_action :set_book, only: %i[show destroy edit]
 
   def index

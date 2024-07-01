@@ -11,8 +11,9 @@
   </head>
 
   <body>
-    <%= react_component("Menu/Menu") %>
-    <%= render 'layouts/header' %>
+    <%= react_component("Menu/Menu", { user_id: cookies[:user_id] }) %>
+    
     <%= yield %>
+    
   </body>
 </html>

@@ -5,10 +5,19 @@ import axios from "axios";
 
 const SignIn = (props) => {
   
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("ewerton.rosendoaaaa@gmail.com")
+  const [password, setPassword] = useState("jo1465eraa")
 
-  
+  const handleSignIn = () =>{
+    console.log("aa")
+    axios.post("http://localhost:3000/sign_in",
+      {"email": email, "password":password},
+      {
+        headers:{
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+    }})
+  }
   
   return (
     <React.Fragment>
@@ -32,7 +41,7 @@ const SignIn = (props) => {
             </div>
 
             <div className="buttons">
-              <button className="in">Sign In</button>
+              <button onClick={handleSignIn} className="in">Sign In</button>
               <button className="up">Sign up</button>
             </div>
           </div>

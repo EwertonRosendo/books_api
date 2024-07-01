@@ -1,2 +1,6 @@
-<%= stylesheet_link_tag "BookById" %>
-<%= react_component("MyBooks/BookById", { id: params[:id] }) %>
+<% if @logged%>
+    <%= stylesheet_link_tag "BookById" %>
+    <%= react_component("MyBooks/BookById", { id: params[:id] }) %>
+<% else %>
+    <%= react_component("Sign/SignIn") %>
+<% end %>

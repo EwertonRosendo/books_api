@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BookById = (props) => {
 
-  const baseURL = `http://localhost:3000/Book/${props.id}.json` 
+  const baseURL = `http://localhost:3000/Book/${props.user_id}.json` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
   const [title, setTitle] = useState("")
@@ -55,8 +55,8 @@ const BookById = (props) => {
       headers:{
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
-  }});
-    
+      }
+    });
   }
 
   const delete_book = () =>{
@@ -118,6 +118,6 @@ const BookById = (props) => {
   )
 };
 BookById.propTypes = {
-  id: PropTypes.string
+  user_id: PropTypes.number
 };
 export default BookById

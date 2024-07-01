@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #before_action :correct_user?
-  wrap_parameters :user, include: [:name,:email, :password, :password_confirmation]
+  skip_before_action :logged?
+  wrap_parameters :user, include: %i[name email password password_confirmation]
 
   def index
     render json: User.all

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CreateBook from "./CreateBook"
+import PropTypes from 'prop-types';
 
 const MyBooks = (props) => {
   
@@ -72,5 +73,8 @@ const MyBooks = (props) => {
       </div>
     </React.Fragment>
   )
+};
+MyBooks.propTypes = {
+  user_id: PropTypes.number
 };
 export default MyBooks

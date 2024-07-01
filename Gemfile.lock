@@ -111,8 +111,6 @@ GEM
     execjs (2.9.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphiql-rails (1.10.0)
-      railties
     graphql (2.3.5)
       base64
     i18n (1.14.5)
@@ -319,7 +317,6 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  graphiql-rails
   graphql (~> 2.3)
   jbuilder
   puma (>= 5.0)
