@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :correct_user?
+  #before_action :correct_user?
+  wrap_parameters :user, include: [:name,:email, :password, :password_confirmation]
 
   def index
-    @users = User.all
+    render json: User.all
   end
 
   def show
@@ -14,14 +15,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    return unless @user.save
-
-    redirect_to @user, notice: "user created"
-  end
-
-  def change
-    render template: "/app/"
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to "http://localhost:3000"
+    end
+    redirect_to "http://localhost:3000"
   end
 
   private

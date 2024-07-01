@@ -3,6 +3,7 @@
 Book.destroy_all
 Author.delete_all
 
+=begin
 authorc1 = Author.create!(name: "Ewerton Rosendo", biography: "sudo apt install node yarn ruby rails gem")
 authorc2 = Author.create!(name: "Davi Vieira", biography: "sudo windows ufrpe saudades ete na verdade nao")
 
@@ -32,3 +33,4 @@ Book.all.each do |book|
   puts "Author: #{book.author.name}"
   puts "----------------"
 end
+=end

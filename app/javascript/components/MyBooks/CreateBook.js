@@ -4,12 +4,13 @@ import axios from "axios";
 const CreateBook = (props) => {
 
   const [formData, setFormData] = useState();
+  const [isOk, setIsOk] = useState(true)
 
   function handleInputChange(event){
     const {id, value} = event.target;
     setFormData({
       ...formData,
-      [id]:value
+      [id]: value
     })
   }
 
@@ -62,7 +63,7 @@ const CreateBook = (props) => {
         </div>
         <div className="descrip">
             <label>Description:</label>
-            <textarea id="url_image" className="description" type="text" onChange={handleInputChange} placeholder={"Book description.."} name="" ></textarea>
+            <textarea id="description" className="description" type="text" onChange={handleInputChange} placeholder={"Book description.."} name="" ></textarea>
         </div>
         <button onClick={handleAddBook}> Add Book</button>
       </div>

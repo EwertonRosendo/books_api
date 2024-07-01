@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root "sessions#new"
 
   # resources :users
+  get "/users", to: "users#index"
   get "/users/new", to: "users#new"
   post "/users/new", to: "users#new"
-  get "/users/change/page", to: "users#change"
   post "/users/create", to: "users#create"
 
   get "sign_in" => "sessions#new"
