@@ -4,7 +4,7 @@ import axios from "axios";
 const CreateBook = (props) => {
 
   const [formData, setFormData] = useState();
-  const [isOk, setIsOk] = useState(true)
+  const [isOk, setIsOk] = useState(true);
 
   function handleInputChange(event){
     const {id, value} = event.target;
@@ -12,7 +12,7 @@ const CreateBook = (props) => {
       ...formData,
       [id]: value
     })
-  }
+  };
 
   const wrongField = () =>{
     return(

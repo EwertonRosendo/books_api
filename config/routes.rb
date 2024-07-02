@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   root "sessions#new"
 
-  # resources :users
   get "/users", to: "users#index"
   get "/sign_up", to: "users#new"
   post "/users/new", to: "users#new"
@@ -13,9 +12,11 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#destroy"
 
+  get ":id/books", to: "users_book#index"
+  post ":id/books", to: "users_book#create"
 
   # Return a list of books from google
-  get "/GoogleBooks", to: "google_books#index" # return a react-view about the book seached
+  get "/GoogleBooks", to: "google_books#index", as: "googleBooks" # return a react-view about the book seached
   get "/GoogleBooks/:title", to: "google_books#index" # return a react-view about the book seached
 
   # Controller for Models only return json files

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :logged?
-  wrap_parameters :user, include: %i[name email password password_confirmation]
 
   def index
     render json: User.all
@@ -16,10 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to "http://localhost:3000"
-    end
-    redirect_to "http://localhost:3000"
+    @user.save
   end
 
   private

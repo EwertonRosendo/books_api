@@ -6,22 +6,17 @@ import axios from 'axios';
 const SignUp = (props) => {
 
   const [formData, setFormData] = useState();
-  const [user, setUser] = useState({
-    "name": "ewerton rosendoaaaq",
-    "email":"ewerton.rosendoaaaa@gmail.com",
-    "password":"jo1465eraa",
-    "password_confirmation": "jo1465eraa"
-  })
   function handleInputChange(event){
     const {id, value} = event.target;
-    setFormData({
+    
+    setFormData({ 
       ...formData,
-      [id]:value
+      [id]: value
     })
   }
   
   const handleSignUpClick = () => {
-    axios.post("http://localhost:3000/users/create",user,
+    axios.post("http://localhost:3000/users/create",formData,
 {
     headers:{
         "Content-Type": "application/json",
@@ -40,21 +35,21 @@ const handleSignInClick = () => {
             <p>Sign Up here!</p>
             <div className="input name">
               <label htmlFor="">Name</label>
-              <input id="name" type="text" value={"ewerton rosendo da sivla"} placeholder="Your name.." onChange={handleInputChange} />
+              <input id="name" type="text" placeholder="Your name.." onChange={handleInputChange} />
             </div>
             <div className="input email">
               <label htmlFor="">Email</label>
-              <input id="email" value={"ewerton.rosendo@gmail.com"} type="email" placeholder="exemple@gmail.com.." onChange={handleInputChange} />
+              <input id="email" type="email" placeholder="exemple@gmail.com.." onChange={handleInputChange} />
             </div>
 
             <div className="input password">
               <label htmlFor="">Password</label>
-              <input id="Password" value={"jo1465err"} type="text" placeholder="Your password.." onChange={handleInputChange} />
+              <input id="password" type="text" placeholder="Your password.." onChange={handleInputChange} />
             </div>
 
             <div className="input password">
               <label htmlFor="">Password Confirmation</label>
-              <input id="Password_confirmation" value={"jo1465err"} type="text" placeholder="Confirm your password.." onChange={handleInputChange} />
+              <input id="password_confirmation" type="text" placeholder="Confirm your password.." onChange={handleInputChange} />
             </div>
 
             <div className="buttons">
