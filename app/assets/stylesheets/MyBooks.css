@@ -1,0 +1,134 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.body{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.books{
+    display: flex;
+    flex-wrap: wrap;
+}
+.book-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    width: 260px;
+    height: 500px;
+    margin: 10px 10px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.book-title-img{
+    display: flex;
+    align-items: flex-start;
+    height: 300px;
+}
+.book-title-img img{
+    padding: 5px;
+    border-radius: 30px;
+    height: 200px;
+    width: 160px;
+    object-fit: cover;
+}
+.book-info{
+    display: flex;
+    height: 250px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.book-info a{
+    text-decoration: none;
+    color:#ffffff;
+    background-color:#6e98c9;
+    padding: 5px;
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+    transform: translateY(-2px);
+}
+.book-info a:hover{
+    background-color: #4184d2;
+    color: white;
+}
+.create-book-container{
+    display: flex;
+    margin: 20px;
+    flex-wrap: wrap;   
+}
+.create-book-container input{
+    border: 2px solid #4184d2;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    padding: 5px;
+}
+.create-book-container button{
+    border: 0px;
+    cursor: pointer;
+}
+.descrip{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.descrip textarea{
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #4184d2;
+}
+.create-book-container input:focus{
+    border: 1px solid #4184d2;
+}
+button{
+    background-color:#4184d2;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 0px;
+    cursor: pointer;
+}
+.title {
+    font-weight: 700;
+}
+.wrong p{
+    font-weight: 700;
+    width: 75vh;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 43, 43);
+    color: white;
+}
+.pagination-box{
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    display: flex;
+    margin-top:10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.pagination p{
+    margin: 0px 20px;
+}
+.pagination button{
+    padding: 5px;
+}
+@media screen and (max-width: 730px) {   
+}

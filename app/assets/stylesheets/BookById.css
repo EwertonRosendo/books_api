@@ -1,0 +1,89 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+}
+.box{
+    display: flex;
+    margin-top: 10px;
+    width: 850px;
+    height: 450px;
+}
+.book-img img{
+    border-radius: 10px;
+    margin: 20px 20px;
+    width: 180px;
+    object-fit: cover;
+}
+.book-img{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.book-img input{
+    width: 90%;
+}
+.book-img div{
+    display: flex;
+    flex-direction: column;
+}
+.book-info{
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+}
+.book-info input{
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.book-info textarea{
+    border-radius: 5px;
+}
+.book-info label{
+    margin-right: 10px;
+}
+.book-info .descrip{
+    display: flex;
+    flex-direction: column;
+}
+.book-info .description {
+    height: 100px;
+    padding: 4px;
+}
+.book-info div{
+    margin-top: 10px;
+}
+.buttons-area{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+}
+.buttons-area button{
+    margin: 0px 20px;
+    color: white;
+    padding: 5px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+.buttons-area button{
+    transition: 0.3s ease-in-out;
+    transform: translateY(-2px);
+}
+.delete{
+    background-color: rgb(255, 30, 30);
+}
+.delete:hover{
+    background-color: red;
+}
+.update{
+    background-color: rgb(55, 55, 255);
+}
+.update:hover{
+    background-color: blue;
+}

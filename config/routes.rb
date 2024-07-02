@@ -1,13 +1,31 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  #resources :homes
-  get "/home", to: "homes#index"
-  get "/home/json", to: "homes#show"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "sessions#new"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # resources :users
+  get "/users", to: "users#index"
+  get "/users/new", to: "users#new"
+  post "/users/new", to: "users#new"
+  post "/users/create", to: "users#create"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get "sign_in" => "sessions#new"
+  post "sign_in" => "sessions#create"
+  delete "sign_out" => "sessions#destroy"
+
+
+  # Return a list of books from google
+  get "/GoogleBooks", to: "google_books#index" # return a react-view about the book seached
+  get "/GoogleBooks/:title", to: "google_books#index" # return a react-view about the book seached
+
+  # Controller for Models only return json files
+  get "/Authors", to: "author#index" # return a list of authors
+  get "/Author/:id", to: "author#show" # seach an author by id and return
+
+  # Controller for Models only return json files
+  get "/Books", to: "books#index"
+  get "/Book/:id", to: "books#show"
+  delete "/Book/:id", to: "books#destroy"
+  put "/Book/:id", to: "books#edit"
+  post "/Book/create", to: "books#create"
 end

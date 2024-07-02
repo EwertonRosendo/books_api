@@ -1,0 +1,115 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.books{
+    display: flex;
+    flex-wrap: wrap;
+}
+.book-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    width: 260px;
+    height: 520px;
+    margin: 10px 10px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.book-title-img{
+    display: flex;
+    align-items: flex-start;
+    height: 220px;    
+}
+.book-title-img img{
+    padding: 5px;
+    border-radius: 30px;
+    height: 200px;
+    width: 160px;
+    object-fit: cover;
+}
+.book-info{
+    display: flex;
+    height: 250px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.book-info p{
+    font-size: 18px;
+    margin-top: 15px;
+    
+}
+.book-info button{
+    margin-top:5px;
+    padding: 6px;
+    background-color: #4184d2;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    border: 0px;
+    cursor: pointer;
+}
+.title{
+    font-weight: 700;
+}
+.search{
+    margin-top: 20px;
+    margin-left: 20vh;
+    width: 300px;
+    background-color: #4184d2;
+    border-radius: 5px;
+}
+.search input{
+    height: 25px;
+    padding: 5px;
+    border: 2px solid #4184d2;;
+    box-sizing: border-box;
+    outline: none;
+}
+.search button{
+    padding: 5px;
+    height: 25px;        
+    border-radius: 0px 20px 5px 0px;
+    border: 0px;
+    background-color: #4184d2;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;   
+}
+.search input:focus{
+    border: 1px solid #4184d2;
+}
+.pagination-box{
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    display: flex;
+    margin-top:10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.pagination p{
+    margin: 0px 20px;
+}
+.pagination button{
+    padding: 5px;
+}
+@media screen and (max-width: 730px) {
+    .search{
+        margin-left: 10px;
+    }
+}
