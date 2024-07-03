@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get ":id/review", to: "users_book#show" # show a review by its id
   post ":user_id/reviews", to: "users_book#create" # create a new review
   put ":id/review", to: "users_book#edit" # update from a specific userBook
-  delete ":id/review", to: "users_book#destroy" # delete a book review by id
+  delete ":id/reviews", to: "users_book#destroy" # delete a book review by id
 
   # Return a list of books from google
   get "/GoogleBooks", to: "google_books#index", as: "googleBooks" # return a react-view about the book seached

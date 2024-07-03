@@ -6,20 +6,32 @@ class UsersBookController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
-    render json: UsersBook.where(user_id: user.id)
+    respond_to do |format|
+      format.html
+      format.json { render json: UsersBook.where(user_id: user.id) }
+    end
   end
 
   def show
-    render json: @user_book
+    respond_to do |format|
+      format.html
+      format.json { render json: @user_book }
+    end
   end
 
   def create
-    render json: UsersBook.create!(params_hash)
+    respond_to do |format|
+      format.html
+      format.json { render json: UsersBook.create!(params_hash) }
+    end
   end
 
   def edit
     @user_book.update!(params_hash)
-    render json: @user_book
+    respond_to do |format|
+      format.html
+      format.json { render json: @user_book }
+    end
   end
 
   def destroy
@@ -29,7 +41,7 @@ class UsersBookController < ApplicationController
   private
 
   def user_book_params
-    params.require(:users_book).permit(:id, :user, :book, :book_opinion, :rating, :status)
+    params.require(:users_book).permit(:id, :user_id, :book_id, :book_opinion, :rating, :status)
   end
 
   def set_user_book
