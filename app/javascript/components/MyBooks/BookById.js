@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BookById = (props) => {
 
-  const baseURL = `http://localhost:3000/Book/${props.user_id}.json` 
+  const baseURL = `http://localhost:3000/Books/${props.user_id}.json` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
   const [title, setTitle] = useState("")
@@ -43,7 +43,7 @@ const BookById = (props) => {
   };
 
   const update_book = () =>{
-    axios.put(`http://localhost:3000/Book/${book.id}`, {
+    axios.put(`http://localhost:3000/Books/${book.id}`, {
       "title":title,
       "publisher":publisher,
       "published_at":published_at,
