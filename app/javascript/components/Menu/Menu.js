@@ -23,7 +23,7 @@ const Menu = (props) => {
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
       }
-    })
+    });
   }
 
   return (
@@ -31,6 +31,7 @@ const Menu = (props) => {
       <div className="menu">
         <div style={{display: 'flex'}}>
             <p><a href={'http://localhost:3000/GoogleBooks'}>Google API</a></p>
+            <p><a href={'http://localhost:3000/reviews'}>Reviews</a></p>
             {props.user_id ? <p><a href={'http://localhost:3000/Books'}>My Books</a></p> : <></>}
         </div>
         <div style={{display:'flex'}}>
@@ -41,7 +42,5 @@ const Menu = (props) => {
   )
 }
 
-Menu.propTypes = {
-  user_id: PropTypes.bool
-};
+
 export default Menu

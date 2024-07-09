@@ -51,7 +51,8 @@ const MyBooks = (props) => {
             <div className="book-info">
                 <p className="title">{ book["title"]}</p>
                 <p>{book["description"]}</p>
-                <p><a href={`http://localhost:3000/Book/${book["id"]}`}>Show details</a></p>
+                <p><a href={`http://localhost:3000/Books/${book.id}`}>Show details</a></p>
+                <p><a href={`http://localhost:3000/Books/${book.id}/reviews/new`}>Create Review</a></p>
                 <p>Published at {book["published_at"]}</p>
                 <p>Published by {book["publisher"]}</p>
             </div>

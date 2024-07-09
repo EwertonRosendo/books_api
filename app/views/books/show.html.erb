@@ -1,6 +1,6 @@
 <% if cookies[:user_id]%>
     <%= stylesheet_link_tag "BookById" %>
-    <%= react_component("MyBooks/BookById", { user_id: params[:id] }) %>
+    <%= react_component("MyBooks/BookById", { id: params[:id], user_id: cookies[:user_id] }) %>
 <% else %>
     <%= react_component("Sign/SignIn") %>
 <% end %>

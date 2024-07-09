@@ -1,0 +1,66 @@
+.content-review{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.opinion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 150px;   
+}
+.opinion p{
+    border-left: 1px solid rgb(107, 107, 107);
+    padding-left: 4px;
+    font-style: italic;
+    text-align: justify;
+    font-weight: 700;
+    color: rgb(49, 49, 49);
+}
+.comments{
+    margin: 40px 260px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.comment-info{
+    display: flex;
+    margin-top: 5px;
+}
+.comment-now{
+    display: flex;
+}
+.comments .comment-now textarea{
+    width: 80%;
+    height: 40px;
+    box-sizing: border-box;
+    outline: none;
+    padding: 3px;
+    font-weight: 700;
+}
+.comments .comment-now button{
+    width: 20%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 700;
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+.comments .comment-now button:hover{
+    background-color: #4184d2;
+    transition: 0.2s ease-in-out;
+    transform: translateY(-2px);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+}
+.comment-content{
+    margin: 10px 0px;
+}
+.comment{
+    border: 1px solid rgb(68, 68, 68);
+    margin: 1px;
+}
+.comment p{
+    margin: 2px 5px;
+}

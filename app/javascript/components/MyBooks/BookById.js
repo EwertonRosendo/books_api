@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BookById = (props) => {
 
-  const baseURL = `http://localhost:3000/Book/${props.user_id}.json` 
+  const baseURL = `http://localhost:3000/Books/${props.id}.json` 
   const [book, setBook] = useState([])
   const [author, setAuthor] = useState("")
   const [title, setTitle] = useState("")
@@ -118,6 +118,6 @@ const BookById = (props) => {
   )
 };
 BookById.propTypes = {
-  user_id: PropTypes.number
+  id: PropTypes.number
 };
 export default BookById

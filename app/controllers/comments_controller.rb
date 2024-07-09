@@ -4,8 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: :destroy
 
   def index
-    @user = User.find(:user_id)
-    render json: Comment.find_by(user_id: @user)
+    render json: Comment.where(review_id: params[:review_id]).to_json(include: [:user])
   end
 
   def create
@@ -31,7 +30,7 @@ class CommentsController < ApplicationController
 
   def hash_params
     params_hash = comment_params.to_h
-    params_hash[:user] = User.find(params[:user_id])
+    params_hash[:user] = User.find(cookies[:user_id])
     params_hash
   end
 end

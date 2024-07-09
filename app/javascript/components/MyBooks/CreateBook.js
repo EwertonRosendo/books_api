@@ -26,7 +26,7 @@ const CreateBook = (props) => {
         return setIsOk(false)
     }
     setIsOk(true)
-    axios.post("http://localhost:3000/Book/create", {
+    axios.post("http://localhost:3000/Books", {
       formData
     },
     {

@@ -1,21 +1,26 @@
 class UsersBookController < ApplicationController
   skip_before_action :logged?
   skip_before_action :verify_authenticity_token
-  before_action :set_user_book, except: %i[create index]
-  before_action :params_hash, except: %i[index create show destroy]
+  before_action :set_user_book, except: %i[create index new]
+  before_action :params_hash, except: %i[index create show destroy new]
 
   def index
-    user = User.find(params[:user_id])
     respond_to do |format|
       format.html
-      format.json { render json: UsersBook.where(user_id: user.id) }
+      format.json { render json: UsersBook.all.to_json(include: [:book, :user]) }
     end
   end
 
   def show
     respond_to do |format|
       format.html
-      format.json { render json: {review: @user_book, comments: Comment.where(params[:id])} }
+      format.json { render json: UsersBook.find(params[:id]).to_json(include: [:book, :user]) }
+    end
+  end
+
+  def new
+    respond_to do |format|
+      format.html
     end
   end
 
@@ -51,8 +56,8 @@ class UsersBookController < ApplicationController
 
   def params_hash
     @params_hash = user_book_params.to_h
-    @params_hash[:user] = User.find(params[:user_id])
-    @params_hash[:book] = Book.find(params[:book_id])
+    @params_hash[:user] = User.find(cookies[:user_id])
+    @params_hash[:book] = Book.find(params[:book][:id])
     @params_hash
   end
 end

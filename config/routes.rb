@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete "sign_out" => "sessions#destroy"
 
   # route to create reviews
-  resources :users do
+  resources :Books, controller: "books" do
     resources :reviews, controller: "users_book"
   end
 
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   # Controller for Models only return json files
   get "/Books", to: "books#index"
-  get "/Book/:id", to: "books#show"
+  get "/Books/:id", to: "books#show"
   delete "/Book/:id", to: "books#destroy"
   put "/Book/:id", to: "books#edit"
   post "/Book/create", to: "books#create"
