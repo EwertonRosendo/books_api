@@ -25,13 +25,14 @@
     "compression-webpack-plugin": "^9.2.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "mini-css-extract-plugin": "^2.9.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
+    "react_ujs": "^3.2.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-select": "^5.8.0",
-    "react_ujs": "^3.2.1",
     "shakapacker": "8.0.0",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.10",
@@ -42,5 +43,8 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^4.15.2"
+  },
+  "scripts": {
+    "lint:prettier:fix": "prettier --write . --loglevel warn"
   }
 }

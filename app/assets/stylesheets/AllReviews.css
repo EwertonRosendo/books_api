@@ -1,23 +1,23 @@
-.content{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
-.review{
-    display: flex;
-    width: 40%;
-    margin: 10px;
-    font-size: 16px;
+.review {
+  display: flex;
+  width: 40%;
+  margin: 10px;
+  font-size: 16px;
 }
-.review .book-image{
-    margin-right: 10px;
+.review .book-image {
+  margin-right: 10px;
 }
-.review .book-image img{
-    border-radius: 5px;
+.review .book-image img {
+  border-radius: 5px;
 }
-.review .book-review{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.review .book-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
