@@ -15,17 +15,24 @@ const AllReviews = (props) => {
     });
   }, []);
 
+  const handleChangeScreen = (id) => {
+    window.location.replace(`http://localhost:3000/reviews/${id}`);
+  };
+
   const showAllReviews = reviews.map((review, index) => (
     <div key={index} className="review">
       <div className="book-image">
         <img src={review.book.url_image} alt="" />
       </div>
       <div className="book-review">
-        <p>Title: {review.book.title}</p>
+        <p className="title">{review.book.title}</p>
         <p>Reviewer: {review.user.name}</p>
         <p>Status: {review.status}</p>
         <p>Rating: {review.rating}</p>
-        <a href={`http://localhost:3000/reviews/${review.id}`}>show review</a>
+        
+        <button onClick={() => handleChangeScreen(review.id)}>
+          show review
+        </button>
       </div>
     </div>
   ));

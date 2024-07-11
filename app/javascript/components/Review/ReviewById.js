@@ -42,30 +42,37 @@ const ReviewById = (props) => {
       .catch((e) => console.log(e));
   }, []);
 
+  const handleDeleteComment = (review_id, id) =>{
+    axios.delete(`http://localhost:3000/reviews/${review_id}/comments/${id}`)
+  }
+
   const commentsComponent = comments.map((comment, index) => (
     <div key={comment.id}>
       <div className="comment">
         <div className="comment-info">
           <p>{comment.user.name}</p>
-          <p>{Date(comment.created_at, "ddMMyyyy")}</p>
+          <p>{comment.created_at.substring(0, 10)}</p>
         </div>
         <div className="comment-content">
           <p>{comment.content}</p>
         </div>
+        { (comment.user.id == props.user_id) ? <button onClick={() => handleDeleteComment(props.id, comment.id)}>delete</button> :<></> }
       </div>
     </div>
   ));
   return (
     <React.Fragment>
-      <div className="content-review">
-        <div className="book-image">
-          <img src={book.url_image} alt="" />
-        </div>
-        <div>
-          <p>{book.title}</p>
-          <p>{user.name}</p>
-          <p>Status: {review.status}</p>
-          <p>Rating: {review.rating}</p>
+      <div className="content">
+        <div className="review">
+          <div className="book-image">
+            <img src={book.url_image} alt="" />
+          </div>
+          <div className="book-info">
+            <p>{book.title}</p>
+            <p>{user.name}</p>
+            <p>Status: {review.status}</p>
+            <p>Rating: {review.rating}</p>
+          </div>
         </div>
       </div>
       <div className="opinion">

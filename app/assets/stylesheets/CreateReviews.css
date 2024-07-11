@@ -47,6 +47,6 @@
   font-weight: 700;
 }
 .post-review:hover {
-  background-color: #4184d2;
+  background-color: var(--blue);
   color: white;
 }

@@ -1,7 +1,17 @@
-.content-review {
+.content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 20px;
+}
+.review {
+  display: flex;
+  width: 600px;
+}
+.review .book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
 }
 .opinion {
   display: flex;
@@ -19,7 +29,7 @@
 }
 .comments {
   margin: 40px 260px;
-  border: 1px solid black;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 .comment-info {
@@ -32,6 +42,7 @@
 .comments .comment-now textarea {
   width: 80%;
   height: 40px;
+  border: none;
   box-sizing: border-box;
   outline: none;
   padding: 3px;
@@ -47,7 +58,7 @@
   color: white;
 }
 .comments .comment-now button:hover {
-  background-color: #4184d2;
+  background-color: var(--blue);
   transition: 0.2s ease-in-out;
   transform: translateY(-2px);
   color: white;
@@ -58,7 +69,8 @@
   margin: 10px 0px;
 }
 .comment {
-  border: 1px solid rgb(68, 68, 68);
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 0px 5px 0px 5px;
   margin: 1px;
 }
 .comment p {

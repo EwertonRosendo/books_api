@@ -6,18 +6,47 @@
 }
 .review {
   display: flex;
-  width: 40%;
+  flex-direction: column;
+  width: 300px;
+  height: 440px;
   margin: 10px;
   font-size: 16px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 0px 10px 0px 10px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px rgba(197, 197, 197, 0.5);
 }
 .review .book-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
 }
 .review .book-image img {
   border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .review .book-review {
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-evenly;
+}
+.review .book-review .title {
+  font-weight: 700;
+}
+.review .book-review button {
+  width: 120px;
+  cursor: pointer;
+  font-weight: 800;
+  border-radius: 5px;
+  border: 1px rgb(114, 114, 114) solid;
+  padding: 3px;
+}
+.review .book-review button:hover {
+  background-color: var(--blue);
+  transition: 0.3s ease-in-out;
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  color: white;
 }

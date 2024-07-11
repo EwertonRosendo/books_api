@@ -13,7 +13,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
+    if @comment.user.id.to_i == cookies[:user_id].to_i || UsersBook.find(params[:review_id]).user.id.to_i == cookies[:user_id].to_i
+      @comment.destroy
       render json: { message: "comment deleted" }
     end
   end

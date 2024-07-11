@@ -27,7 +27,7 @@ const CreateReview = (props) => {
   const postReview = () => {
     axios.post(
       `http://localhost:3000/Books/${props.user_id}/reviews.json`,
-      formData,
+      formData
     );
   };
 

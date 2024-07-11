@@ -36,8 +36,8 @@ const ListBooks = (props) => {
         </div>
         <div className="book-info">
           <p className="title">{book["title"]}</p>
-          <p>{book["subtitle"] && book["subtitle"].slice(0, 20)}..</p>
-          <p>Author: {book["authors"] ? book["authors"] : "No author"}..</p>
+          <p>{book["subtitle"] && book["subtitle"].slice(0, 20)}</p>
+          <p>Author: {book["authors"] ? book["authors"] : "No author"}</p>
           <p>Published at {book["publishedDate"]}</p>
           <p>Publisher: {book["publisher"]}</p>
           <button onClick={() => handleAddGoogleBook(book)}>Add Book</button>

@@ -55,7 +55,7 @@
   transform: translateY(-2px);
 }
 .book-info a:hover {
-  background-color: #4184d2;
+  background-color: var(--blue);
   color: white;
 }
 .create-book-container {
@@ -64,7 +64,7 @@
   flex-wrap: wrap;
 }
 .create-book-container input {
-  border: 2px solid #4184d2;
+  border: 2px solid var(--blue);
   border-radius: 3px;
   box-sizing: border-box;
   outline: none;
@@ -86,13 +86,13 @@
 .descrip textarea {
   border-radius: 5px;
   padding: 5px;
-  border: 1px solid #4184d2;
+  border: 1px solid var(--blue);
 }
 .create-book-container input:focus {
-  border: 1px solid #4184d2;
+  border: 1px solid var(--blue);
 }
 button {
-  background-color: #4184d2;
+  background-color: var(--blue)v;
   color: white;
   border-radius: 5px;
   height: 30px;

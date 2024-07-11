@@ -1,2 +1,2 @@
 <%= stylesheet_link_tag "ReviewById" %>
-<%= react_component("Review/ReviewById", {id: params[:id]}) %>
+<%= react_component("Review/ReviewById", {id: params[:id], user_id: cookies[:user_id]}) %>

@@ -23,7 +23,7 @@
 }
 .login p {
   font-weight: 700;
-  color: #4184d2;
+  color: var(--blue);
 }
 .input input {
   margin-top: 5px;
@@ -36,7 +36,7 @@
   border-bottom: 1px solid rgb(175, 175, 175);
 }
 .input input::selection {
-  border-bottom: 1px solid #4184d2;
+  border-bottom: 1px solid var(--blue);
 }
 input {
   font-size: 15px;
@@ -48,7 +48,7 @@ input {
 .input a {
   font-size: 15px;
   text-decoration: none;
-  color: #4184d2;
+  color: var(--blue);
 }
 .input p {
   margin-top: 10px;
@@ -71,7 +71,7 @@ input {
   background-color: #739ccc;
 }
 .up:hover {
-  background-color: #4184d2;
+  background-color: var(--blue);
 }
 
 .in {
