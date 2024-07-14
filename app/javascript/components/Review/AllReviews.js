@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Rate } from 'antd';
+import { Rate } from "antd";
 
 const AllReviews = (props) => {
   const [reviews, setReviews] = useState([]);

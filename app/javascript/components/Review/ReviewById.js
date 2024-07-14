@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Rate } from 'antd';
+import { Rate } from "antd";
 
 const ReviewById = (props) => {
   const [review, setReview] = useState({});
@@ -43,14 +43,15 @@ const ReviewById = (props) => {
       .catch((e) => console.log(e));
   }, []);
 
-  const handleDeleteComment = (review_id, id) =>{
-    axios.delete(`http://localhost:3000/reviews/${review_id}/comments/${id}`)
-    .then((response) => {
-      if (response.status === 200) {
-        location.reload();
-      }
-    });
-  }
+  const handleDeleteComment = (review_id, id) => {
+    axios
+      .delete(`http://localhost:3000/reviews/${review_id}/comments/${id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          location.reload();
+        }
+      });
+  };
 
   const commentsComponent = comments.map((comment, index) => (
     <div key={comment.id}>
@@ -62,7 +63,13 @@ const ReviewById = (props) => {
         <div className="comment-content">
           <p>{comment.content}</p>
         </div>
-        { (comment.user.id == props.user_id) ? <button onClick={() => handleDeleteComment(props.id, comment.id)}>delete</button> :<></> }
+        {comment.user.id == props.user_id ? (
+          <button onClick={() => handleDeleteComment(props.id, comment.id)}>
+            delete
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   ));

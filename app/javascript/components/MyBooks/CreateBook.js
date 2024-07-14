@@ -16,7 +16,7 @@ const CreateBook = (props) => {
       .post(
         "http://localhost:3000/Books/",
         {
-          "book": formData,
+          book: formData,
         },
         {
           headers: {

@@ -67,7 +67,7 @@ const SignIn = (props) => {
               <a href="#">Did you forget your password?</a>
             </p>
           </div>
-          
+
           <div className="buttons">
             <button onClick={handleSignIn} className="in">
               Sign In

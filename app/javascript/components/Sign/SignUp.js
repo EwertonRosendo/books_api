@@ -15,18 +15,23 @@ const SignUp = (props) => {
   }
 
   const handleSignUpClick = () => {
-    axios.post("http://localhost:3000/users/create",{ "user": formData }, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-          .content,
-      },
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        window.location.replace("http://localhost:3000/");
-      }
-    });
+    axios
+      .post(
+        "http://localhost:3000/users/create",
+        { user: formData },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+              .content,
+          },
+        },
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.replace("http://localhost:3000/");
+        }
+      });
   };
 
   return (

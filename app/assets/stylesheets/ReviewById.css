@@ -13,7 +13,7 @@
   justify-content: space-evenly;
   margin-left: 10px;
 }
-.review .book-image img{
+.review .book-image img {
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -80,7 +80,7 @@
 .comment p {
   margin: 2px 5px;
 }
-.rating{
+.rating {
   display: flex;
   align-items: center;
 }

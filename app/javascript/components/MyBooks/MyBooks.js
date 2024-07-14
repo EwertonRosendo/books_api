@@ -53,7 +53,11 @@ const MyBooks = (props) => {
         </div>
         <div className="book-info">
           <p className="title">{book["title"]}</p>
-          { book["description"] ? <p> {book["description"].substring(0, 60)}.. </p> : <></> }
+          {book["description"] ? (
+            <p> {book["description"].substring(0, 60)}.. </p>
+          ) : (
+            <></>
+          )}
           <p>
             <a href={`http://localhost:3000/Books/${book.id}`}>Show details</a>
           </p>
@@ -62,8 +66,12 @@ const MyBooks = (props) => {
               Create Review
             </a>
           </p>
-          { book.published_at ? <p> Published at {book["published_at"]} </p> : <></> }
-          { book.publisher ? <p> Published by {book["publisher"]} </p> : <></> }
+          {book.published_at ? (
+            <p> Published at {book["published_at"]} </p>
+          ) : (
+            <></>
+          )}
+          {book.publisher ? <p> Published by {book["publisher"]} </p> : <></>}
         </div>
       </div>
     </div>
