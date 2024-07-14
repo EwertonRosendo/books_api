@@ -1,5 +1,4 @@
 class UsersBookController < ApplicationController
-  skip_before_action :logged?
   skip_before_action :verify_authenticity_token
 
   def index

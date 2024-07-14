@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :logged?
 
   def logged?
-    User.find(cookies[:user_id]) ? @logged = true : @logged = false
+    @logged = User.find_by(id: cookies[:user_id])
   end
 end
