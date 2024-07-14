@@ -29,8 +29,10 @@ const AllReviews = (props) => {
         <p className="title">{review.book.title}</p>
         <p>Reviewer: {review.user.name}</p>
         <p>Status: {review.status}</p>
-        <p>Rating: <Rate disabled defaultValue={review.rating} /></p>
-        
+        <div className="rating">
+          <p>Rating: </p>
+          <Rate disabled defaultValue={review.rating} />
+        </div>
         <button onClick={() => handleChangeScreen(review.id)}>
           show review
         </button>

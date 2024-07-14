@@ -21,11 +21,12 @@ const SignUp = (props) => {
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
           .content,
       },
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        window.location.replace("http://localhost:3000/");
+      }
     });
-  };
-
-  const handleSignInClick = () => {
-    axios.get("http://localhost:3000/users/change/page");
   };
 
   return (
@@ -56,7 +57,7 @@ const SignUp = (props) => {
             <label htmlFor="">Password</label>
             <input
               id="password"
-              type="text"
+              type="password"
               placeholder="Your password.."
               onChange={handleInputChange}
             />
@@ -66,16 +67,13 @@ const SignUp = (props) => {
             <label htmlFor="">Password Confirmation</label>
             <input
               id="password_confirmation"
-              type="text"
+              type="password"
               placeholder="Confirm your password.."
               onChange={handleInputChange}
             />
           </div>
 
           <div className="buttons">
-            <button className="in" onClick={handleSignInClick}>
-              Sign In
-            </button>
             <button className="up" onClick={handleSignUpClick}>
               Sign up
             </button>

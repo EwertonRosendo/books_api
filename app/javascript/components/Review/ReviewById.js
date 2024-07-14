@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Rate } from 'antd';
 
 const ReviewById = (props) => {
   const [review, setReview] = useState({});
@@ -44,6 +45,11 @@ const ReviewById = (props) => {
 
   const handleDeleteComment = (review_id, id) =>{
     axios.delete(`http://localhost:3000/reviews/${review_id}/comments/${id}`)
+    .then((response) => {
+      if (response.status === 200) {
+        location.reload();
+      }
+    });
   }
 
   const commentsComponent = comments.map((comment, index) => (
@@ -71,7 +77,10 @@ const ReviewById = (props) => {
             <p>{book.title}</p>
             <p>{user.name}</p>
             <p>Status: {review.status}</p>
-            <p>Rating: {review.rating}</p>
+            <div className="rating">
+              <p>Rating: </p>
+              <Rate disabled value={review.rating} />
+            </div>
           </div>
         </div>
       </div>

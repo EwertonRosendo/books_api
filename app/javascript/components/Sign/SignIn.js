@@ -72,7 +72,6 @@ const SignIn = (props) => {
             <button onClick={handleSignIn} className="in">
               Sign In
             </button>
-            <button className="up">Sign up</button>
           </div>
         </div>
       </div>

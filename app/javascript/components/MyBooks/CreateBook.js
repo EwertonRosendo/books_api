@@ -26,6 +26,11 @@ const CreateBook = (props) => {
           },
         },
       )
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.reload();
+        }
+      })
       .catch((e) => console.log(e));
   };
 

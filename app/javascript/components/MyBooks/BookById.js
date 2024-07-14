@@ -61,7 +61,11 @@ const BookById = (props) => {
             .content,
         },
       },
-    );
+    ).then((response) => {
+      if (response.status === 200) {
+        window.location.reload();
+      }
+    });
   };
 
   const delete_book = () => {
@@ -71,6 +75,10 @@ const BookById = (props) => {
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
           .content,
       },
+    }).then((response) => {
+      if (response.status === 200) {
+        window.location.replace("http://localhost:3000/Books");
+      }
     });
   };
 
@@ -163,11 +171,9 @@ const BookById = (props) => {
         </div>
         <div className="buttons-area">
           <button className="delete" onClick={delete_book}>
-            {" "}
             Delete this book
           </button>
           <button className="update" onClick={update_book}>
-            {" "}
             Update this book
           </button>
         </div>

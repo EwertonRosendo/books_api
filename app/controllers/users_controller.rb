@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     User.create!(user_params)
+    render json: { message: "tried to create an user" }
   end
 
   private
