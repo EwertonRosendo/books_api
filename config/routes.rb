@@ -12,18 +12,8 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#destroy"
 
-  # route to create reviews
   resources :users do
     resources :reviews, controller: "users_book"
-  end
-
-  # Controller to make comments on reviews
-  resources :users do
-    resources :comments
-  end
-
-  resources :reviews, controller: "users_book" do
-    resources :comments
   end
 
   # Return a list of books from google
