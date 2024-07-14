@@ -15,7 +15,7 @@ const SignUp = (props) => {
   }
 
   const handleSignUpClick = () => {
-    axios.post("http://localhost:3000/users/create", formData, {
+    axios.post("http://localhost:3000/users/create",{ "user": formData }, {
       headers: {
         "Content-Type": "application/json",
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")

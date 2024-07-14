@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CreateReview = (props) => {
   const [book, setBook] = useState({});
-  const [ratings, setRatings] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [ratings, setRatings] = useState([1, 2, 3, 4, 5]);
   const [formData, setFormData] = useState();
 
   useEffect(() => {
