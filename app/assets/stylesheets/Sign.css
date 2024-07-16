@@ -1,16 +1,7 @@
-<<<<<<<<< Temporary merge branch 1
-
-.box{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    margin-top: 20px;
-=========
 .box {
   display: flex;
   justify-content: center;
   align-items: center;
->>>>>>>>> Temporary merge branch 2
 }
 .login {
   display: flex;

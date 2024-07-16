@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CreateBook = (props) => {
-  const [formData, setFormData] = useState();
-  const [isOk, setIsOk] = useState(true);
-
-  function handleInputChange(event) {
-    const { id, value } = event.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
-  }
+const BookById = (props) => {
+  const baseURL = `http://localhost:3000/Book/${props.id}.json`;
+  const [book, setBook] = useState([]);
+  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [newAuthor, setNewAuthor] = useState("");
+  const [publisher, setPublisher] = useState("");
+  const [published_at, setPublished_at] = useState();
+  const [url_image, setUrlImage] = useState("");
 
   const wrongField = () => {
     return (
@@ -48,6 +47,16 @@ const CreateBook = (props) => {
         },
       },
     );
+  };
+
+  const delete_book = () => {
+    axios.delete(`http://localhost:3000/Book/${book.id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+          .content,
+      },
+    });
   };
 
   return (
@@ -115,4 +124,7 @@ const CreateBook = (props) => {
     </React.Fragment>
   );
 };
-export default CreateBook;
+BookById.propTypes = {
+  id: PropTypes.string,
+};
+export default BookById;

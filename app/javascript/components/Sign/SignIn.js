@@ -1,67 +1,54 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CreateBook = (props) => {
-  const [formData, setFormData] = useState();
-  const [isOk, setIsOk] = useState(true);
-
-  function handleInputChange(event) {
-    const { id, value } = event.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
-  }
-
-  const wrongField = () => {
-    return (
-      <div className="wrong">
-        <p>Some fields may be wrong, please check them and try again!</p>
-      </div>
-    );
-  };
-
-  const handleAddBook = () => {
-    if (
-      !(
-        title &&
-        description &&
-        author &&
-        publisher &&
-        published_at &&
-        url_image
-      )
-    ) {
-      return setIsOk(false);
-    }
-    setIsOk(true);
-    axios.post(
-      "http://localhost:3000/Book/create",
-      {
-        formData,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-            .content,
-        },
-      },
-    );
-  };
+const SignIn = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <React.Fragment>
-      {isOk ? <></> : wrongField()}
-      <div className="create-book-container">
-        <div>
-          <label>Title:</label>
-          <input
-            id="title"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book title.."}
-          />
+      <div className="box">
+        <div className="login">
+          <p>Sign In here!</p>
+
+          <div className="input email">
+            <img
+              src={
+                "https://png.pngtree.com/element_our/20190531/ourlarge/pngtree-cartoon-unbuttoned-book-image_1321550.jpg"
+              }
+              alt=""
+            />
+          </div>
+
+          <div className="input email">
+            <label htmlFor="">Email</label>
+            <input
+              type="email"
+              placeholder="exemple@gmail.com.."
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
+
+          <div className="input password">
+            <label htmlFor="">Password</label>
+            <input
+              type="password"
+              placeholder="Your password.."
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <p>
+              <a href="#">Did you forget your password?</a>
+            </p>
+          </div>
+
+          <div className="buttons">
+            <button className="in">Sign In</button>
+            <button className="up">Sign up</button>
+          </div>
         </div>
         <div>
           <label>Author:</label>
@@ -115,4 +102,5 @@ const CreateBook = (props) => {
     </React.Fragment>
   );
 };
-export default CreateBook;
+
+export default SignIn;
