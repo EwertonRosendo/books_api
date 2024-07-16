@@ -6,4 +6,6 @@ class UsersBook < ApplicationRecord
     reading: 1,
     read: 2
   }
+  has_noticed_notifications model_name: "Notification"
+  has_many :notifications, through: :user, dependent: :destroy
 end

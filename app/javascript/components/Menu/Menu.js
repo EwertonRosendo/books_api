@@ -41,9 +41,15 @@ const Menu = (props) => {
             <a href={"http://localhost:3000/reviews"}>Reviews</a>
           </p>
           {props.user_id ? (
-            <p>
-              <a href={"http://localhost:3000/Books"}>My Books</a>
-            </p>
+            <>
+              <p>
+                <a href={"http://localhost:3000/Books"}>My Books</a>
+              </p>
+              <p>
+                <a href={"#"}>{props.unread.length}</a>
+              </p>
+            </>
+            
           ) : (
             <></>
           )}

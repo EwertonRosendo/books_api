@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= react_component("Menu/Menu", { user_id: cookies[:user_id] }) %>
+    <%= react_component("Menu/Menu", { user_id: cookies[:user_id], notifications: @notifications, unread: @unread }) %>
     
     <%= yield %>
     
