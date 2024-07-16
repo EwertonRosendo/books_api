@@ -53,7 +53,7 @@
 .book-info button {
   margin-top: 5px;
   padding: 6px;
-  background-color: var(--blue);
+  background-color: #4184d2;
   border-radius: 5px;
   color: white;
   font-weight: 700;
@@ -67,13 +67,13 @@
   margin-top: 20px;
   margin-left: 20vh;
   width: 300px;
-  background-color: var(--blue);
+  background-color: #4184d2;
   border-radius: 5px;
 }
 .search input {
   height: 25px;
   padding: 5px;
-  border: 2px solid var(--blue);
+  border: 2px solid #4184d2;
   box-sizing: border-box;
   outline: none;
 }
@@ -82,13 +82,13 @@
   height: 25px;
   border-radius: 0px 20px 5px 0px;
   border: 0px;
-  background-color: var(--blue);
+  background-color: #4184d2;
   color: white;
   font-weight: 700;
   cursor: pointer;
 }
 .search input:focus {
-  border: 1px solid var(--blue);
+  border: 1px solid #4184d2;
 }
 .pagination-box {
   display: flex;

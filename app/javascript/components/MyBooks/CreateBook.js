@@ -3,6 +3,7 @@ import axios from "axios";
 
 const CreateBook = (props) => {
   const [formData, setFormData] = useState();
+  const [isOk, setIsOk] = useState(true);
 
   function handleInputChange(event) {
     const { id, value } = event.target;
@@ -11,27 +12,42 @@ const CreateBook = (props) => {
       [id]: value,
     });
   }
+
+  const wrongField = () => {
+    return (
+      <div className="wrong">
+        <p>Some fields may be wrong, please check them and try again!</p>
+      </div>
+    );
+  };
+
   const handleAddBook = () => {
-    axios
-      .post(
-        "http://localhost:3000/Books/",
-        {
-          book: formData,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-              .content,
-          },
-        },
+    if (
+      !(
+        title &&
+        description &&
+        author &&
+        publisher &&
+        published_at &&
+        url_image
       )
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.reload();
-        }
-      })
-      .catch((e) => console.log(e));
+    ) {
+      return setIsOk(false);
+    }
+    setIsOk(true);
+    axios.post(
+      "http://localhost:3000/Book/create",
+      {
+        formData,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+            .content,
+        },
+      },
+    );
   };
 
   return (

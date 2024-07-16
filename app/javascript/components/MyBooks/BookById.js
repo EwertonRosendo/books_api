@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 const BookById = (props) => {
-  const baseURL = `http://localhost:3000/Books/${props.id}.json`;
+  const baseURL = `http://localhost:3000/Book/${props.id}.json`;
   const [book, setBook] = useState([]);
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
@@ -44,46 +44,34 @@ const BookById = (props) => {
   };
 
   const update_book = () => {
-    axios
-      .put(
-        `http://localhost:3000/Book/${book.id}`,
-        {
-          title: title,
-          publisher: publisher,
-          published_at: published_at,
-          description: description,
-          author: newAuthor,
-          url_image: url_image,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-              .content,
-          },
-        },
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.reload();
-        }
-      });
-  };
-
-  const delete_book = () => {
-    axios
-      .delete(`http://localhost:3000/Book/${book.id}`, {
+    axios.put(
+      `http://localhost:3000/Book/${book.id}`,
+      {
+        title: title,
+        publisher: publisher,
+        published_at: published_at,
+        description: description,
+        author: newAuthor,
+        url_image: url_image,
+      },
+      {
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
             .content,
         },
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.replace("http://localhost:3000/Books");
-        }
-      });
+      },
+    );
+  };
+
+  const delete_book = () => {
+    axios.delete(`http://localhost:3000/Book/${book.id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+          .content,
+      },
+    });
   };
 
   return (
@@ -175,9 +163,11 @@ const BookById = (props) => {
         </div>
         <div className="buttons-area">
           <button className="delete" onClick={delete_book}>
+            {" "}
             Delete this book
           </button>
           <button className="update" onClick={update_book}>
+            {" "}
             Update this book
           </button>
         </div>
@@ -186,6 +176,6 @@ const BookById = (props) => {
   );
 };
 BookById.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
 };
 export default BookById;
