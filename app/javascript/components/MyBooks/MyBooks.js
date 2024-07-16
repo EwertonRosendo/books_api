@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CreateBook from "./CreateBook";
 
 const CreateBook = (props) => {
   const [formData, setFormData] = useState();
@@ -116,4 +115,4 @@ const CreateBook = (props) => {
     </React.Fragment>
   );
 };
-export default MyBooks;
+export default CreateBook;

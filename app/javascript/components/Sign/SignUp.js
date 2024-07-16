@@ -3,12 +3,8 @@ import axios from "axios";
 
 const CreateBook = (props) => {
   const [formData, setFormData] = useState();
-  const [user, setUser] = useState({
-    name: "ewerton rosendoaaaq",
-    email: "ewerton.rosendoaaaa@gmail.com",
-    password: "jo1465eraa",
-    password_confirmation: "jo1465eraa",
-  });
+  const [isOk, setIsOk] = useState(true);
+
   function handleInputChange(event) {
     const { id, value } = event.target;
     setFormData({
@@ -56,60 +52,16 @@ const CreateBook = (props) => {
 
   return (
     <React.Fragment>
-      <div className="box">
-        <div className="login">
-          <p>Sign Up here!</p>
-          <div className="input name">
-            <label htmlFor="">Name</label>
-            <input
-              id="name"
-              type="text"
-              value={"ewerton rosendo da sivla"}
-              placeholder="Your name.."
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="input email">
-            <label htmlFor="">Email</label>
-            <input
-              id="email"
-              value={"ewerton.rosendo@gmail.com"}
-              type="email"
-              placeholder="exemple@gmail.com.."
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="input password">
-            <label htmlFor="">Password</label>
-            <input
-              id="Password"
-              value={"jo1465err"}
-              type="text"
-              placeholder="Your password.."
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="input password">
-            <label htmlFor="">Password Confirmation</label>
-            <input
-              id="Password_confirmation"
-              value={"jo1465err"}
-              type="text"
-              placeholder="Confirm your password.."
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="buttons">
-            <button className="in" onClick={handleSignInClick}>
-              Sign In
-            </button>
-            <button className="up" onClick={handleSignUpClick}>
-              Sign up
-            </button>
-          </div>
+      {isOk ? <></> : wrongField()}
+      <div className="create-book-container">
+        <div>
+          <label>Title:</label>
+          <input
+            id="title"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book title.."}
+          />
         </div>
         <div>
           <label>Author:</label>

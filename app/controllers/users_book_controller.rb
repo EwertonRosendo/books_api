@@ -14,7 +14,7 @@ class UsersBookController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: {review: @user_book, comments: Comment.where(params[:id])} }
+      format.json { render json: @user_book }
     end
   end
 
@@ -25,7 +25,7 @@ class UsersBookController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @user_book.update!(params_hash)
     respond_to do |format|
       format.html
@@ -35,7 +35,6 @@ class UsersBookController < ApplicationController
 
   def destroy
     @user_book.destroy
-    render json: { message: "review deleted" }
   end
 
   private
