@@ -9,21 +9,9 @@ const CreateBook = (props) => {
     const { id, value } = event.target;
     setFormData({
       ...formData,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      [id]: value
-    })
-  };
-=======
       [id]: value,
     });
   }
->>>>>>> main
-=======
-      [id]: value,
-    });
-  }
->>>>>>> authentication_without_devise
 
   const wrongField = () => {
     return (

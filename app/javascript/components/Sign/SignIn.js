@@ -3,114 +3,91 @@ import PropTypes from "prop-types";
 
 import axios from "axios";
 
-const SignIn = (props) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
+const SignUp = (props) => {
   const [formData, setFormData] = useState();
-  function handleInputChange(event){
-    const {id, value} = event.target;
+  const [user, setUser] = useState({
+    name: "ewerton rosendoaaaq",
+    email: "ewerton.rosendoaaaa@gmail.com",
+    password: "jo1465eraa",
+    password_confirmation: "jo1465eraa",
+  });
+  function handleInputChange(event) {
+    const { id, value } = event.target;
     setFormData({
       ...formData,
-      [id]: value
-    })
-  };
+      [id]: value,
+    });
+  }
 
-  const handleSignIn = () => {
-    axios.post("http://localhost:3000/sign_in", formData, {
+  const handleSignUpClick = () => {
+    axios.post("http://localhost:3000/users/create", user, {
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
-      }
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        window.location.replace("http://localhost:3000/GoogleBooks");
-      }
-    })
-    .catch((error) => console.error(error)
-    );
-  }
-  
-=======
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+          .content,
+      },
+    });
+  };
 
->>>>>>> main
-=======
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const handleSignInClick = () => {
+    axios.get("http://localhost:3000/users/change/page");
+  };
 
->>>>>>> authentication_without_devise
   return (
     <React.Fragment>
       <div className="box">
         <div className="login">
-          <p>Sign In here!</p>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <div className="input email">
-              <label htmlFor="">Email</label>
-              <input id="email" type="email" placeholder="exemple@gmail.com.." onChange={handleInputChange} />
-            </div>
-
-            <div className="input password">
-              <label htmlFor="">Password</label>
-              <input id="password" type="password" placeholder="Your password.." onChange={handleInputChange}/>
-              <p><a href="#">Did you forget your password?</a></p>
-            </div>
-
-            <div className="buttons">
-              <button onClick={handleSignIn} className="in">Sign In</button>
-              <button className="up">Sign up</button>
-            </div>
-          </div>
-         </div>
-    </React.Fragment>
-  )
-}
-export default SignIn
-=======
-=======
->>>>>>> authentication_without_devise
-          <div className="input email">
-            <img
-              src={
-                "https://png.pngtree.com/element_our/20190531/ourlarge/pngtree-cartoon-unbuttoned-book-image_1321550.jpg"
-              }
-              alt=""
+          <p>Sign Up here!</p>
+          <div className="input name">
+            <label htmlFor="">Name</label>
+            <input
+              id="name"
+              type="text"
+              value={"ewerton rosendo da sivla"}
+              placeholder="Your name.."
+              onChange={handleInputChange}
             />
           </div>
-
           <div className="input email">
             <label htmlFor="">Email</label>
             <input
+              id="email"
+              value={"ewerton.rosendo@gmail.com"}
               type="email"
               placeholder="exemple@gmail.com.."
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              onChange={handleInputChange}
             />
           </div>
 
           <div className="input password">
             <label htmlFor="">Password</label>
             <input
-              type="password"
+              id="Password"
+              value={"jo1465err"}
+              type="text"
               placeholder="Your password.."
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={handleInputChange}
             />
-            <p>
-              <a href="#">Did you forget your password?</a>
-            </p>
+          </div>
+
+          <div className="input password">
+            <label htmlFor="">Password Confirmation</label>
+            <input
+              id="Password_confirmation"
+              value={"jo1465err"}
+              type="text"
+              placeholder="Confirm your password.."
+              onChange={handleInputChange}
+            />
           </div>
 
           <div className="buttons">
-            <button className="in">Sign In</button>
-            <button className="up">Sign up</button>
+            <button className="in" onClick={handleSignInClick}>
+              Sign In
+            </button>
+            <button className="up" onClick={handleSignUpClick}>
+              Sign up
+            </button>
           </div>
         </div>
       </div>
@@ -118,8 +95,4 @@ export default SignIn
   );
 };
 
-export default SignIn;
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> authentication_without_devise
+export default SignUp;

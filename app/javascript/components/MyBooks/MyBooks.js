@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import CreateBook from "./CreateBook"
-import PropTypes from 'prop-types';
-=======
 import CreateBook from "./CreateBook";
->>>>>>> main
-=======
-import CreateBook from "./CreateBook";
->>>>>>> authentication_without_devise
 
 const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Books.json";
@@ -37,33 +28,6 @@ const MyBooks = (props) => {
     return false;
   };
 
-<<<<<<< HEAD
-   useEffect(() => {
-    axios.get(baseURL)
-    .then((response) => {
-      setMyBooks(response.data);
-    })
-    .catch((e) => console.log(e));
-    }, []);
-  
-    const allMyBooks = currentPosts.map((book, index) => (
-      <div key={index} className="box">
-        <div className="book-box">
-            <div className="book-title-img">
-                <img
-                    src={book.url_image ? book.url_image : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"}
-                    alt={`${book.title} image`}
-                    className="bookImage"
-                />
-            </div>
-            <div className="book-info">
-                <p className="title">{ book["title"]}</p>
-                <p>{book["description"]}</p>
-                <p><a href={`http://localhost:3000/Books/${book["id"]}`}>Show details</a></p>
-                <p>Published at {book["published_at"]}</p>
-                <p>Published by {book["publisher"]}</p>
-            </div>
-=======
   useEffect(() => {
     axios
       .get(baseURL)
@@ -97,7 +61,6 @@ const MyBooks = (props) => {
           </p>
           <p>Published at {book["published_at"]}</p>
           <p>Published by {book["publisher"]}</p>
->>>>>>> main
         </div>
       </div>
     </div>
@@ -116,15 +79,4 @@ const MyBooks = (props) => {
     </React.Fragment>
   );
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
-MyBooks.propTypes = {
-  user_id: PropTypes.number
-};
-export default MyBooks
-=======
 export default MyBooks;
->>>>>>> main
-=======
-export default MyBooks;
->>>>>>> authentication_without_devise

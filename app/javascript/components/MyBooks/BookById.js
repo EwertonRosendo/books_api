@@ -3,21 +3,6 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 const BookById = (props) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-  const baseURL = `http://localhost:3000/Books/${props.user_id}.json` 
-  const [book, setBook] = useState([])
-  const [author, setAuthor] = useState("")
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [newAuthor, setNewAuthor] = useState("")
-  const [publisher, setPublisher] = useState("")
-  const [published_at, setPublished_at] = useState()
-  const [url_image, setUrlImage] = useState("")
-=======
-=======
->>>>>>> authentication_without_devise
   const baseURL = `http://localhost:3000/Book/${props.id}.json`;
   const [book, setBook] = useState([]);
   const [author, setAuthor] = useState("");
@@ -27,10 +12,6 @@ const BookById = (props) => {
   const [publisher, setPublisher] = useState("");
   const [published_at, setPublished_at] = useState();
   const [url_image, setUrlImage] = useState("");
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> authentication_without_devise
 
   useEffect(() => {
     axios
@@ -62,24 +43,6 @@ const BookById = (props) => {
       .catch((e) => console.log(e));
   };
 
-<<<<<<< HEAD
-  const update_book = () =>{
-    axios.put(`http://localhost:3000/Books/${book.id}`, {
-      "title":title,
-      "publisher":publisher,
-      "published_at":published_at,
-      "description":description,
-      "author":newAuthor,
-      "url_image":url_image,
-    },
-    {
-      headers:{
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
-      }
-    });
-  }
-=======
   const update_book = () => {
     axios.put(
       `http://localhost:3000/Book/${book.id}`,
@@ -100,10 +63,6 @@ const BookById = (props) => {
       },
     );
   };
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> authentication_without_devise
 
   const delete_book = () => {
     axios.delete(`http://localhost:3000/Book/${book.id}`, {
@@ -217,14 +176,6 @@ const BookById = (props) => {
   );
 };
 BookById.propTypes = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  user_id: PropTypes.number
-=======
   id: PropTypes.string,
->>>>>>> main
-=======
-  id: PropTypes.string,
->>>>>>> authentication_without_devise
 };
 export default BookById;
