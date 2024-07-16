@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CreateBook from "./CreateBook"
 import PropTypes from 'prop-types';
 =======
 import CreateBook from "./CreateBook";
 >>>>>>> main
+=======
+import CreateBook from "./CreateBook";
+>>>>>>> authentication_without_devise
 
 const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Books.json";
@@ -113,6 +117,7 @@ const MyBooks = (props) => {
   );
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 MyBooks.propTypes = {
   user_id: PropTypes.number
 };
@@ -120,3 +125,6 @@ export default MyBooks
 =======
 export default MyBooks;
 >>>>>>> main
+=======
+export default MyBooks;
+>>>>>>> authentication_without_devise

@@ -10,6 +10,7 @@ const CreateBook = (props) => {
     setFormData({
       ...formData,
 <<<<<<< HEAD
+<<<<<<< HEAD
       [id]: value
     })
   };
@@ -18,6 +19,11 @@ const CreateBook = (props) => {
     });
   }
 >>>>>>> main
+=======
+      [id]: value,
+    });
+  }
+>>>>>>> authentication_without_devise
 
   const wrongField = () => {
     return (

@@ -4,6 +4,7 @@ import axios from "axios";
 
 const BookById = (props) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   const baseURL = `http://localhost:3000/Books/${props.user_id}.json` 
   const [book, setBook] = useState([])
@@ -15,6 +16,8 @@ const BookById = (props) => {
   const [published_at, setPublished_at] = useState()
   const [url_image, setUrlImage] = useState("")
 =======
+=======
+>>>>>>> authentication_without_devise
   const baseURL = `http://localhost:3000/Book/${props.id}.json`;
   const [book, setBook] = useState([]);
   const [author, setAuthor] = useState("");
@@ -24,7 +27,10 @@ const BookById = (props) => {
   const [publisher, setPublisher] = useState("");
   const [published_at, setPublished_at] = useState();
   const [url_image, setUrlImage] = useState("");
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise
 
   useEffect(() => {
     axios
@@ -94,7 +100,10 @@ const BookById = (props) => {
       },
     );
   };
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise
 
   const delete_book = () => {
     axios.delete(`http://localhost:3000/Book/${book.id}`, {
@@ -209,9 +218,13 @@ const BookById = (props) => {
 };
 BookById.propTypes = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   user_id: PropTypes.number
 =======
   id: PropTypes.string,
 >>>>>>> main
+=======
+  id: PropTypes.string,
+>>>>>>> authentication_without_devise
 };
 export default BookById;

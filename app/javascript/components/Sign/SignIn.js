@@ -5,6 +5,7 @@ import axios from "axios";
 
 const SignIn = (props) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   const [formData, setFormData] = useState();
   function handleInputChange(event){
@@ -36,12 +37,18 @@ const SignIn = (props) => {
   const [password, setPassword] = useState("");
 
 >>>>>>> main
+=======
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+>>>>>>> authentication_without_devise
   return (
     <React.Fragment>
       <div className="box">
         <div className="login">
           <p>Sign In here!</p>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div className="input email">
               <label htmlFor="">Email</label>
@@ -65,6 +72,8 @@ const SignIn = (props) => {
 }
 export default SignIn
 =======
+=======
+>>>>>>> authentication_without_devise
           <div className="input email">
             <img
               src={
@@ -110,4 +119,7 @@ export default SignIn
 };
 
 export default SignIn;
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise

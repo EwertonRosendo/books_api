@@ -1,5 +1,4 @@
 class UsersBookController < ApplicationController
-  skip_before_action :logged?
   skip_before_action :verify_authenticity_token
   before_action :set_user_book, except: %i[create index]
   before_action :params_hash, except: %i[index create show destroy]

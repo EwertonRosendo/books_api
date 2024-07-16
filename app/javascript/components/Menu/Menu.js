@@ -30,6 +30,7 @@ const Menu = (props) => {
     <React.Fragment>
       <div className="menu">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div style={{display: 'flex'}}>
             <p><a href={'http://localhost:3000/GoogleBooks'}>Google API</a></p>
             {props.user_id ? <p><a href={'http://localhost:3000/Books'}>My Books</a></p> : <></>}
@@ -47,6 +48,8 @@ Menu.propTypes = {
 };
 export default Menu
 =======
+=======
+>>>>>>> authentication_without_devise
         <div style={{ display: "flex" }}>
           <p>
             <a href={"http://localhost:3000/GoogleBooks"}>Google API</a>
@@ -68,4 +71,7 @@ export default Menu
   );
 };
 export default Menu;
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise

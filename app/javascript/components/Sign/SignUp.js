@@ -6,6 +6,7 @@ import axios from "axios";
 const SignUp = (props) => {
   const [formData, setFormData] = useState();
 <<<<<<< HEAD
+<<<<<<< HEAD
   function handleInputChange(event){
     const {id, value} = event.target;
     
@@ -24,6 +25,8 @@ const SignUp = (props) => {
 }})
 }
 =======
+=======
+>>>>>>> authentication_without_devise
   const [user, setUser] = useState({
     name: "ewerton rosendoaaaq",
     email: "ewerton.rosendoaaaa@gmail.com",
@@ -37,7 +40,10 @@ const SignUp = (props) => {
       [id]: value,
     });
   }
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise
 
   const handleSignUpClick = () => {
     axios.post("http://localhost:3000/users/create", user, {
@@ -55,6 +61,7 @@ const SignUp = (props) => {
 
   return (
     <React.Fragment>
+<<<<<<< HEAD
 <<<<<<< HEAD
          <div className="box">
           <div className="login">
@@ -83,6 +90,8 @@ const SignUp = (props) => {
               <button className="up" onClick={handleSignUpClick} >Sign up</button>
             </div>
 =======
+=======
+>>>>>>> authentication_without_devise
       <div className="box">
         <div className="login">
           <p>Sign Up here!</p>
@@ -105,7 +114,10 @@ const SignUp = (props) => {
               placeholder="exemple@gmail.com.."
               onChange={handleInputChange}
             />
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> authentication_without_devise
           </div>
 
           <div className="input password">
