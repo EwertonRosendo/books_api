@@ -12,16 +12,32 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#destroy"
 
-  resources :users do
+  # route to create reviews
+  resources :Books, controller: "books" do
     resources :reviews, controller: "users_book"
   end
 
+  # Controller to make comments on reviews
+  resources :users do
+    resources :comments
+  end
+
+  resources :reviews, controller: "users_book" do
+    resources :comments
+  end
+
   # Return a list of books from google
-  resources :GoogleBooks, only: %i[index], controller: "google_books"
+  get "/GoogleBooks", to: "google_books#index", as: "googleBooks" # return a react-view about the book seached
+  get "/GoogleBooks/:title", to: "google_books#index" # return a react-view about the book seached
 
   # Controller for Models only return json files
-  resources :authors, only: %i[index show]
+  get "/Authors", to: "author#index" # return a list of authors
+  get "/Author/:id", to: "author#show" # seach an author by id and return
 
   # Controller for Models only return json files
-  resources :Books, controller: "books"
+  get "/Books", to: "books#index"
+  get "/Books/:id", to: "books#show"
+  delete "/Book/:id", to: "books#destroy"
+  put "/Book/:id", to: "books#edit"
+  post "/Book/create", to: "books#create"
 end
