@@ -8,7 +8,6 @@ class Comment < ApplicationRecord
   private
 
   def notify_recipient
-    #puts self.review_id, "review id aquiiiiiaaaa"
     @review = UsersBook.find(self.review_id)
     puts @review
     CommentNotification.with(comment: :self, review: @review).deliver_later(@review.user)

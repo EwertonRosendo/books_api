@@ -40,3 +40,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+yarn.lock
+README.md
+packege.json
+packege-lock.json
+Gemfile
+Gemfile.lock
