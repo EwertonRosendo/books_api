@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const AllReviews = (props) => {
   const [reviews, setReviews] = useState([]);
 
@@ -31,7 +30,6 @@ const AllReviews = (props) => {
         <p>Status: {review.status}</p>
         <div className="rating">
           <p>Rating: {review.rating} </p>
-          
         </div>
         <button onClick={() => handleChangeScreen(review.id)}>
           show review

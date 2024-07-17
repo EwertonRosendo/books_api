@@ -49,7 +49,6 @@ const Menu = (props) => {
                 <a href={"#"}>{props.unread.length}</a>
               </p>
             </>
-            
           ) : (
             <></>
           )}
