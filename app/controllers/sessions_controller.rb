@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       sign_in
       render json: @user
     else
-      render json: { message: "deu ruim" }
+      render json: { message: "wrong user" }
     end
   end
 
