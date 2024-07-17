@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    render json: Book.all
+    render json: { message: "tried to delete" }
   end
 
   def edit
@@ -26,6 +26,7 @@ class BooksController < ApplicationController
     params_hash = book_params.to_h
     params_hash[:author] = author
     @book.update!(params_hash)
+    render json: @book
   end
 
   def create

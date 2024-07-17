@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.save
+    User.create!(user_params)
+    render json: { message: "tried to create an user" }
   end
 
   private
