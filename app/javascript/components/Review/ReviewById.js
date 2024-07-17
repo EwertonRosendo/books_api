@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Rate } from "antd";
 
 const ReviewById = (props) => {
   const [review, setReview] = useState({});
@@ -85,8 +84,7 @@ const ReviewById = (props) => {
             <p>{user.name}</p>
             <p>Status: {review.status}</p>
             <div className="rating">
-              <p>Rating: </p>
-              <Rate disabled value={review.rating} />
+              <p>Rating: {review.rating}</p>
             </div>
           </div>
         </div>
