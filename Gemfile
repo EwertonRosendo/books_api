@@ -68,3 +68,5 @@ gem 'shakapacker', '= 8.0'
 gem 'react-rails', '= 3.2'
 
 gem "graphql", "~> 2.3"
+
+gem "noticed", "~> 2.4"
