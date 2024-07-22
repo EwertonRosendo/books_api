@@ -1,17 +1,19 @@
 class SessionsController < ApplicationController
-  skip_before_action :logged?
+  include SessionsHelper
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
-      sign_in
+      cookies[:user_id] = @user.id
       render json: @user
     else
-      render json: { message: "wrong user" }
+      render json: { message: "wrong password or email" }, status: 401
     end
   end
 
   def destroy
     sign_out
-    redirect_to root_url
+    unless cookies[:user_id]
+      render json: { message: "logout done" }, status: 201
+    end
   end
 end
