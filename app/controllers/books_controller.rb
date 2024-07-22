@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  skip_before_action :logged?
-  before_action :set_book, only: %i[show destroy edit]
+  before_action :set_book, only: %i[show destroy update]
 
   def index
     respond_to do |format|
@@ -18,31 +17,36 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    render json: { message: "tried to delete" }
+    render json: { message: "Book deleted successfully" }
   end
 
-  def edit
+  def update
     author = Author.where(name: params[:author]).first_or_create!
-    params_hash = book_params.to_h
-    params_hash[:author] = author
-    @book.update!(params_hash)
-    render json: @book
+    if @book.update(book_params.merge(author: author))
+      render json: @book
+    else
+      render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   def create
-    @name = params[:author]
-    if params[:author].class != String
-      @name = params[:author] ? params[:author].join(" & ") : "No author"
-    end
+    author_names = params[:author]
+    author_name = author_names.is_a?(Array) ? author_names.join(" & ") : author_names || "No author"
+    author = Author.where(name: author_name).first_or_create!
     params_hash = book_params.to_h
-    params_hash[:author] = Author.where(name: @name).first_or_create!
-    render json: Book.create!(params_hash)
+    params_hash[:author] = author
+    @book = Book.new(params_hash)
+    if @book.save
+      render json: @book, status: :created
+    else
+      render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :description, :published_at, :publisher, :author, :id, :url_image)
+    params.require(:book).permit(:title, :description, :published_at, :publisher, :url_image)
   end
 
   def set_book

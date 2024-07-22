@@ -1,20 +1,18 @@
-class UsersBookController < ApplicationController
-  skip_before_action :logged?
-  skip_before_action :verify_authenticity_token
+class ReviewsController < ApplicationController
   before_action :set_user_book, except: %i[create index new]
   before_action :params_hash, except: %i[index create show destroy new]
 
   def index
     respond_to do |format|
       format.html
-      format.json { render json: UsersBook.all.to_json(include: [:book, :user]) }
+      format.json { render json: Review.all.to_json(include: [:book, :user]) }
     end
   end
 
   def show
     respond_to do |format|
       format.html
-      format.json { render json: UsersBook.find(params[:id]).to_json(include: [:book, :user]) }
+      format.json { render json: Review.find(params[:id]).to_json(include: [:book, :user]) }
     end
   end
 
@@ -27,31 +25,23 @@ class UsersBookController < ApplicationController
   def create
     respond_to do |format|
       format.html
-      format.json { render json: UsersBook.create!(params_hash) }
-    end
-  end
-
-  def update
-    @user_book.update!(params_hash)
-    respond_to do |format|
-      format.html
-      format.json { render json: @user_book }
+      format.json { render json: Review.create!(params_hash) }
     end
   end
 
   def destroy
-    @user_book.destroy
+    @review.destroy
     render json: { message: "review deleted" }
   end
 
   private
 
   def user_book_params
-    params.require(:users_book).permit(:id, :user_id, :book_id, :book_opinion, :rating, :status)
+    params.require(:review).permit(:id, :user_id, :book_id, :book_opinion, :rating, :status)
   end
 
   def set_user_book
-    @user_book = UsersBook.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def params_hash
