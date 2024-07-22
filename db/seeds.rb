@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Review.destroy_all
+Review.delete_all
 Book.destroy_all
 Author.delete_all
 User.delete_all
@@ -22,6 +22,8 @@ Book.create!(title: "aprendendo cmo fazer cafe", description: "o metodo mais fac
 Book.create!(title: "aaorebde a ficar maluco", description: "o metodo mais facil para aprender go lang é ..",
              published_at: Time.now, publisher: "Saraiva", author: authorc2)
 
+Review.create(book: Book.first, user: User.first, rating: 5, book_opinion: "very good")
+
 User.create!(
   name: "luisa",
   email: "luisa@gmail.com",
@@ -29,9 +31,6 @@ User.create!(
   password_confirmation: "0123456"
 )
 
-puts Review.first
-#puts "Table: Author, Size: #{Author.all.size}"
-#puts "Table: Book, Size: #{Book.all.size}"
 
 Book.all.each do |book|
   puts "-----------------"

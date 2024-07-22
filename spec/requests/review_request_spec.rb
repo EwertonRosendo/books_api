@@ -21,13 +21,13 @@ RSpec.describe "Review", type: :request do
     end
 
     it "get all reviews" do
-      get "/reviews"
+      get "/reviews.json"
       expect(response).to have_http_status(:success)
     end
 
     it "get review by id" do
       review = Review.first
-      get "/reviews/#{review.id}"
+      get "/reviews/#{review.id}.json"
       expect(response).to have_http_status(:success)
     end
 
