@@ -9,7 +9,7 @@ RSpec.describe "Books", type: :request do
 
     it "return http success from Books#show" do
       @book = Book.first
-      get "/Books/#{@book.id}"
+      get "/Books/#{@book.id}.json"
       expect(response).to have_http_status(:success)
     end
 
