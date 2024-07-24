@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-
 import axios from "axios";
 
 const SignUp = (props) => {
@@ -90,6 +88,54 @@ const SignUp = (props) => {
             </button>
           </div>
         </div>
+        <div>
+          <label>Author:</label>
+          <input
+            id="author"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Author.."}
+          />
+        </div>
+        <div>
+          <label>Publisher:</label>
+          <input
+            id="publisher"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Publisher.."}
+          />
+        </div>
+        <div>
+          <label>Published_at:</label>
+          <input
+            id="published_at"
+            type="date"
+            onChange={handleInputChange}
+            placeholder={"Published at.."}
+          />
+        </div>
+        <div>
+          <label>Image:</label>
+          <input
+            id="url_image"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book's image.."}
+          />
+        </div>
+        <div className="descrip">
+          <label>Description:</label>
+          <textarea
+            id="description"
+            className="description"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book description.."}
+            name=""
+          ></textarea>
+        </div>
+        <button onClick={handleAddBook}> Add Book</button>
       </div>
     </React.Fragment>
   );
