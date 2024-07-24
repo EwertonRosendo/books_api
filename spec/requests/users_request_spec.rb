@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Users", type: :request do
-  describe "request" do
+  describe "Users sign up and sign in" do
     it "returns http success on register" do
       post "/users/create", params: {
         user: {

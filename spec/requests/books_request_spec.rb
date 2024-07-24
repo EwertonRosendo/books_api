@@ -1,25 +1,25 @@
 require "rails_helper"
 
 RSpec.describe "Books", type: :request do
-  describe "Request" do
-    it "should return success when request Books" do
+  describe "Return success status from Books#action" do
+    it "returns http success from Books#index" do
       get "/Books.json"
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request a book by id" do
+    it "return http success from Books#show" do
       @book = Book.first
-      get "/Books/#{@book.id}"
+      get "/Books/#{@book.id}.json"
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request delete book by id" do
+    it "return http success from Books#show" do
       @book = Book.first
       delete "/Books/#{@book.id}"
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request try to create a new book" do
+    it "return http success from Books#create" do
       @book = {
         title: "rails spec",
         description: "very funny",

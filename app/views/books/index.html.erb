@@ -1,4 +1,9 @@
-<%= stylesheet_link_tag "MyBooks" %>
 
 
-<%= react_component("MyBooks/MyBooks", { id: params[:id] }) %>
+<%if cookies[:user_id]%>
+    <%= stylesheet_link_tag "MyBooks" %>
+    <%= react_component("MyBooks/MyBooks", { user_id: cookies[:user_id] }) %>
+<% else %>
+    <%= stylesheet_link_tag "Sign" %>
+    <%= react_component("Sign/SignIn") %>
+<% end %>

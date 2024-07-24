@@ -1,0 +1,2 @@
+<%= stylesheet_link_tag "CreateReviews" %>
+<%= react_component("Review/CreateReview", {user_id: cookies[:user_id], book_id: params[:Book_id]}) %>

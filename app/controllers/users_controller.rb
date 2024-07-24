@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
-  #before_action :correct_user?
-  wrap_parameters :user, include: [:name,:email, :password, :password_confirmation]
-
   def index
     render json: User.all
   end
 
   def show
     @user = User.find(params[:id])
+    render json: @user
   end
 
   def new
@@ -15,11 +13,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to "http://localhost:3000"
-    end
-    redirect_to "http://localhost:3000"
+    User.create!(user_params)
+    render json: { message: "tried to create an user" }
   end
 
   private

@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CreateBook from "./CreateBook";
 
-const MyBooks = (props) => {
-  const baseURL = "http://localhost:3000/Books.json";
-  const [myBooks, setMyBooks] = useState([]);
+const CreateBook = (props) => {
+  const [formData, setFormData] = useState();
+  const [isOk, setIsOk] = useState(true);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = myBooks.slice(firstPostIndex, lastPostIndex);
+  function handleInputChange(event) {
+    const { id, value } = event.target;
+    setFormData({
+      ...formData,
+      [id]: value,
+    });
+  }
 
   const nextPage = () => {
     if (myBooks[postsPerPage * currentPage + 1] != undefined) {
@@ -63,19 +65,100 @@ const MyBooks = (props) => {
           <p>Published by {book["publisher"]}</p>
         </div>
       </div>
-    </div>
-  ));
+    );
+  };
+
+  const handleAddBook = () => {
+    if (
+      !(
+        title &&
+        description &&
+        author &&
+        publisher &&
+        published_at &&
+        url_image
+      )
+    ) {
+      return setIsOk(false);
+    }
+    setIsOk(true);
+    axios.post(
+      "http://localhost:3000/Book/create",
+      {
+        formData,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+            .content,
+        },
+      },
+    );
+  };
+
   return (
     <React.Fragment>
-      <CreateBook />
-      <div className="pagination-box">
-        <div className="pagination">
-          {prevPage ? <button onClick={prevPage}>anterior</button> : <></>}
-          <p>{currentPage}</p>
-          {nextPage ? <button onClick={nextPage}>proximo</button> : <></>}
+      {isOk ? <></> : wrongField()}
+      <div className="create-book-container">
+        <div>
+          <label>Title:</label>
+          <input
+            id="title"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book title.."}
+          />
         </div>
+        <div>
+          <label>Author:</label>
+          <input
+            id="author"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Author.."}
+          />
+        </div>
+        <div>
+          <label>Publisher:</label>
+          <input
+            id="publisher"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Publisher.."}
+          />
+        </div>
+        <div>
+          <label>Published_at:</label>
+          <input
+            id="published_at"
+            type="date"
+            onChange={handleInputChange}
+            placeholder={"Published at.."}
+          />
+        </div>
+        <div>
+          <label>Image:</label>
+          <input
+            id="url_image"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book's image.."}
+          />
+        </div>
+        <div className="descrip">
+          <label>Description:</label>
+          <textarea
+            id="description"
+            className="description"
+            type="text"
+            onChange={handleInputChange}
+            placeholder={"Book description.."}
+            name=""
+          ></textarea>
+        </div>
+        <button onClick={handleAddBook}> Add Book</button>
       </div>
-      <div className="body">{allMyBooks}</div>
     </React.Fragment>
   );
 };

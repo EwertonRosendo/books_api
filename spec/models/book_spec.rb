@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe Book do
+RSpec.describe Book, type: :model do
   author = Author.where(name: "Machado de Assis").first_or_create!
   book = Book.new(
     title: "Dom Casmurro",

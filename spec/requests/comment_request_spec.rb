@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Comments", type: :request do
   describe "request" do
-    it "should return success when request when try to create a comment" do
+    it "create a comment" do
       post "/sign_in", params: { session: { email: "luisa@gmail.com", password: "0123456" } }
       review = Review.first
       comment = "I didn't like this book"
@@ -10,12 +10,12 @@ RSpec.describe "Comments", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request all comments" do
+    it "show all comments" do
       review = Review.first
       get "/reviews/#{review.id}/comments"
       expect(response).to have_http_status(:success)
     end
-    it "should return success when request to delete a comment" do
+    it "delete a comment" do
       post "/sign_in", params: { session: { email: "luisa@gmail.com", password: "0123456" } }
       review = Review.first
       post "/reviews/#{review.id}/comments", params: { comment: { content: "I didn't like this book", review_id: review.id, likes: 0 } }

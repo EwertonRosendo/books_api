@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Review", type: :request do
-  describe "request" do
+  describe "Return success status from Review#action" do
     book = Book.first
     user = User.first
-    it "should return success when request  try to create a new review" do
+    it "create a new review" do
       user = User.first
       book = Book.first
       post "/Books/#{user.id}/reviews",
@@ -20,20 +20,20 @@ RSpec.describe "Review", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request all reviews" do
-      get "/reviews"
+    it "get all reviews" do
+      get "/reviews.json"
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request a review by id" do
+    it "get review by id" do
       review = Review.first
-      get "/reviews/#{review.id}"
+      get "/reviews/#{review.id}.json"
       expect(response).to have_http_status(:success)
     end
 
-    it "should return success when request to delete a review by id" do
+    it "delete review by id" do
       review = Review.first
-      delete "/reviews/#{review.id}"
+      delete "/reviews/#{review.id}.json"
       expect(response).to have_http_status(:success)
     end
   end

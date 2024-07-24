@@ -24,7 +24,11 @@
   text-decoration: none;
 }
 .menu p:hover {
-  background-color: #4184d2;
+  background-color: var(--blue);
   transition: 0.3s ease-in-out;
   transform: translateY(-2px);
+}
+:root {
+  --blue: #4184d2;
+  --white: #ffffff;
 }
