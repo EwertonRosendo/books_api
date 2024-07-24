@@ -33,7 +33,7 @@ RSpec.describe "Review", type: :request do
 
     it "delete review by id" do
       review = Review.first
-      delete "/reviews/#{review.id}"
+      delete "/reviews/#{review.id}.json"
       expect(response).to have_http_status(:success)
     end
   end
