@@ -20,22 +20,9 @@ const BookById = (props) => {
     );
   };
 
-  const handleAddBook = () => {
-    if (
-      !(
-        title &&
-        description &&
-        author &&
-        publisher &&
-        published_at &&
-        url_image
-      )
-    ) {
-      return setIsOk(false);
-    }
-    setIsOk(true);
-    axios.post(
-      "http://localhost:3000/Book/create",
+  const update_book = () => {
+    axios.put(
+      `http://localhost:3000/Book/${book.id}`,
       {
         formData,
       },

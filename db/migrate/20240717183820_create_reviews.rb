@@ -1,6 +1,6 @@
-class CreateUsersBooks < ActiveRecord::Migration[7.1]
+class CreateReviews < ActiveRecord::Migration[7.1]
   def change
-    create_table :users_books do |t|
+    create_table :reviews do |t|
       t.references :user, null: false, foreign_key: true
       t.references :book, null: false, foreign_key: true
       t.text :book_opinion

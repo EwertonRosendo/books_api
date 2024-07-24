@@ -14,10 +14,56 @@ const CreateBook = (props) => {
     });
   }
 
-  const wrongField = () => {
-    return (
-      <div className="wrong">
-        <p>Some fields may be wrong, please check them and try again!</p>
+  const nextPage = () => {
+    if (myBooks[postsPerPage * currentPage + 1] != undefined) {
+      setCurrentPage(currentPage + 1);
+      return true;
+    }
+    return false;
+  };
+
+  const prevPage = () => {
+    if (myBooks[postsPerPage * currentPage - 10] != undefined) {
+      setCurrentPage(currentPage - 1);
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setMyBooks(response.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  const allMyBooks = currentPosts.map((book, index) => (
+    <div key={index} className="box">
+      <div className="book-box">
+        <div className="book-title-img">
+          <img
+            src={
+              book.url_image
+                ? book.url_image
+                : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
+            }
+            alt={`${book.title} image`}
+            className="bookImage"
+          />
+        </div>
+        <div className="book-info">
+          <p className="title">{book["title"]}</p>
+          <p>{book["description"]}</p>
+          <p>
+            <a href={`http://localhost:3000/Book/${book["id"]}`}>
+              Show details
+            </a>
+          </p>
+          <p>Published at {book["published_at"]}</p>
+          <p>Published by {book["publisher"]}</p>
+        </div>
       </div>
     );
   };

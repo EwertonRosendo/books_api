@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_04_144337) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_183820) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.text "biography"
@@ -30,14 +30,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_144337) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "review_id"
-    t.text "content"
-    t.integer "likes"
+    t.integer "book_id", null: false
+    t.text "book_opinion"
+    t.integer "rating"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,20 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_144337) do
     t.string "password_digest"
   end
 
-  create_table "users_books", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "book_id", null: false
-    t.text "book_opinion"
-    t.integer "rating"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_users_books_on_book_id"
-    t.index ["user_id"], name: "index_users_books_on_user_id"
-  end
-
   add_foreign_key "books", "authors"
-  add_foreign_key "comments", "users"
-  add_foreign_key "users_books", "books"
-  add_foreign_key "users_books", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end
