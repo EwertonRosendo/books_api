@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+Review.destroy_all
 Book.destroy_all
 Author.delete_all
+User.delete_all
 
-=begin
 authorc1 = Author.create!(name: "Ewerton Rosendo", biography: "sudo apt install node yarn ruby rails gem")
 authorc2 = Author.create!(name: "Davi Vieira", biography: "sudo windows ufrpe saudades ete na verdade nao")
 
@@ -21,8 +22,16 @@ Book.create!(title: "aprendendo cmo fazer cafe", description: "o metodo mais fac
 Book.create!(title: "aaorebde a ficar maluco", description: "o metodo mais facil para aprender go lang é ..",
              published_at: Time.now, publisher: "Saraiva", author: authorc2)
 
-puts "Table: Author, Size: #{Author.all.size}"
-puts "Table: Book, Size: #{Book.all.size}"
+User.create!(
+  name: "luisa",
+  email: "luisa@gmail.com",
+  password: "0123456",
+  password_confirmation: "0123456"
+)
+
+puts Review.first
+#puts "Table: Author, Size: #{Author.all.size}"
+#puts "Table: Book, Size: #{Book.all.size}"
 
 Book.all.each do |book|
   puts "-----------------"
@@ -33,4 +42,3 @@ Book.all.each do |book|
   puts "Author: #{book.author.name}"
   puts "----------------"
 end
-=end

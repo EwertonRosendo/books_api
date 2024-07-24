@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
-  before_action :logged?
+  protect_from_forgery with: :null_session
 
   def logged?
-    User.find(cookies[:user_id]) ? @logged = true : @logged = false
+    @user = User.find_by(id: cookies[:user_id])
+    @user
   end
 end

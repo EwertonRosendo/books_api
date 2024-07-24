@@ -24,4 +24,4 @@ const GoogleBooks = (props) => {
     </React.Fragment>
   );
 };
-export default GoogleBooks;
+export default CreateBook;
