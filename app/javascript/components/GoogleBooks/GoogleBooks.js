@@ -6,7 +6,7 @@ const GoogleBooks = (props) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = "http://34.195.216.47:3000/google-books/google";
+    const url = "http://34.195.216.47:3000/google-books/ruby";
     fetch(url)
       .then((res) => {
         if (res.ok) {
