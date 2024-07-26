@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Rate } from "antd";
 
 const AllReviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -30,8 +29,7 @@ const AllReviews = (props) => {
         <p>Reviewer: {review.user.name}</p>
         <p>Status: {review.status}</p>
         <div className="rating">
-          <p>Rating: </p>
-          <Rate disabled defaultValue={review.rating} />
+          <p>Rating: {review.rating}</p>
         </div>
         <button onClick={() => handleChangeScreen(review.id)}>
           show review

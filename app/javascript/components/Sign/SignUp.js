@@ -5,14 +5,9 @@ import axios from "axios";
 
 const SignUp = (props) => {
   const [formData, setFormData] = useState();
-  const [user, setUser] = useState({
-    name: "ewerton rosendoaaaq",
-    email: "ewerton.rosendoaaaa@gmail.com",
-    password: "jo1465eraa",
-    password_confirmation: "jo1465eraa",
-  });
   function handleInputChange(event) {
     const { id, value } = event.target;
+
     setFormData({
       ...formData,
       [id]: value,
@@ -20,17 +15,23 @@ const SignUp = (props) => {
   }
 
   const handleSignUpClick = () => {
-    axios.post("http://localhost:3000/users/create", user, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-          .content,
-      },
-    });
-  };
-
-  const handleSignInClick = () => {
-    axios.get("http://localhost:3000/users/change/page");
+    axios
+      .post(
+        "http://localhost:3000/users/create",
+        { user: formData },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+              .content,
+          },
+        },
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.replace("http://localhost:3000/");
+        }
+      });
   };
 
   return (
@@ -41,9 +42,9 @@ const SignUp = (props) => {
           <div className="input name">
             <label htmlFor="">Name</label>
             <input
+              role="input"
               id="name"
               type="text"
-              value={"ewerton rosendo da sivla"}
               placeholder="Your name.."
               onChange={handleInputChange}
             />
@@ -51,8 +52,8 @@ const SignUp = (props) => {
           <div className="input email">
             <label htmlFor="">Email</label>
             <input
+              role="input"
               id="email"
-              value={"ewerton.rosendo@gmail.com"}
               type="email"
               placeholder="exemple@gmail.com.."
               onChange={handleInputChange}
@@ -62,9 +63,9 @@ const SignUp = (props) => {
           <div className="input password">
             <label htmlFor="">Password</label>
             <input
-              id="Password"
-              value={"jo1465err"}
-              type="text"
+              role="input"
+              id="password"
+              type="password"
               placeholder="Your password.."
               onChange={handleInputChange}
             />
@@ -73,18 +74,15 @@ const SignUp = (props) => {
           <div className="input password">
             <label htmlFor="">Password Confirmation</label>
             <input
-              id="Password_confirmation"
-              value={"jo1465err"}
-              type="text"
+              role="input"
+              id="password_confirmation"
+              type="password"
               placeholder="Confirm your password.."
               onChange={handleInputChange}
             />
           </div>
 
           <div className="buttons">
-            <button className="in" onClick={handleSignInClick}>
-              Sign In
-            </button>
             <button className="up" onClick={handleSignUpClick}>
               Sign up
             </button>

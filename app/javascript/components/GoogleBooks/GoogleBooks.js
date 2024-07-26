@@ -6,10 +6,11 @@ const GoogleBooks = (props) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/GoogleBooks.json";
+    const url = "http://34.195.216.47:3000/google-books/google";
     fetch(url)
       .then((res) => {
         if (res.ok) {
+          console.log(res)
           return res.json();
         }
         throw new Error("Network response was not ok.");

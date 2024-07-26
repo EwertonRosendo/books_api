@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 const BookById = (props) => {
-  const baseURL = `http://localhost:3000/Book/${props.id}.json`;
+  const baseURL = `http://localhost:3000/Books/${props.id}.json`;
   const [book, setBook] = useState([]);
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
@@ -45,7 +45,7 @@ const BookById = (props) => {
 
   const update_book = () => {
     axios.put(
-      `http://localhost:3000/Book/${book.id}`,
+      `http://localhost:3000/Books/${book.id}`,
       {
         title: title,
         publisher: publisher,
@@ -65,7 +65,7 @@ const BookById = (props) => {
   };
 
   const delete_book = () => {
-    axios.delete(`http://localhost:3000/Book/${book.id}`, {
+    axios.delete(`http://localhost:3000/Books/${book.id}`, {
       headers: {
         "Content-Type": "application/json",
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")

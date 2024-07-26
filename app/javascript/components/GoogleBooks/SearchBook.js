@@ -5,7 +5,7 @@ const GoogleBooks = (props) => {
   const [title, setTitle] = useState("");
   const handleSeachTitle = () => {
     axios
-      .get(`http://localhost:3000/GoogleBooks/${title}.json`)
+      .get(`http://34.195.216.47:3000/google-books/${title}`)
       .then((response) => {
         props.booksList(response.data);
       })
@@ -30,7 +30,7 @@ const GoogleBooks = (props) => {
             setTitle(e.target.value);
           }}
         />
-        <button onClick={handleSeachTitle}>Search</button>
+        <button role="button" onClick={handleSeachTitle}>Search</button>
       </div>
     </React.Fragment>
   );
