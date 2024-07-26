@@ -60,7 +60,7 @@ const SignIn = (props) => {
           <div className="input password">
             <label htmlFor="">Password</label>
             <input
-            role="input"
+              role="input"
               id="password"
               type="password"
               placeholder="Your password.."

@@ -28,11 +28,22 @@ const CreateReview = (props) => {
     axios.post(
       `http://localhost:3000/Books/${props.user_id}/reviews.json`,
       formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+            .content,
+        },
+      },
     );
   };
 
   const handleRatings = ratings.map((rating, index) => {
-    return <option value={rating}>{rating}</option>;
+    return (
+      <option key={index} value={rating}>
+        {rating}
+      </option>
+    );
   });
 
   return (

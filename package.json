@@ -49,8 +49,6 @@
     "webpack-dev-server": "^4.15.2"
   },
   "scripts": {
-    "lint:prettier:fix": "prettier --write . --loglevel warn",
-    "test": "jest",
-    "coverage": "jest --coverage"
+    "lint:prettier:fix": "prettier --write . --log-level warn"
   }
 }
