@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
 import axios from "axios";
 
-const SignUp = (props) => {
+const SignIn = (props) => {
   const [formData, setFormData] = useState();
-  const [user, setUser] = useState({
-    name: "ewerton rosendoaaaq",
-    email: "ewerton.rosendoaaaa@gmail.com",
-    password: "jo1465eraa",
-    password_confirmation: "jo1465eraa",
-  });
   function handleInputChange(event) {
     const { id, value } = event.target;
     setFormData({
@@ -17,40 +13,44 @@ const SignUp = (props) => {
     });
   }
 
-  const handleSignUpClick = () => {
-    axios.post("http://localhost:3000/users/create", user, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-          .content,
-      },
-    });
-  };
-
-  const handleSignInClick = () => {
-    axios.get("http://localhost:3000/users/change/page");
+  const handleSignIn = () => {
+    axios
+      .post("http://localhost:3000/sign_in", formData, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+            .content,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.replace("http://localhost:3000/GoogleBooks");
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
     <React.Fragment>
       <div className="box">
         <div className="login">
-          <p>Sign Up here!</p>
-          <div className="input name">
-            <label htmlFor="">Name</label>
-            <input
-              id="name"
-              type="text"
-              value={"ewerton rosendo da sivla"}
-              placeholder="Your name.."
-              onChange={handleInputChange}
+          <p>Sign In here!</p>
+
+          <div className="input email">
+            <img
+              role="img"
+              src={
+                "https://png.pngtree.com/element_our/20190531/ourlarge/pngtree-cartoon-unbuttoned-book-image_1321550.jpg"
+              }
+              alt=""
             />
           </div>
+
           <div className="input email">
             <label htmlFor="">Email</label>
             <input
+              role="input"
               id="email"
-              value={"ewerton.rosendo@gmail.com"}
               type="email"
               placeholder="exemple@gmail.com.."
               onChange={handleInputChange}
@@ -60,85 +60,25 @@ const SignUp = (props) => {
           <div className="input password">
             <label htmlFor="">Password</label>
             <input
-              id="Password"
-              value={"jo1465err"}
-              type="text"
+              role="input"
+              id="password"
+              type="password"
               placeholder="Your password.."
               onChange={handleInputChange}
             />
-          </div>
-
-          <div className="input password">
-            <label htmlFor="">Password Confirmation</label>
-            <input
-              id="Password_confirmation"
-              value={"jo1465err"}
-              type="text"
-              placeholder="Confirm your password.."
-              onChange={handleInputChange}
-            />
+            <p>
+              <a href="#">Did you forget your password?</a>
+            </p>
           </div>
 
           <div className="buttons">
-            <button className="in" onClick={handleSignInClick}>
+            <button onClick={handleSignIn} className="in">
               Sign In
-            </button>
-            <button className="up" onClick={handleSignUpClick}>
-              Sign up
             </button>
           </div>
         </div>
-        <div>
-          <label>Author:</label>
-          <input
-            id="author"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Author.."}
-          />
-        </div>
-        <div>
-          <label>Publisher:</label>
-          <input
-            id="publisher"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Publisher.."}
-          />
-        </div>
-        <div>
-          <label>Published_at:</label>
-          <input
-            id="published_at"
-            type="date"
-            onChange={handleInputChange}
-            placeholder={"Published at.."}
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input
-            id="url_image"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book's image.."}
-          />
-        </div>
-        <div className="descrip">
-          <label>Description:</label>
-          <textarea
-            id="description"
-            className="description"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book description.."}
-            name=""
-          ></textarea>
-        </div>
-        <button onClick={handleAddBook}> Add Book</button>
       </div>
     </React.Fragment>
   );
 };
-
-export default SignUp;
+export default SignIn;

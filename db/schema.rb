@@ -30,16 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_183820) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "book_id", null: false
-    t.text "book_opinion"
-    t.integer "rating"
-    t.integer "status"
+    t.integer "review_id"
+    t.text "content"
+    t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_reviews_on_book_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -63,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_183820) do
   end
 
   add_foreign_key "books", "authors"
+  add_foreign_key "comments", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end

@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CreateBook from "./CreateBook";
 
-const CreateBook = (props) => {
-  const [formData, setFormData] = useState();
-  const [isOk, setIsOk] = useState(true);
+const MyBooks = (props) => {
+  const baseURL = "http://localhost:3000/Books.json";
+  const [myBooks, setMyBooks] = useState([]);
 
-  function handleInputChange(event) {
-    const { id, value } = event.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
-  }
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = myBooks.slice(firstPostIndex, lastPostIndex);
 
   const nextPage = () => {
     if (myBooks[postsPerPage * currentPage + 1] != undefined) {
@@ -55,110 +53,40 @@ const CreateBook = (props) => {
         </div>
         <div className="book-info">
           <p className="title">{book["title"]}</p>
-          <p>{book["description"]}</p>
+          {book["description"] ? (
+            <p> {book["description"].substring(0, 60)}.. </p>
+          ) : (
+            <></>
+          )}
           <p>
-            <a href={`http://localhost:3000/Book/${book["id"]}`}>
-              Show details
+            <a href={`http://localhost:3000/Books/${book.id}`}>Show details</a>
+          </p>
+          <p>
+            <a href={`http://localhost:3000/Books/${book.id}/reviews/new`}>
+              Create Review
             </a>
           </p>
-          <p>Published at {book["published_at"]}</p>
-          <p>Published by {book["publisher"]}</p>
+          {book.published_at ? (
+            <p> Published at {book["published_at"]} </p>
+          ) : (
+            <></>
+          )}
+          {book.publisher ? <p> Published by {book["publisher"]} </p> : <></>}
         </div>
       </div>
-    );
-  };
-
-  const handleAddBook = () => {
-    if (
-      !(
-        title &&
-        description &&
-        author &&
-        publisher &&
-        published_at &&
-        url_image
-      )
-    ) {
-      return setIsOk(false);
-    }
-    setIsOk(true);
-    axios.post(
-      "http://localhost:3000/Book/create",
-      {
-        formData,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-            .content,
-        },
-      },
-    );
-  };
-
+    </div>
+  ));
   return (
     <React.Fragment>
-      {isOk ? <></> : wrongField()}
-      <div className="create-book-container">
-        <div>
-          <label>Title:</label>
-          <input
-            id="title"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book title.."}
-          />
+      <CreateBook />
+      <div className="pagination-box">
+        <div className="pagination">
+          {prevPage ? <button onClick={prevPage}>anterior</button> : <></>}
+          <p>{currentPage}</p>
+          {nextPage ? <button onClick={nextPage}>proximo</button> : <></>}
         </div>
-        <div>
-          <label>Author:</label>
-          <input
-            id="author"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Author.."}
-          />
-        </div>
-        <div>
-          <label>Publisher:</label>
-          <input
-            id="publisher"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Publisher.."}
-          />
-        </div>
-        <div>
-          <label>Published_at:</label>
-          <input
-            id="published_at"
-            type="date"
-            onChange={handleInputChange}
-            placeholder={"Published at.."}
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input
-            id="url_image"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book's image.."}
-          />
-        </div>
-        <div className="descrip">
-          <label>Description:</label>
-          <textarea
-            id="description"
-            className="description"
-            type="text"
-            onChange={handleInputChange}
-            placeholder={"Book description.."}
-            name=""
-          ></textarea>
-        </div>
-        <button onClick={handleAddBook}> Add Book</button>
       </div>
+      <div className="body">{allMyBooks}</div>
     </React.Fragment>
   );
 };
