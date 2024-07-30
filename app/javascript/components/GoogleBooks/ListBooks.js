@@ -37,11 +37,16 @@ const ListBooks = (props) => {
         <div className="book-info">
           <p className="title">{book["title"]}</p>
           {book.subtitle ? (
-            <p>{book["subtitle"] && book["subtitle"].slice(0, 20)}..</p>
+            <p>
+              {book.subtitle && book.subtitle.split(" ").slice(0, 6).join(" ")}
+            </p>
           ) : (
             <></>
           )}
-          <p>Author: {book["authors"] ? book["authors"] : "No author"}..</p>
+          <p>
+            Author:{" "}
+            {book.authors ? book.authors.slice(0, 4).join(" ") : "No author"}..
+          </p>
           {book["publishedDate"] ? (
             <p>Published at {book["publishedDate"]}</p>
           ) : (

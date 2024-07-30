@@ -33,6 +33,7 @@ const MyBooks = (props) => {
       .get(baseURL)
       .then((response) => {
         setMyBooks(response.data);
+        console.log(response.data);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -52,12 +53,20 @@ const MyBooks = (props) => {
           />
         </div>
         <div className="book-info">
-          <p className="title">{book["title"]}</p>
-          {book["description"] ? (
-            <p> {book["description"].substring(0, 60)}.. </p>
-          ) : (
-            <></>
-          )}
+          <p className="title">
+            {
+              <p className="title">
+                {book.title.split(" ").length < 13
+                  ? book.title
+                  : book.title.split(" ").slice(0, 13).join(" ") + ".."}
+              </p>
+            }
+          </p>
+          <p>
+            {book.description
+              ? book.description.split(" ").slice(0, 5).join(" ")
+              : ""}{" "}
+          </p>
           <p>
             <a href={`http://localhost:3000/Books/${book.id}`}>Show details</a>
           </p>
@@ -66,27 +75,33 @@ const MyBooks = (props) => {
               Create Review
             </a>
           </p>
-          {book.published_at ? (
-            <p> Published at {book["published_at"]} </p>
-          ) : (
-            <></>
-          )}
-          {book.publisher ? <p> Published by {book["publisher"]} </p> : <></>}
+          <p>
+            {book.published_at
+              ? "Published at " + book.published_at
+              : "No Published date"}
+          </p>
+          <p>
+            {book.publisher
+              ? "Published by " + book.publisher
+              : "No publisher registered"}
+          </p>
         </div>
       </div>
     </div>
   ));
   return (
     <React.Fragment>
-      <CreateBook />
       <div className="pagination-box">
         <div className="pagination">
-          {prevPage ? <button onClick={prevPage}>anterior</button> : <></>}
+          {prevPage ? <button onClick={prevPage}>Prev</button> : <></>}
           <p>{currentPage}</p>
-          {nextPage ? <button onClick={nextPage}>proximo</button> : <></>}
+          {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
       </div>
-      <div className="body">{allMyBooks}</div>
+      <div className="body">
+        <CreateBook />
+        {allMyBooks}
+      </div>
     </React.Fragment>
   );
 };

@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    author_names = params[:author]
+    author_names = params[:book][:author]
     author_name = author_names.is_a?(Array) ? author_names.join(" & ") : author_names || "No author"
     author = Author.where(name: author_name).first_or_create!
     params_hash = book_params.to_h
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:id, :title, :description, :published_at, :publisher, :url_image)
+    params.require(:book).permit(:id, :title, :description, :published_at, :publisher, :url_image, :author)
   end
 
   def set_book

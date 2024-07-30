@@ -22,7 +22,7 @@
   background-color: rgb(245, 245, 245);
   border-radius: 10px;
   width: 260px;
-  height: 500px;
+  height: 430px;
   margin: 10px 10px;
   border: 1px solid rgb(185, 185, 185);
 }
@@ -44,6 +44,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
+  margin: 10px 10px;
 }
 .book-info a {
   text-decoration: none;
@@ -60,11 +61,31 @@
 }
 .create-book-container {
   display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 260px;
+  height: 430px;
   margin: 20px;
   flex-wrap: wrap;
+  border: 1px solid rgb(185, 185, 185);
+  background-color: rgb(245, 245, 245);
+  padding: 5px;
+  border-radius: 10px;
+}
+.create-book-container .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.create-book-container .img img {
+  border-radius: 30px;
+  height: 130px;
+  width: 210px;
+  object-fit: cover;
 }
 .create-book-container input {
-  border: 2px solid #4184d2;
+  border: 2px solid rgb(185, 185, 185);
   border-radius: 3px;
   box-sizing: border-box;
   outline: none;
@@ -79,14 +100,17 @@
 }
 .descrip {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 5px;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-bottom: 5px;
 }
 .descrip textarea {
   border-radius: 5px;
   padding: 5px;
-  border: 1px solid #4184d2;
+  margin-left: 0px;
+  border: 1px solid rgb(185, 185, 185);
 }
 .create-book-container input:focus {
   border: 1px solid #4184d2;

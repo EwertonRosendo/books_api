@@ -73,7 +73,8 @@
   margin: 10px 0px;
 }
 .comment {
-  border: 1px solid rgb(136, 136, 136);
+  background-color: rgb(235, 235, 235);
+  padding-bottom: 3px;
   border-radius: 0px 5px 0px 5px;
   margin: 1px;
 }

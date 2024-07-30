@@ -102,7 +102,7 @@ const ReviewById = (props) => {
             onChange={(e) => setComment(e.target.value)}
             placeholder="type your comment here.."
           ></textarea>
-          <button onClick={postComment}>Sent</button>
+          <button onClick={postComment}>Comment</button>
         </div>
         {commentsComponent}
       </div>

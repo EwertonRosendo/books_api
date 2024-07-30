@@ -44,34 +44,46 @@ const BookById = (props) => {
   };
 
   const update_book = () => {
-    axios.put(
-      `http://localhost:3000/Books/${book.id}`,
-      {
-        title: title,
-        publisher: publisher,
-        published_at: published_at,
-        description: description,
-        author: newAuthor,
-        url_image: url_image,
-      },
-      {
+    axios
+      .put(
+        `http://localhost:3000/Books/${book.id}`,
+        {
+          title: title,
+          publisher: publisher,
+          published_at: published_at,
+          description: description,
+          author: newAuthor,
+          url_image: url_image,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+              .content,
+          },
+        },
+      )
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.replace("http://localhost:3000/Books");
+        }
+      });
+  };
+
+  const delete_book = () => {
+    axios
+      .delete(`http://localhost:3000/Books/${book.id}`, {
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
             .content,
         },
-      },
-    );
-  };
-
-  const delete_book = () => {
-    axios.delete(`http://localhost:3000/Books/${book.id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-          .content,
-      },
-    });
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.replace("http://localhost:3000/Books");
+        }
+      });
   };
 
   return (

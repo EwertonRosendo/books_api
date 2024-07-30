@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBook from "./SearchBook";
 import ListBook from "./ListBooks";
+import PreLoader from "./PreLoader";
 
 const GoogleBooks = (props) => {
   const [books, setBooks] = useState([]);
@@ -19,6 +20,7 @@ const GoogleBooks = (props) => {
 
   return (
     <React.Fragment>
+      <PreLoader />
       <SearchBook booksList={setBooks} />
       <ListBook books={books} />
     </React.Fragment>

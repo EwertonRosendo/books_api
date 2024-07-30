@@ -32,3 +32,13 @@
   --blue: #4184d2;
   --white: #ffffff;
 }
+button {
+  background-color: #4184d2;
+  color: white;
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px;
+  margin-left: 10px;
+  border: 0px;
+  cursor: pointer;
+}

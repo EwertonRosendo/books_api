@@ -7,11 +7,11 @@
 .review {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 440px;
+  width: 250px;
+  height: 400px;
   margin: 10px;
   font-size: 16px;
-  border: 1px solid rgb(226, 226, 226);
+  border: 1px solid rgb(199, 199, 199);
   border-radius: 0px 10px 0px 10px;
   padding: 10px;
   box-shadow: 5px 5px 10px rgba(197, 197, 197, 0.5);
@@ -37,6 +37,7 @@
 }
 .review .book-review button {
   width: 120px;
+  height: 30px;
   cursor: pointer;
   font-weight: 800;
   border-radius: 5px;
@@ -49,6 +50,20 @@
   transform: translateY(-2px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   color: white;
+}
+.review-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.delete-review {
+  background-color: aliceblue;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer;
+}
+.delete-review:hover {
+  background-color: rgb(216, 216, 216);
 }
 .rating {
   display: flex;
