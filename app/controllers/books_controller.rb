@@ -11,7 +11,14 @@ class BooksController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: Book.find(params[:id]).to_json(include: [:author]) }
+      format.json do
+        book = Book.find(params[:id])
+        average_rating = Review.where(book: book).average(:rating)
+        render json: {
+          book: book.as_json(include: :author),
+          average_rating: average_rating
+        }
+      end
     end
   end
 

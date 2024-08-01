@@ -35,7 +35,7 @@ const ListBooks = (props) => {
           />
         </div>
         <div className="book-info">
-          <p className="title">{book["title"]}</p>
+          <p className="title">{book.title.split(" ").length > 6 ? book.title.split(" ").slice(0, 6).join(" ") + ".." : book.title }</p>
           {book.subtitle ? (
             <p>
               {book.subtitle && book.subtitle.split(" ").slice(0, 6).join(" ")}
@@ -45,7 +45,7 @@ const ListBooks = (props) => {
           )}
           <p>
             Author:{" "}
-            {book.authors ? book.authors.slice(0, 4).join(" ") : "No author"}..
+            {book.authors ? book.authors.slice(0, 1).join(" ") : "No author"}..
           </p>
           {book["publishedDate"] ? (
             <p>Published at {book["publishedDate"]}</p>
@@ -61,7 +61,9 @@ const ListBooks = (props) => {
 
   return (
     <React.Fragment>
-      <div className="body">{props.books ? allBooks : <></>}</div>
+      <div className="main">
+        <div className="body">{props.books ? allBooks : <></>}</div>
+      </div>
     </React.Fragment>
   );
 };

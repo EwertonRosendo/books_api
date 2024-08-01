@@ -2,12 +2,19 @@
   margin: 0px;
   padding: 0px;
 }
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .body {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 .books {
   display: flex;
@@ -21,8 +28,8 @@
   padding: 5px;
   background-color: rgb(245, 245, 245);
   border-radius: 10px;
-  width: 260px;
-  height: 430px;
+  width: 300px;
+  height: 470px;
   margin: 10px 10px;
   border: 1px solid rgb(185, 185, 185);
 }
@@ -127,10 +134,12 @@ button {
   cursor: pointer;
 }
 .book-info p{
+  font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .title {
+  font-size: 21px !important;
   font-weight: 700;
 }
 .wrong p {

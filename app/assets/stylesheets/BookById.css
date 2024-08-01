@@ -8,20 +8,29 @@
 }
 .box {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   width: 850px;
   height: 450px;
+  border: 1px solid #347dd1;
+  border-radius: 10px 0px 10px 0px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 .book-img img {
   border-radius: 10px;
   margin: 20px 20px;
   width: 180px;
   object-fit: cover;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .book-img {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
+  height: 100%;
 }
 .book-img input {
   width: 90%;
@@ -33,7 +42,15 @@
 .book-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  height: 100%;
   width: 50vh;
+}
+
+.book-info .title{
+  font-weight: 700;
+  font-size: 22px;
 }
 .book-info input {
   padding: 10px 3px;

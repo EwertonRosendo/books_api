@@ -95,9 +95,11 @@ const MyBooks = (props) => {
           {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
       </div>
-      <div className="body">
-        <CreateBook />
-        {allMyBooks}
+      <div className="main">
+        <div className="body">
+          <CreateBook />
+          {allMyBooks}
+        </div>
       </div>
     </React.Fragment>
   );

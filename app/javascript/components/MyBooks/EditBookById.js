@@ -17,13 +17,13 @@ const BookById = (props) => {
     axios
       .get(baseURL)
       .then((response) => {
-        setBook(response.data);
+        setBook(response.data.book);
         setTitle(response.data.title);
         setDescription(response.data.description);
         setPublisher(response.data.publisher);
         setPublished_at(response.data.published_at);
         setUrlImage(response.data.url_image);
-        setAuthor(response.data.author.name)
+        setAuthor(response.data.book.author.name)
       })
 
       .catch((e) => console.log(e));

@@ -7,7 +7,8 @@ const GoogleBooks = (props) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = "http://34.195.216.47:3000/google-books/ruby";
+    //const url = "http://34.195.216.47:3000/google-books/ruby";
+    const url = "http://localhost:3000/Googlebooks.json";
     fetch(url)
       .then((res) => {
         if (res.ok) {
@@ -20,7 +21,7 @@ const GoogleBooks = (props) => {
 
   return (
     <React.Fragment>
-      <PreLoader />
+      {/*<PreLoader />*/}
       <SearchBook booksList={setBooks} />
       <ListBook books={books} />
     </React.Fragment>

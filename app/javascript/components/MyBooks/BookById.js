@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Rate } from "antd";
 
 const BookById = (props) => {
   const baseURL = `http://localhost:3000/Books/${props.id}.json`;
-  const [book, setBook] = useState([]);
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-  const [publisher, setPublisher] = useState("");
-  const [published_at, setPublished_at] = useState();
-  const [url_image, setUrlImage] = useState("");
+  const [book, setBook] = useState({});
+  const [author, setAuthor] = useState("")
+  const [rating, setRating] = useState()
 
   useEffect(() => {
     axios
       .get(baseURL)
       .then((response) => {
-        setBook(response.data);
-        setTitle(response.data.title);
-        setDescription(response.data.description);
-        setPublisher(response.data.publisher);
-        setPublished_at(response.data.published_at);
-        setUrlImage(response.data.url_image);
-        setAuthor(response.data.author.name)
+        setRating(response.data.average_rating);
+        setAuthor(response.data.book.author.name);
+        setBook(response.data.book);
+
       })
       .catch((e) => console.log(e));
   }, []);
-
 
   return (
     <React.Fragment>
@@ -43,83 +35,27 @@ const BookById = (props) => {
               alt={`${book.title} image`}
               className="bookImage"
             />
-            <div>
-              <label>image link:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setUrlImage(e.target.value);
-                }}
-                placeholder={book.url_image}
-                readOnly
-              />
-            </div>
           </div>
 
           <div className="book-info">
-            <div>
-              <label>Title:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-                defaultValue={book.title}
-                placeholder={"Book title.."}
-                readOnly
-              />
+            <div className="title">
+              <p>{book.title}</p>
+            </div>
+            <div className="average-rating">            
+              <p>Average rating: {rating ? rating : "no average rating yet"}</p>
             </div>
             <div>
-              <label>Author:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setAuthor(e.target.value);
-                }}
-                defaultValue={author}
-                placeholder={"Author.."}
-                readOnly
-              />
+              <p>Author: {author}</p>
             </div>
             <div>
-              <label>Publisher:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setPublisher(e.target.value);
-                }}
-                defaultValue={book.publisher}
-                placeholder={"Publisher.."}
-                readOnly
-              />
+              <p>Published by {book.publisher}</p>
             </div>
             <div>
-              <label>Published_at:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setPublished_at(e.target.value);
-                }}
-                defaultValue={book.published_at}
-                placeholder={"Published at.."}
-                readOnly
-              />
+              <p>Published at: {book.published_at}</p>
             </div>
             <div className="descrip">
-              <label>Description:</label>
-              <textarea
-                className="description"
-                type="text"
-                rows={4}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-                defaultValue={book.description}
-                placeholder={"Book description.."}
-                name=""
-                id=""
-                readOnly
-              ></textarea>
+              <p>Description:</p>
+              <p>{book.description ? book.description : "There's no description for this book, but you can create" }</p>
             </div>
           </div>
         </div>
