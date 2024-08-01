@@ -11,13 +11,16 @@ class BooksController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @book }
+      format.json { render json: Book.find(params[:id]).to_json(include: [:author]) }
     end
   end
 
   def destroy
     @book.destroy
     render json: { message: "Book deleted successfully" }
+  end
+
+  def edit
   end
 
   def update
@@ -30,7 +33,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    author_names = params[:book][:author]
+    author_names = params[:author]
     author_name = author_names.is_a?(Array) ? author_names.join(" & ") : author_names || "No author"
     author = Author.where(name: author_name).first_or_create!
     params_hash = book_params.to_h

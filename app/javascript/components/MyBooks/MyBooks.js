@@ -33,7 +33,6 @@ const MyBooks = (props) => {
       .get(baseURL)
       .then((response) => {
         setMyBooks(response.data);
-        console.log(response.data);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -53,7 +52,6 @@ const MyBooks = (props) => {
           />
         </div>
         <div className="book-info">
-          <p className="title">
             {
               <p className="title">
                 {book.title.split(" ").length < 13
@@ -61,7 +59,6 @@ const MyBooks = (props) => {
                   : book.title.split(" ").slice(0, 13).join(" ") + ".."}
               </p>
             }
-          </p>
           <p>
             {book.description
               ? book.description.split(" ").slice(0, 5).join(" ")
@@ -94,7 +91,7 @@ const MyBooks = (props) => {
       <div className="pagination-box">
         <div className="pagination">
           {prevPage ? <button onClick={prevPage}>Prev</button> : <></>}
-          <p>{currentPage}</p>
+          <p>{currentPage}..{Math.ceil(myBooks.length / 10)}</p>
           {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
       </div>

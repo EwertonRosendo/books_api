@@ -50,6 +50,7 @@
 .book-info p {
   font-size: 16px;
   margin-top: 15px;
+  margin-left: 10px;
 }
 .book-info button {
   margin-top: 5px;

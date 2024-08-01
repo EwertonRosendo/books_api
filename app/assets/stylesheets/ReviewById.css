@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 150px;
+  margin: 50px 150px;
 }
 .opinion p {
   border-left: 1px solid rgb(107, 107, 107);
@@ -32,14 +32,21 @@
   color: rgb(49, 49, 49);
 }
 .comments {
-  margin: 40px 260px;
+  margin: 170px 260px 0px 260px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 .comment-info {
   display: flex;
+  padding: 3px;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 5px;
 }
+.comment-info div {
+  display: flex;
+}
+
 .comment-now {
   display: flex;
 }
@@ -81,7 +88,21 @@
 .comment p {
   margin: 2px 5px;
 }
+.delete-comment{
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(255, 94, 94);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
 .rating {
   display: flex;
   align-items: center;
+}
+
+.delete-comment:hover{
+  background-color: rgb(255, 42, 42);
 }

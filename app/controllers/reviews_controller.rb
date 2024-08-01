@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_user_book, except: %i[create index new]
-  before_action :params_hash, except: %i[index create show destroy new]
+  before_action :set_user_book, except: %i[create index new reviewsByUser]
+  before_action :params_hash, except: %i[index create show destroy new reviewsByUser]
 
   def index
     respond_to do |format|
@@ -32,6 +32,12 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     render json: { message: "review deleted" }
+  end
+
+  def reviewsByUser
+    respond_to do |format|
+      format.json { render json: Review.where(user: params[:id]).to_json(include: [:book, :user]) }
+    end
   end
 
   private

@@ -1,8 +1,7 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
 }
 .review {
   display: flex;
@@ -31,6 +30,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .review .book-review .title {
   font-weight: 700;
@@ -68,4 +68,34 @@
 .rating {
   display: flex;
   align-items: center;
+}
+.your-reviews{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.reviews{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 100px;
+  justify-content: center;
+}
+
+.pagination-box {
+  display: flex;
+  justify-content: center;
+}
+.pagination {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.pagination p {
+  margin: 0px 20px;
+}
+.pagination button {
+  padding: 5px;
 }

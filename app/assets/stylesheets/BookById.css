@@ -36,7 +36,7 @@
   width: 50vh;
 }
 .book-info input {
-  padding: 10px;
+  padding: 10px 3px;
   width: 100%;
   border-radius: 5px;
   margin-top: 5px;
@@ -51,9 +51,12 @@
   display: flex;
   flex-direction: column;
 }
+.book-info .descrip textarea{
+  padding: 10px 5px;
+  resize: none;
+}
 .book-info .description {
   height: 100px;
-  padding: 4px;
 }
 .book-info div {
   margin-top: 10px;
@@ -86,4 +89,12 @@
 }
 .update:hover {
   background-color: blue;
+}
+.edit-button a{
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: #4184d2;
 }

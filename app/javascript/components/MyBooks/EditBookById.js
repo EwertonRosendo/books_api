@@ -25,9 +25,58 @@ const BookById = (props) => {
         setUrlImage(response.data.url_image);
         setAuthor(response.data.author.name)
       })
+
       .catch((e) => console.log(e));
   }, []);
 
+  const update_book = () => {
+    if(!window.confirm("Are you sure you want to update this book?")){
+      return
+    }
+    axios
+      .put(
+        `http://localhost:3000/Books/${book.id}`,
+        {
+          title: title,
+          publisher: publisher,
+          published_at: published_at,
+          description: description,
+          author: author,
+          url_image: url_image,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+              .content,
+          },
+        },
+      )
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.replace("http://localhost:3000/Books");
+        }
+      });
+  };
+
+  const delete_book = () => {
+    if(!window.confirm("Are you sure you want to delete this book?")){
+      return
+    }
+    axios
+      .delete(`http://localhost:3000/Books/${book.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+            .content,
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.replace("http://localhost:3000/Books");
+        }
+      });
+  };
 
   return (
     <React.Fragment>
@@ -51,7 +100,6 @@ const BookById = (props) => {
                   setUrlImage(e.target.value);
                 }}
                 placeholder={book.url_image}
-                readOnly
               />
             </div>
           </div>
@@ -66,7 +114,6 @@ const BookById = (props) => {
                 }}
                 defaultValue={book.title}
                 placeholder={"Book title.."}
-                readOnly
               />
             </div>
             <div>
@@ -78,7 +125,6 @@ const BookById = (props) => {
                 }}
                 defaultValue={author}
                 placeholder={"Author.."}
-                readOnly
               />
             </div>
             <div>
@@ -90,7 +136,6 @@ const BookById = (props) => {
                 }}
                 defaultValue={book.publisher}
                 placeholder={"Publisher.."}
-                readOnly
               />
             </div>
             <div>
@@ -102,7 +147,6 @@ const BookById = (props) => {
                 }}
                 defaultValue={book.published_at}
                 placeholder={"Published at.."}
-                readOnly
               />
             </div>
             <div className="descrip">
@@ -111,6 +155,7 @@ const BookById = (props) => {
                 className="description"
                 type="text"
                 rows={4}
+                cols={33}
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
@@ -118,13 +163,19 @@ const BookById = (props) => {
                 placeholder={"Book description.."}
                 name=""
                 id=""
-                readOnly
               ></textarea>
             </div>
           </div>
         </div>
-        <div className="edit-button">
-          <a href={`http://localhost:3000/Books/${book.id}/edit`}>Edit this book</a>
+        <div className="buttons-area">
+          <button className="delete" onClick={delete_book}>
+            {" "}
+            Delete this book
+          </button>
+          <button className="update" onClick={update_book}>
+            {" "}
+            Update this book
+          </button>
         </div>
       </div>
     </React.Fragment>

@@ -45,6 +45,7 @@
   align-items: flex-start;
   justify-content: space-around;
   margin: 10px 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .book-info a {
   text-decoration: none;
@@ -125,6 +126,10 @@ button {
   border: 0px;
   cursor: pointer;
 }
+.book-info p{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .title {
   font-weight: 700;
 }
@@ -153,6 +158,4 @@ button {
 }
 .pagination button {
   padding: 5px;
-}
-@media screen and (max-width: 730px) {
 }
