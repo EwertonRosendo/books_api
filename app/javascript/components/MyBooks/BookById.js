@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Rate } from "antd";
 
 const BookById = (props) => {
   const baseURL = `http://localhost:3000/Books/${props.id}.json`;
