@@ -33,8 +33,7 @@ class SearchGoogleApi
 
       list_books
     rescue => e
-      # Trate o erro conforme necessário, por exemplo, registre-o ou mostre uma mensagem de erro
-      puts "Erro ao buscar dados: #{e.message}"
+      puts e.message
       []
     end
   end
