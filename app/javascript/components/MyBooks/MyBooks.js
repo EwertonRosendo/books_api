@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CreateBook from "./CreateBook";
+import Modal from "./CreateBookModal";
 
 const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Books.json";
@@ -52,13 +52,13 @@ const MyBooks = (props) => {
           />
         </div>
         <div className="book-info">
-            {
-              <p className="title">
-                {book.title.split(" ").length < 13
-                  ? book.title
-                  : book.title.split(" ").slice(0, 13).join(" ") + ".."}
-              </p>
-            }
+          {
+            <p className="title">
+              {book.title.split(" ").length < 13
+                ? book.title
+                : book.title.split(" ").slice(0, 13).join(" ") + ".."}
+            </p>
+          }
           <p>
             {book.description
               ? book.description.split(" ").slice(0, 5).join(" ")
@@ -91,15 +91,15 @@ const MyBooks = (props) => {
       <div className="pagination-box">
         <div className="pagination">
           {prevPage ? <button onClick={prevPage}>Prev</button> : <></>}
-          <p>{currentPage}..{Math.ceil(myBooks.length / 10)}</p>
+          <p>
+            {currentPage}..{Math.ceil(myBooks.length / 10)}
+          </p>
           {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
       </div>
+      <Modal />
       <div className="main">
-        <div className="body">
-          <CreateBook />
-          {allMyBooks}
-        </div>
+        <div className="body">{allMyBooks}</div>
       </div>
     </React.Fragment>
   );

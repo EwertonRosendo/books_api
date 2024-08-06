@@ -5,8 +5,8 @@ import axios from "axios";
 const BookById = (props) => {
   const baseURL = `http://localhost:3000/Books/${props.id}.json`;
   const [book, setBook] = useState({});
-  const [author, setAuthor] = useState("")
-  const [rating, setRating] = useState()
+  const [author, setAuthor] = useState("");
+  const [rating, setRating] = useState();
 
   useEffect(() => {
     axios
@@ -15,7 +15,6 @@ const BookById = (props) => {
         setRating(response.data.average_rating);
         setAuthor(response.data.book.author.name);
         setBook(response.data.book);
-
       })
       .catch((e) => console.log(e));
   }, []);
@@ -40,7 +39,7 @@ const BookById = (props) => {
             <div className="title">
               <p>{book.title}</p>
             </div>
-            <div className="average-rating">            
+            <div className="average-rating">
               <p>Average rating: {rating ? rating : "no average rating yet"}</p>
             </div>
             <div>
@@ -54,12 +53,18 @@ const BookById = (props) => {
             </div>
             <div className="descrip">
               <p>Description:</p>
-              <p>{book.description ? book.description : "There's no description for this book, but you can create" }</p>
+              <p>
+                {book.description
+                  ? book.description
+                  : "There's no description for this book, but you can create"}
+              </p>
             </div>
           </div>
         </div>
         <div className="edit-button">
-          <a href={`http://localhost:3000/Books/${book.id}/edit`}>Edit this book</a>
+          <a href={`http://localhost:3000/Books/${book.id}/edit`}>
+            Edit this book
+          </a>
         </div>
       </div>
     </React.Fragment>

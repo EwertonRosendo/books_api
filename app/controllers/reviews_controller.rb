@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: Review.all.to_json(include: [:book, :user]) }
+      format.json { render json: Review.all.to_json(include: { book: { include: :author }, user: {} }) }
     end
   end
 
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
 
   def reviewsByUser
     respond_to do |format|
-      format.json { render json: Review.where(user: params[:id]).to_json(include: [:book, :user]) }
+      format.json { render json: Review.where(user: params[:id]).to_json(include: { book: { include: :author }, user: {} }) }
     end
   end
 

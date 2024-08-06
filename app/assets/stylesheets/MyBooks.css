@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
 }
-.main{
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,61 +67,8 @@
   background-color: #4184d2;
   color: white;
 }
-.create-book-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  width: 260px;
-  height: 430px;
-  margin: 20px;
-  flex-wrap: wrap;
-  border: 1px solid rgb(185, 185, 185);
-  background-color: rgb(245, 245, 245);
-  padding: 5px;
-  border-radius: 10px;
-}
-.create-book-container .img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
-}
-.create-book-container .img img {
-  border-radius: 30px;
-  height: 130px;
-  width: 210px;
-  object-fit: cover;
-}
-.create-book-container input {
-  border: 2px solid rgb(185, 185, 185);
-  border-radius: 3px;
-  box-sizing: border-box;
+input:focus {
   outline: none;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-left: 5px;
-  padding: 5px;
-}
-.create-book-container button {
-  border: 0px;
-  cursor: pointer;
-}
-.descrip {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 5px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 5px;
-}
-.descrip textarea {
-  border-radius: 5px;
-  padding: 5px;
-  margin-left: 0px;
-  border: 1px solid rgb(185, 185, 185);
-}
-.create-book-container input:focus {
-  border: 1px solid #4184d2;
 }
 button {
   background-color: #4184d2;
@@ -133,7 +80,7 @@ button {
   border: 0px;
   cursor: pointer;
 }
-.book-info p{
+.book-info p {
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -168,3 +115,85 @@ button {
 .pagination button {
   padding: 5px;
 }
+
+.modal-content {
+  height: 530px;
+}
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.content p {
+  margin-left: 5px;
+  margin-top: 7px;
+}
+.left-inputs {
+  display: flex;
+  flex-direction: column;
+}
+.descrip textarea {
+  height: 300px;
+  padding: 5px;
+  border: 1px solid #a76657;
+  border-radius: 3px;
+}
+.modal-create input {
+  display: flex;
+  background-color: #f1f1f1;
+  border: 1px solid #a76657;
+  flex-direction: column;
+  border-radius: 0px;
+  outline: 0;
+  border-width: 0 0 2px;
+  width: 200px;
+  height: 26px;
+  padding: 5px;
+}
+input:focus {
+  border-color: green;
+  outline: 1px dotted #ffffff00;
+}
+.add-cancel-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+  margin-top: 10px;
+}
+.cancel-button {
+  background-color: white;
+  border: 1px solid #a76657;
+  transition: 0.3s ease-in-out;
+  color: #a76657;
+  font-weight: 900;
+}
+.add-button {
+  background-color: #a76657;
+  color: white;
+  transition: 0.3s ease-in-out;
+  font-weight: 900;
+}
+
+.add-button:hover {
+  background-color: white;
+  color: #a76657;
+  border: 1px solid #a76657;
+  border-radius: 5px;
+}
+.input-file {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px 3px;
+  justify-content: center;
+  border: 3px dashed #a76657;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.input-file input {
+  display: none;
+}
+

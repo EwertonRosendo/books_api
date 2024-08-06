@@ -35,7 +35,11 @@ const ListBooks = (props) => {
           />
         </div>
         <div className="book-info">
-          <p className="title">{book.title.split(" ").length > 6 ? book.title.split(" ").slice(0, 6).join(" ") + ".." : book.title }</p>
+          <p className="title">
+            {book.title.split(" ").length > 6
+              ? book.title.split(" ").slice(0, 6).join(" ") + ".."
+              : book.title}
+          </p>
           {book.subtitle ? (
             <p>
               {book.subtitle && book.subtitle.split(" ").slice(0, 6).join(" ")}

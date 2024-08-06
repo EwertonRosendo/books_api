@@ -10,7 +10,7 @@ const CreateReview = (props) => {
     axios
       .get(`http://localhost:3000/Books/${props.book_id}.json`)
       .then((response) => {
-        setBook(response.data);
+        setBook(response.data.book);
       })
       .catch((e) => console.log(e));
   }, []);

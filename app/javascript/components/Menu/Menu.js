@@ -35,28 +35,48 @@ const Menu = (props) => {
     <React.Fragment>
       <div className="menu">
         <div style={{ display: "flex" }}>
-          <p>
-            {
-              window.location.href.includes("Googlebooks") ?
-              <a className="current-screen" href={"http://localhost:3000/Googlebooks"}>Google API</a> :
-              <a href={"http://localhost:3000/Googlebooks"}>Google API</a>
-            }
-          </p>
-          <p>
-            {
-              window.location.href.includes("reviews") ?
-              <a className="current-screen" href={"http://localhost:3000/reviews"}>Reviews</a> :
-              <a href={"http://localhost:3000/reviews"}>Reviews</a>  
-            }
-            
-          </p>
-          <p>
-            {
-              window.location.href.includes("Books") ?
-              <a className="current-screen" href={"http://localhost:3000/Books"}>Our Books</a> :
-              <a href={"http://localhost:3000/Books"}>Our Books</a>
-            }
-          </p>
+          <div>
+            <p>
+              {window.location.href.includes("Googlebooks") ? (
+                <a
+                  className="current-screen"
+                  href={"http://localhost:3000/Googlebooks"}
+                >
+                  Google API
+                </a>
+              ) : (
+                <a href={"http://localhost:3000/Googlebooks"}>Google API</a>
+              )}
+            </p>
+          </div>
+          <div>
+            <p>
+              {window.location.href.includes("reviews") ? (
+                <a
+                  className="current-screen"
+                  href={"http://localhost:3000/reviews"}
+                >
+                  Reviews
+                </a>
+              ) : (
+                <a href={"http://localhost:3000/reviews"}>Reviews</a>
+              )}
+            </p>
+          </div>
+          <div>
+            <p>
+              {window.location.href.includes("Books") ? (
+                <a
+                  className="current-screen"
+                  href={"http://localhost:3000/Books"}
+                >
+                  Our Books
+                </a>
+              ) : (
+                <a href={"http://localhost:3000/Books"}>Our Books</a>
+              )}
+            </p>
+          </div>
         </div>
         <div style={{ display: "flex" }}>{logged_in()}</div>
       </div>

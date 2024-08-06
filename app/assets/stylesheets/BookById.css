@@ -10,12 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  width: 850px;
-  height: 470px;
-  border: 1px solid #347dd1;
-  border-radius: 10px 0px 10px 0px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  width: 100vh;
+  height: 55vh;
   margin-bottom: 20px;
 }
 .book-img img {
@@ -27,8 +23,8 @@
 }
 .book-img {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 100%;
 }
@@ -42,23 +38,31 @@
 .book-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   font-size: 18px;
   height: 100%;
   width: 50vh;
 }
-.book-info .title{
+.book-info .title {
   font-weight: 700;
   font-size: 22px;
 }
+.book-info div {
+  display: flex;
+  flex-direction: column;
+}
 .book-info input {
   padding: 10px 3px;
-  width: 100%;
-  border-radius: 5px;
+  width: 400px;
+  border-radius: 3px;
   margin-top: 5px;
+  border: 1px solid #a76657;
 }
 .book-info textarea {
-  border-radius: 5px;
+  border-radius: 3px;
+  margin-top: 5px;
+  border: 1px solid #a76657;
 }
 .book-info label {
   margin-right: 10px;
@@ -67,8 +71,9 @@
   display: flex;
   flex-direction: column;
 }
-.book-info .descrip textarea{
-  padding: 10px 5px;
+.book-info .descrip textarea {
+  width: 400px;
+  padding: 10px 3px;
   resize: none;
 }
 .book-info .description {
@@ -77,40 +82,43 @@
 .book-info div {
   margin-top: 10px;
 }
-.buttons-area {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  width: 100%;
-}
-.buttons-area button {
-  margin: 0px 20px;
-  color: white;
-  padding: 5px;
-  font-weight: 700;
-  border-radius: 5px;
-}
-.buttons-area button {
-  transition: 0.3s ease-in-out;
-  transform: translateY(-2px);
-}
-.delete {
-  background-color: rgb(255, 30, 30);
-}
-.delete:hover {
-  background-color: red;
-}
-.update {
-  background-color: rgb(55, 55, 255);
-}
-.update:hover {
-  background-color: blue;
-}
-.edit-button a{
+
+.edit-button a {
   color: white;
   text-decoration: none;
   padding: 5px;
   font-weight: 700;
   border-radius: 5px;
   background-color: #4184d2;
+}
+.input-file {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 10px 3px;
+  justify-content: center;
+  border: 3px dashed #a76657;
+  align-items: center;
+  cursor: pointer;
+}
+.input-file input {
+  display: none;
+}
+
+.update-button {
+  margin-top: 10px !important;
+  width: 410px;
+  margin-left: 0px !important;
+  height: 50px;
+  background-color: #63a757;
+  color: white;
+  font-weight: 900;
+}
+.delete-button {
+  display: flex;
+  align-items: center;
+  margin-left: 0px !important;
+  justify-content: center;
+  width: 180px;
+  background-color: #a76657;
 }

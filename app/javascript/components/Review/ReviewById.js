@@ -44,8 +44,8 @@ const ReviewById = (props) => {
   }, []);
 
   const handleDeleteComment = (review_id, id) => {
-    if(!window.confirm("Do you realy want to delete this comment?")){
-      return
+    if (!window.confirm("Do you realy want to delete this comment?")) {
+      return;
     }
     axios
       .delete(`http://localhost:3000/reviews/${review_id}/comments/${id}`)
@@ -66,12 +66,15 @@ const ReviewById = (props) => {
             <p> at {comment.created_at.substring(0, 10)}</p>
           </div>
           {comment.user.id == props.user_id ? (
-          <a className="delete-comment" onClick={() => handleDeleteComment(props.id, comment.id)}>
-            delete your comment
-          </a>
-        ) : (
-          <></>
-        )}
+            <a
+              className="delete-comment"
+              onClick={() => handleDeleteComment(props.id, comment.id)}
+            >
+              delete your comment
+            </a>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

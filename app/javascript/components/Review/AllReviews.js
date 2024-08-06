@@ -18,22 +18,32 @@ const AllReviews = (props) => {
     });
   }, []);
   useEffect(() => {
-    if(props.user_id){
+    if (props.user_id) {
       const url = `http://localhost:3000/reviews/user/${props.user_id}.json`;
       axios.get(url).then((response) => {
-      if (response.data) {
-        setYourReviews(response.data);
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    });
+        if (response.data) {
+          setYourReviews(response.data);
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      });
     }
   }, []);
-  
+
   return (
     <React.Fragment>
-      {props.user_id ? <Reviews reviews={yourReviews} owner={"Your reviews"} user_id={props.user_id} /> : null}
-      <Reviews reviews={reviews} owner={"Others reviews"} user_id={props.user_id} />
+      {props.user_id ? (
+        <Reviews
+          reviews={yourReviews}
+          owner={"Your reviews"}
+          user_id={props.user_id}
+        />
+      ) : null}
+      <Reviews
+        reviews={reviews}
+        owner={"Others reviews"}
+        user_id={props.user_id}
+      />
     </React.Fragment>
   );
 };

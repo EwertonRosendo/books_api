@@ -87,7 +87,7 @@
 .comment p {
   margin: 2px 5px;
 }
-.delete-comment{
+.delete-comment {
   text-decoration: none;
   color: white;
   font-weight: 700;
@@ -101,6 +101,6 @@
   display: flex;
   align-items: center;
 }
-.delete-comment:hover{
+.delete-comment:hover {
   background-color: rgb(255, 42, 42);
 }

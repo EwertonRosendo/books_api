@@ -15,7 +15,7 @@ class BooksController < ApplicationController
         book = Book.find(params[:id])
         average_rating = Review.where(book: book).average(:rating)
         render json: {
-          book: book.as_json(include: :author),
+          book: book.as_json(include: :author).merge(cover_url: book.cover_url),
           average_rating: average_rating
         }
       end
@@ -45,8 +45,10 @@ class BooksController < ApplicationController
     author = Author.where(name: author_name).first_or_create!
     params_hash = book_params.to_h
     params_hash[:author] = author
+    params_hash[:cover] = params[:cover]
     @book = Book.new(params_hash)
     if @book.save
+      @book.cover.attach(params[:cover])
       render json: @book, status: :created
     else
       render json: @book.errors, status: :unprocessable_entity
@@ -56,7 +58,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:id, :title, :description, :published_at, :publisher, :url_image, :author)
+    params.require(:book).permit(:id, :title, :description, :published_at, :publisher, :url_image, :author, :cover)
   end
 
   def set_book
