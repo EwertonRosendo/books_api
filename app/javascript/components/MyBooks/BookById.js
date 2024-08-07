@@ -7,6 +7,7 @@ const BookById = (props) => {
   const [book, setBook] = useState({});
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState();
+  const [cover, setCover] = useState("");
 
   useEffect(() => {
     axios
@@ -15,6 +16,7 @@ const BookById = (props) => {
         setRating(response.data.average_rating);
         setAuthor(response.data.book.author.name);
         setBook(response.data.book);
+        setCover(response.data.cover.cover_url);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -25,11 +27,7 @@ const BookById = (props) => {
         <div className="box">
           <div className="book-img">
             <img
-              src={
-                book.url_image
-                  ? book.url_image
-                  : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
-              }
+              src={cover ? cover : book.url_image}
               alt={`${book.title} image`}
               className="bookImage"
             />

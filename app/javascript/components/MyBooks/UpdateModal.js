@@ -8,17 +8,19 @@ export default function Update(props, title) {
       .put(
         `http://localhost:3000/Books/${props.id}`,
         {
-          title: props.title,
-          publisher: props.publisher,
-          published_at: props.published_at,
-          description: props.description,
-          author: props.author,
-          url_image: props.url_image,
-          cover: props.image_file,
+          book: {
+            title: props.title,
+            publisher: props.publisher,
+            published_at: props.published_at,
+            description: props.description,
+            author: props.author,
+            url_image: props.url_image,
+            cover: props.image_file,
+          },
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
               .content,
           },

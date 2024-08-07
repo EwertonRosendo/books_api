@@ -19,6 +19,7 @@ const BookById = (props) => {
   const [published_at, setPublished_at] = useState();
   const [url_image, setUrlImage] = useState("");
   const [image_file, setImageFile] = useState();
+  const [cover, setCover] = useState("");
 
   useEffect(() => {
     axios
@@ -32,6 +33,7 @@ const BookById = (props) => {
         setPublished_at(response.data.published_at);
         setUrlImage(response.data.url_image);
         setAuthor(response.data.book.author.name);
+        setCover(response.data.cover.cover_url);
       })
 
       .catch((e) => console.log(e));
@@ -43,25 +45,11 @@ const BookById = (props) => {
         <div className="box">
           <div className="book-img">
             <img
-              src={
-                book.url_image
-                  ? book.url_image
-                  : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
-              }
+              src={cover ? cover : book.url_image}
               alt={`${book.title} image`}
               className="bookImage"
             />
             <DeleteModal book={book} title={book.title} />
-            <div>
-              <label>image link:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setUrlImage(e.target.value);
-                }}
-                placeholder={book.url_image}
-              />
-            </div>
           </div>
 
           <div className="book-info">
@@ -101,7 +89,7 @@ const BookById = (props) => {
             <div>
               <label>Published_at</label>
               <input
-                type="text"
+                type="date"
                 onChange={(e) => {
                   setPublished_at(e.target.value);
                 }}
@@ -132,7 +120,7 @@ const BookById = (props) => {
               <label for="file">Drop a file or click to upload</label>
               <input
                 onChange={(e) => {
-                  setImageFile(e.target.value);
+                  setImageFile(e.target.files[0]);
                 }}
                 type="file"
                 name="file"
@@ -143,12 +131,12 @@ const BookById = (props) => {
 
             <UpdateModal
               id={id}
-              title={book.title}
-              publisher={publisher}
-              published_at={published_at}
-              description={description}
+              title={title}
+              publisher={publisher ? publisher : book.publisher}
+              published_at={published_at ? published_at : book.published_at}
+              description={description ? description : book.description}
               author={author}
-              url_image={url_image}
+              url_image={url_image ? url_image : book.url_image}
               image_file={image_file}
             />
           </div>

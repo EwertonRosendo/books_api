@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: Book.all.order(published_at: :desc) }
+      format.json { render json: CoverSerializer.new(Book.all).serializable_hash[:data] }
     end
   end
 
@@ -15,7 +15,8 @@ class BooksController < ApplicationController
         book = Book.find(params[:id])
         average_rating = Review.where(book: book).average(:rating)
         render json: {
-          book: book.as_json(include: :author).merge(cover_url: book.cover_url),
+          book: book.as_json(include: :author),
+          cover: CoverSerializer.new(book).serializable_hash[:data][:attributes],
           average_rating: average_rating
         }
       end
@@ -31,7 +32,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    author = Author.where(name: params[:author]).first_or_create!
+    author = Author.where(name: params[:book][:author]).first_or_create!
     if @book.update(book_params.merge(author: author))
       render json: @book
     else
@@ -40,15 +41,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    author_names = params[:author]
+    author_names = params[:book][:author]
     author_name = author_names.is_a?(Array) ? author_names.join(" & ") : author_names || "No author"
     author = Author.where(name: author_name).first_or_create!
-    params_hash = book_params.to_h
-    params_hash[:author] = author
-    params_hash[:cover] = params[:cover]
-    @book = Book.new(params_hash)
+    @book = Book.new(book_params.merge(author: author))
+    @book.errors.full_messages
     if @book.save
-      @book.cover.attach(params[:cover])
       render json: @book, status: :created
     else
       render json: @book.errors, status: :unprocessable_entity

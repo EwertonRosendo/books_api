@@ -7,12 +7,14 @@ const ListBooks = (props) => {
       .post(
         "http://localhost:3000/Books/",
         {
-          title: book.title,
-          publisher: book.publisher,
-          published_at: book.publishedDate,
-          description: "" + book.subtitle ? book.subtitle : book.description,
-          author: book.authors,
-          url_image: book.thumbnail,
+          book: {
+            title: book.title,
+            publisher: book.publisher,
+            published_at: book.publishedDate,
+            description: "" + book.subtitle ? book.subtitle : book.description,
+            author: book.authors,
+            url_image: book.thumbnail,
+          },
         },
         {
           headers: {
