@@ -24,7 +24,7 @@ const SignIn = (props) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          window.location.replace("http://localhost:3000/GoogleBooks");
+          window.location.replace("http://localhost:3000/Googlebooks");
         }
       })
       .catch((error) => console.error(error));

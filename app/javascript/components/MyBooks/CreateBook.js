@@ -27,7 +27,7 @@ const CreateBook = (props) => {
         },
       )
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status == 200) {
           window.location.reload();
         }
       })
@@ -37,8 +37,15 @@ const CreateBook = (props) => {
   return (
     <React.Fragment>
       <div className="create-book-container">
+        <div className="img">
+          <img
+            src={
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX9EmBWYMBW5T3wan5z8COkJAT8brrG8ojCQ&s"
+            }
+            alt=""
+          />
+        </div>
         <div>
-          <label>Title:</label>
           <input
             id="title"
             type="text"
@@ -47,7 +54,6 @@ const CreateBook = (props) => {
           />
         </div>
         <div>
-          <label>Author:</label>
           <input
             id="author"
             type="text"
@@ -56,7 +62,6 @@ const CreateBook = (props) => {
           />
         </div>
         <div>
-          <label>Publisher:</label>
           <input
             id="publisher"
             type="text"
@@ -65,7 +70,6 @@ const CreateBook = (props) => {
           />
         </div>
         <div>
-          <label>Published_at:</label>
           <input
             id="published_at"
             type="date"
@@ -74,7 +78,6 @@ const CreateBook = (props) => {
           />
         </div>
         <div>
-          <label>Image:</label>
           <input
             id="url_image"
             type="text"
@@ -83,7 +86,6 @@ const CreateBook = (props) => {
           />
         </div>
         <div className="descrip">
-          <label>Description:</label>
           <textarea
             id="description"
             className="description"
@@ -93,7 +95,9 @@ const CreateBook = (props) => {
             name=""
           ></textarea>
         </div>
-        <button onClick={handleAddBook}> Add Book</button>
+        <div>
+          <button onClick={handleAddBook}> Add Book</button>
+        </div>
       </div>
     </React.Fragment>
   );

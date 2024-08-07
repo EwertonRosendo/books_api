@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CreateBook from "./CreateBook";
+import Modal from "./CreateBookModal";
 
 const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Books.json";
@@ -37,56 +37,71 @@ const MyBooks = (props) => {
       .catch((e) => console.log(e));
   }, []);
 
-  const allMyBooks = currentPosts.map((book, index) => (
-    <div key={index} className="box">
-      <div className="book-box">
-        <div className="book-title-img">
-          <img
-            src={
-              book.url_image
-                ? book.url_image
-                : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
+  const allMyBooks = currentPosts.map((book, index) => {
+    book = book.attributes;
+    return (
+      <div key={index} className="box">
+        <div className="book-box">
+          <div className="book-title-img">
+            <img
+              src={book.cover_url ? book.cover_url : book.url_image}
+              alt={`${book.title} image`}
+              className="bookImage"
+            />
+          </div>
+          <div className="book-info">
+            {
+              <p className="title">
+                {book.title.split(" ").length < 13
+                  ? book.title
+                  : book.title.split(" ").slice(0, 13).join(" ") + ".."}
+              </p>
             }
-            alt={`${book.title} image`}
-            className="bookImage"
-          />
-        </div>
-        <div className="book-info">
-          <p className="title">{book["title"]}</p>
-          {book["description"] ? (
-            <p> {book["description"].substring(0, 60)}.. </p>
-          ) : (
-            <></>
-          )}
-          <p>
-            <a href={`http://localhost:3000/Books/${book.id}`}>Show details</a>
-          </p>
-          <p>
-            <a href={`http://localhost:3000/Books/${book.id}/reviews/new`}>
-              Create Review
-            </a>
-          </p>
-          {book.published_at ? (
-            <p> Published at {book["published_at"]} </p>
-          ) : (
-            <></>
-          )}
-          {book.publisher ? <p> Published by {book["publisher"]} </p> : <></>}
+            <p>
+              {book.description
+                ? book.description.split(" ").slice(0, 5).join(" ")
+                : ""}{" "}
+            </p>
+            <p>
+              <a href={`http://localhost:3000/Books/${book.id}`}>
+                Show details
+              </a>
+            </p>
+            <p>
+              <a href={`http://localhost:3000/Books/${book.id}/reviews/new`}>
+                Create Review
+              </a>
+            </p>
+            <p>
+              {book.published_at
+                ? "Published at " + book.published_at
+                : "No Published date"}
+            </p>
+            <p>
+              {book.publisher
+                ? "Published by " + book.publisher
+                : "No publisher registered"}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  ));
+    );
+  });
   return (
     <React.Fragment>
-      <CreateBook />
       <div className="pagination-box">
         <div className="pagination">
-          {prevPage ? <button onClick={prevPage}>anterior</button> : <></>}
-          <p>{currentPage}</p>
-          {nextPage ? <button onClick={nextPage}>proximo</button> : <></>}
+          {prevPage ? <button onClick={prevPage}>Prev</button> : <></>}
+          <p>
+            {currentPage}..{Math.ceil(myBooks.length / 10)}
+          </p>
+          {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
       </div>
-      <div className="body">{allMyBooks}</div>
+      <Modal />
+      <div className="main">
+        <div className="body">{allMyBooks}</div>
+      </div>
     </React.Fragment>
   );
 };

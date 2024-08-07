@@ -10,7 +10,7 @@ const CreateReview = (props) => {
     axios
       .get(`http://localhost:3000/Books/${props.book_id}.json`)
       .then((response) => {
-        setBook(response.data);
+        setBook(response.data.book);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -25,17 +25,23 @@ const CreateReview = (props) => {
   };
 
   const postReview = () => {
-    axios.post(
-      `http://localhost:3000/Books/${props.user_id}/reviews.json`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-            .content,
+    axios
+      .post(
+        `http://localhost:3000/Books/${props.user_id}/reviews.json`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
+              .content,
+          },
         },
-      },
-    );
+      )
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.replace("http://localhost:3000/reviews");
+        }
+      });
   };
 
   const handleRatings = ratings.map((rating, index) => {

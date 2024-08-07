@@ -7,12 +7,14 @@ const ListBooks = (props) => {
       .post(
         "http://localhost:3000/Books/",
         {
-          title: book.title,
-          publisher: book.publisher,
-          published_at: book.publishedDate,
-          description: "" + book.subtitle ? book.subtitle : book.description,
-          author: book.authors,
-          url_image: book.thumbnail,
+          book: {
+            title: book.title,
+            publisher: book.publisher,
+            published_at: book.publishedDate,
+            description: "" + book.subtitle ? book.subtitle : book.description,
+            author: book.authors,
+            url_image: book.thumbnail,
+          },
         },
         {
           headers: {
@@ -35,13 +37,22 @@ const ListBooks = (props) => {
           />
         </div>
         <div className="book-info">
-          <p className="title">{book["title"]}</p>
+          <p className="title">
+            {book.title.split(" ").length > 6
+              ? book.title.split(" ").slice(0, 6).join(" ") + ".."
+              : book.title}
+          </p>
           {book.subtitle ? (
-            <p>{book["subtitle"] && book["subtitle"].slice(0, 20)}..</p>
+            <p>
+              {book.subtitle && book.subtitle.split(" ").slice(0, 6).join(" ")}
+            </p>
           ) : (
             <></>
           )}
-          <p>Author: {book["authors"] ? book["authors"] : "No author"}..</p>
+          <p>
+            Author:{" "}
+            {book.authors ? book.authors.slice(0, 1).join(" ") : "No author"}..
+          </p>
           {book["publishedDate"] ? (
             <p>Published at {book["publishedDate"]}</p>
           ) : (
@@ -56,7 +67,9 @@ const ListBooks = (props) => {
 
   return (
     <React.Fragment>
-      <div className="body">{props.books ? allBooks : <></>}</div>
+      <div className="main">
+        <div className="body">{props.books ? allBooks : <></>}</div>
+      </div>
     </React.Fragment>
   );
 };

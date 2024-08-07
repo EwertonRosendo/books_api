@@ -1,2 +1,2 @@
 <%= stylesheet_link_tag "AllReviews" %>
-<%= react_component("Review/AllReviews") %>
+<%= react_component("Review/AllReviews", {user_id: cookies[:user_id]}) %>
