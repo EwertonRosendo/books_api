@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./CreateBookModal";
+import CreateReview from "../Review/CreateReviewModal";
+import ShowBookModal from "../MyBooks/ShowBookModal";
 
 const MyBooks = (props) => {
   const baseURL = "http://localhost:3000/Books.json";
   const [myBooks, setMyBooks] = useState([]);
-
+  const [cover, setCover] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = myBooks.slice(firstPostIndex, lastPostIndex);
-
   const nextPage = () => {
-    if (myBooks[postsPerPage * currentPage + 1] != undefined) {
+    if (myBooks[postsPerPage * currentPage ] != undefined) {
       setCurrentPage(currentPage + 1);
       return true;
     }
@@ -39,6 +40,7 @@ const MyBooks = (props) => {
 
   const allMyBooks = currentPosts.map((book, index) => {
     book = book.attributes;
+    console.log(book);
     return (
       <div key={index} className="box">
         <div className="book-box">
@@ -62,16 +64,14 @@ const MyBooks = (props) => {
                 ? book.description.split(" ").slice(0, 5).join(" ")
                 : ""}{" "}
             </p>
-            <p>
-              <a href={`http://localhost:3000/Books/${book.id}`}>
-                Show details
-              </a>
-            </p>
-            <p>
-              <a href={`http://localhost:3000/Books/${book.id}/reviews/new`}>
-                Create Review
-              </a>
-            </p>
+            <ShowBookModal
+              book={book}
+              cover={book.cover_url ? book.cover_url : book.url_image}
+            />
+            <CreateReview
+              book={book}
+              cover={book.cover_url ? book.cover_url : book.url_image}
+            />
             <p>
               {book.published_at
                 ? "Published at " + book.published_at
@@ -89,6 +89,10 @@ const MyBooks = (props) => {
   });
   return (
     <React.Fragment>
+      <Modal />
+      <div className="main">
+        <div className="body">{allMyBooks}</div>
+      </div>
       <div className="pagination-box">
         <div className="pagination">
           {prevPage ? <button onClick={prevPage}>Prev</button> : <></>}
@@ -97,10 +101,6 @@ const MyBooks = (props) => {
           </p>
           {nextPage ? <button onClick={nextPage}>Next</button> : <></>}
         </div>
-      </div>
-      <Modal />
-      <div className="main">
-        <div className="body">{allMyBooks}</div>
       </div>
     </React.Fragment>
   );

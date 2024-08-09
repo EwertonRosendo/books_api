@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { DeleteOutlined } from "@ant-design/icons";
-export default function DeleteModal() {
+
+export default function DeleteModal(props) {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -12,6 +14,16 @@ export default function DeleteModal() {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+  const handleDeleteReview = (id) => {
+    axios
+      .delete(`http://localhost:3000/reviews/${props.id}`)
+      .then((response) => {
+        if (response.status == 200) {
+          window.location.reload();
+        }
+      });
+  };
 
   return (
     <>
@@ -25,15 +37,20 @@ export default function DeleteModal() {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
-            <h2>Delete this books!</h2>
+            <h2>Delete this review!</h2>
             <p>
-              You are about to delete the book "book". this will remove the book
-              permanently.
+              You are about to delete your review about "{props.book}". this
+              will remove your review permanently.
             </p>
             <p>Are you sure you want to do this?</p>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
+            <div className="modal-buttons">
+              <button onClick={toggleModal} className="cancel-button">
+                Cancel
+              </button>
+              <button onClick={handleDeleteReview} className="agree-button">
+                Yes, I want to delete it
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -39,7 +39,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -67,8 +67,12 @@ end
 gem 'shakapacker', '= 8.0'
 
 gem 'react-rails', '= 3.2'
+gem 'rack-cors'
 
 gem "graphql", "~> 2.3"
 
-
 gem "pry-byebug"
+
+gem "aws-sdk-s3", require: false
+
+gem "jsonapi-serializer", "~> 2.2"

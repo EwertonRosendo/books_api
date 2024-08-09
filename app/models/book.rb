@@ -11,6 +11,7 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
 
+
   def cover_url
     Rails.application.routes.url_helpers.url_for(cover) if cover.attached?
   end

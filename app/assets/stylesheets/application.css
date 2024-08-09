@@ -98,7 +98,7 @@ body.active-modal {
 }
 .modal-buttons {
   display: flex;
-  flex-direction: row !important;
+  flex-direction: row;
   width: 100%;
   justify-content: flex-end;
   align-content: flex-end;
@@ -110,7 +110,7 @@ body.active-modal {
 }
 .cancel-button {
   background-color: white;
-  color: #a76657 !important;
+  color: #a76657;
   border: 1px solid #a76657;
   width: 120px;
 }
@@ -121,7 +121,7 @@ body.active-modal {
 }
 .cancel-button:hover {
   background-color: #a76657;
-  color: white !important;
+  color: white;
 }
 .agree-button:hover {
   background-color: white;

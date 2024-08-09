@@ -85,8 +85,22 @@ export default function Modal() {
           <div className="modal-content">
             <h2>Create or Add a Book!</h2>
             <div className="content">
-              <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "space-evenly", width:"100%", flexDirection:"column" }}>
-                <div style={{display:"flex", justifyContent: "space-evenly", width:"100%" }}>
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  width: "100%",
+                  flexDirection: "column",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                  }}
+                >
                   <div className="left-inputs">
                     <div>
                       <p>
@@ -139,7 +153,10 @@ export default function Modal() {
                     <br />
                     <div className="input-file">
                       <label htmlFor="cover">
-                        <MdOutlineFileUpload fontSize={"40px"} color="#A76657" />
+                        <MdOutlineFileUpload
+                          fontSize={"40px"}
+                          color="#A76657"
+                        />
                       </label>
                       <label htmlFor="cover">
                         Drop a file or click to upload

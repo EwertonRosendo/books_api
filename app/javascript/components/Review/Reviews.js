@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Rate } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { FaUserAstronaut } from "react-icons/fa6";
 
@@ -30,17 +28,6 @@ const Reviews = (props) => {
     return false;
   };
 
-  const handleDeleteReview = (id) => {
-    if (!window.confirm("Are you sure you want to delete this book?")) {
-      return;
-    }
-    axios.delete(`http://localhost:3000/reviews/${id}`).then((response) => {
-      if (response.status == 200) {
-        window.location.reload();
-      }
-    });
-  };
-
   const handleChangeScreen = (id) => {
     window.location.replace(`http://localhost:3000/reviews/${id}`);
   };
@@ -63,7 +50,10 @@ const Reviews = (props) => {
             </div>
           </div>
           <div className="book-image">
-            <img src={review.book.url_image} alt="" />
+            <img
+              src={review.cover_url ? review.cover_url : review.book.url_image}
+              alt=""
+            />
           </div>
           <div className="book-review">
             <p className="title">
@@ -87,12 +77,7 @@ const Reviews = (props) => {
                 show review
               </button>
               {props.user_id == review.user.id ? (
-                <a
-                  className="delete-review"
-                  onClick={() => handleDeleteReview(review.id)}
-                >
-                  <DeleteOutlined style={{ fontSize: "24px" }} />
-                </a>
+                <DeleteModal book={review.book.title} id={review.id} />
               ) : null}
             </div>
           </div>

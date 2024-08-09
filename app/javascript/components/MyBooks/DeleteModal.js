@@ -51,7 +51,10 @@ export default function DeleteModal(props, title) {
               </p>
               <p>Are you sure you want to do this?</p>
             </div>
-            <div className="modal-buttons">
+            <div
+              className="modal-buttons"
+              style={{ display: "flex", flexDirection: "row" }}
+            >
               <button onClick={toggleModal} className="cancel-button">
                 Cancel
               </button>

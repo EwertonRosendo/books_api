@@ -106,9 +106,9 @@
 }
 
 .update-button {
-  margin-top: 10px !important;
+  margin-top: 10px;
   width: 410px;
-  margin-left: 0px !important;
+  margin-left: 0px;
   height: 50px;
   background-color: #63a757;
   color: white;
@@ -117,7 +117,7 @@
 .delete-button {
   display: flex;
   align-items: center;
-  margin-left: 0px !important;
+  margin-left: 0px;
   justify-content: center;
   width: 180px;
   background-color: #a76657;
