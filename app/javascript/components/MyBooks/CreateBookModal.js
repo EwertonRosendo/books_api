@@ -95,6 +95,7 @@ export default function Modal() {
                 }}
               >
                 <div
+                  className="both-inputs"
                   style={{
                     display: "flex",
                     justifyContent: "space-evenly",
