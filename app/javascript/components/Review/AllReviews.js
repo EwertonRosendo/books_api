@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Rate } from "antd";
+
+import Reviews from "./Reviews";
 
 const AllReviews = (props) => {
   const [reviews, setReviews] = useState([]);
+  const [yourReviews, setYourReviews] = useState([]);
 
   useEffect(() => {
     const url = "http://localhost:3000/reviews.json";
@@ -15,33 +17,33 @@ const AllReviews = (props) => {
       }
     });
   }, []);
+  useEffect(() => {
+    if (props.user_id) {
+      const url = `http://localhost:3000/reviews/user/${props.user_id}.json`;
+      axios.get(url).then((response) => {
+        if (response.data) {
+          setYourReviews(response.data);
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      });
+    }
+  }, []);
 
-  const handleChangeScreen = (id) => {
-    window.location.replace(`http://localhost:3000/reviews/${id}`);
-  };
-
-  const showAllReviews = reviews.map((review, index) => (
-    <div key={index} className="review">
-      <div className="book-image">
-        <img src={review.book.url_image} alt="" />
-      </div>
-      <div className="book-review">
-        <p className="title">{review.book.title}</p>
-        <p>Reviewer: {review.user.name}</p>
-        <p>Status: {review.status}</p>
-        <div className="rating">
-          <p>Rating: </p>
-          <Rate disabled defaultValue={review.rating} />
-        </div>
-        <button onClick={() => handleChangeScreen(review.id)}>
-          show review
-        </button>
-      </div>
-    </div>
-  ));
   return (
     <React.Fragment>
-      <div className="content">{showAllReviews}</div>
+      {props.user_id ? (
+        <Reviews
+          reviews={yourReviews}
+          owner={"Your reviews"}
+          user_id={props.user_id}
+        />
+      ) : null}
+      <Reviews
+        reviews={reviews}
+        owner={"Others reviews"}
+        user_id={props.user_id}
+      />
     </React.Fragment>
   );
 };

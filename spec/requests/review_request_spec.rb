@@ -25,9 +25,21 @@ RSpec.describe "Review", type: :request do
       expect(response).to have_http_status(:success)
     end
 
+    it "render html components to create a new review" do
+      book = Book.last
+      get "/Books/#{book.id}/reviews/new"
+      expect(response).to have_http_status(:success)
+    end
+
     it "get review by id" do
       review = Review.first
       get "/reviews/#{review.id}.json"
+      expect(response).to have_http_status(:success)
+    end
+
+    it "get all reviews by user" do
+      user = User.first
+      get "/reviews/user/#{user.id}.json"
       expect(response).to have_http_status(:success)
     end
 

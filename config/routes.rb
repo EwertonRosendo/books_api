@@ -26,9 +26,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get "/reviews/user/:id", to: "reviews#reviewsByUser"
+
   # Return a list of books from google
-  get "/GoogleBooks", to: "google_books#index", as: "googleBooks" # return a react-view about the book seached
-  get "/GoogleBooks/:title", to: "google_books#index" # return a react-view about the book seached
+  get "/Googlebooks", to: "google_books#index", as: "googleBooks" # return a react-view about the book seached
+  get "/Googlebooks/:title", to: "google_books#index" # return a react-view about the book seached
 
   # Controller for Models only return json files
   get "/Authors", to: "author#index" # return a list of authors

@@ -8,20 +8,25 @@
 }
 .box {
   display: flex;
-  margin-top: 10px;
-  width: 850px;
-  height: 450px;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  height: 55vh;
+  margin-bottom: 20px;
 }
 .book-img img {
   border-radius: 10px;
   margin: 20px 20px;
   width: 180px;
   object-fit: cover;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .book-img {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
+  height: 100%;
 }
 .book-img input {
   width: 90%;
@@ -33,16 +38,31 @@
 .book-info {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 18px;
+  height: 100%;
   width: 50vh;
 }
+.book-info .title {
+  font-weight: 700;
+  font-size: 22px;
+}
+.book-info div {
+  display: flex;
+  flex-direction: column;
+}
 .book-info input {
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
+  padding: 10px 3px;
+  width: 400px;
+  border-radius: 3px;
   margin-top: 5px;
+  border: 1px solid #a76657;
 }
 .book-info textarea {
-  border-radius: 5px;
+  border-radius: 3px;
+  margin-top: 5px;
+  border: 1px solid #a76657;
 }
 .book-info label {
   margin-right: 10px;
@@ -51,39 +71,54 @@
   display: flex;
   flex-direction: column;
 }
+.book-info .descrip textarea {
+  width: 400px;
+  padding: 10px 3px;
+  resize: none;
+}
 .book-info .description {
-  height: 100px;
-  padding: 4px;
+  height: 90px;
 }
 .book-info div {
   margin-top: 10px;
 }
-.buttons-area {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  width: 100%;
-}
-.buttons-area button {
-  margin: 0px 20px;
+
+.edit-button a {
   color: white;
+  text-decoration: none;
   padding: 5px;
   font-weight: 700;
   border-radius: 5px;
+  background-color: #4184d2;
 }
-.buttons-area button {
-  transition: 0.3s ease-in-out;
-  transform: translateY(-2px);
+.input-file {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 10px 3px;
+  justify-content: center;
+  border: 3px dashed #a76657;
+  align-items: center;
+  cursor: pointer;
 }
-.delete {
-  background-color: rgb(255, 30, 30);
+.input-file input {
+  display: none;
 }
-.delete:hover {
-  background-color: red;
+
+.update-button {
+  margin-top: 10px;
+  width: 410px;
+  margin-left: 0px;
+  height: 50px;
+  background-color: #63a757;
+  color: white;
+  font-weight: 900;
 }
-.update {
-  background-color: rgb(55, 55, 255);
-}
-.update:hover {
-  background-color: blue;
+.delete-button {
+  display: flex;
+  align-items: center;
+  margin-left: 0px;
+  justify-content: center;
+  width: 180px;
+  background-color: #a76657;
 }

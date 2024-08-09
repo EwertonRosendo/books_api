@@ -4,75 +4,22 @@ import axios from "axios";
 
 const BookById = (props) => {
   const baseURL = `http://localhost:3000/Books/${props.id}.json`;
-  const [book, setBook] = useState([]);
+  const [book, setBook] = useState({});
   const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-  const [publisher, setPublisher] = useState("");
-  const [published_at, setPublished_at] = useState();
-  const [url_image, setUrlImage] = useState("");
+  const [rating, setRating] = useState();
+  const [cover, setCover] = useState("");
 
   useEffect(() => {
     axios
       .get(baseURL)
       .then((response) => {
-        setBook(response.data);
-        setTitle(response.data.title);
-        setDescription(response.data.description);
-        setPublisher(response.data.publisher);
-        setPublished_at(response.data.published_at);
-        setUrlImage(response.data.url_image);
+        setRating(response.data.average_rating);
+        setAuthor(response.data.book.author.name);
+        setBook(response.data.book);
+        setCover(response.data.cover.cover_url);
       })
-
       .catch((e) => console.log(e));
   }, []);
-
-  useEffect(() => {
-    if (book && book.author_id) {
-      author_name(book.author_id);
-    }
-  }, [book]);
-
-  const author_name = (id) => {
-    axios
-      .get(`http://localhost:3000/Author/${id}`)
-      .then((response) => {
-        setAuthor(response.data);
-      })
-      .catch((e) => console.log(e));
-  };
-
-  const update_book = () => {
-    axios.put(
-      `http://localhost:3000/Books/${book.id}`,
-      {
-        title: title,
-        publisher: publisher,
-        published_at: published_at,
-        description: description,
-        author: newAuthor,
-        url_image: url_image,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-            .content,
-        },
-      },
-    );
-  };
-
-  const delete_book = () => {
-    axios.delete(`http://localhost:3000/Books/${book.id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
-          .content,
-      },
-    });
-  };
 
   return (
     <React.Fragment>
@@ -80,96 +27,42 @@ const BookById = (props) => {
         <div className="box">
           <div className="book-img">
             <img
-              src={
-                book.url_image
-                  ? book.url_image
-                  : "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg"
-              }
+              src={cover ? cover : book.url_image}
               alt={`${book.title} image`}
               className="bookImage"
             />
-            <div>
-              <label>image:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setUrlImage(e.target.value);
-                }}
-                placeholder={book.url_image}
-              />
-            </div>
           </div>
 
           <div className="book-info">
-            <div>
-              <label>Title:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-                defaultValue={book.title}
-                placeholder={"Book title.."}
-              />
+            <div className="title">
+              <p>{book.title}</p>
+            </div>
+            <div className="average-rating">
+              <p>Average rating: {rating ? rating : "no average rating yet"}</p>
             </div>
             <div>
-              <label>Author:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setNewAuthor(e.target.value);
-                }}
-                defaultValue={author.name}
-                placeholder={"Author.."}
-              />
+              <p>Author: {author}</p>
             </div>
             <div>
-              <label>Publisher:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setPublisher(e.target.value);
-                }}
-                defaultValue={book.publisher}
-                placeholder={"Publisher.."}
-              />
+              <p>Published by {book.publisher}</p>
             </div>
             <div>
-              <label>Published_at:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setPublished_at(e.target.value);
-                }}
-                defaultValue={book.published_at}
-                placeholder={"Published at.."}
-              />
+              <p>Published at: {book.published_at}</p>
             </div>
             <div className="descrip">
-              <label>Description:</label>
-              <textarea
-                className="description"
-                type="text"
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-                defaultValue={book.description}
-                placeholder={"Book description.."}
-                name=""
-                id=""
-              ></textarea>
+              <p>Description:</p>
+              <p>
+                {book.description
+                  ? book.description
+                  : "There's no description for this book, but you can create"}
+              </p>
             </div>
           </div>
         </div>
-        <div className="buttons-area">
-          <button className="delete" onClick={delete_book}>
-            {" "}
-            Delete this book
-          </button>
-          <button className="update" onClick={update_book}>
-            {" "}
-            Update this book
-          </button>
+        <div className="edit-button">
+          <a href={`http://localhost:3000/Books/${book.id}/edit`}>
+            Edit this book
+          </a>
         </div>
       </div>
     </React.Fragment>

@@ -1,11 +1,12 @@
+require 'open-uri'
 class ReviewsController < ApplicationController
-  before_action :set_user_book, except: %i[create index new]
-  before_action :params_hash, except: %i[index create show destroy new]
+  before_action :set_user_book, except: %i[create index new reviewsByUser]
+  before_action :params_hash, except: %i[index create show destroy new reviewsByUser]
 
   def index
     respond_to do |format|
       format.html
-      format.json { render json: Review.all.to_json(include: [:book, :user]) }
+      format.json { render json: Review.all.to_json(include: { book: { include: :author }, user: {} }) }
     end
   end
 
@@ -34,10 +35,16 @@ class ReviewsController < ApplicationController
     render json: { message: "review deleted" }
   end
 
+  def reviewsByUser
+    respond_to do |format|
+      format.json { render json: Review.where(user: params[:id]).to_json(include: { book: { include: :author }, user: {} }) }
+    end
+  end
+
   private
 
   def user_book_params
-    params.require(:review).permit(:id, :user_id, :book_id, :book_opinion, :rating, :status)
+    params.require(:review).permit(:id, :user_id, :book_id, :book_opinion, :rating, :status, :cover_url)
   end
 
   def set_user_book
@@ -48,6 +55,10 @@ class ReviewsController < ApplicationController
     @params_hash = user_book_params.to_h
     @params_hash[:user] = User.find(cookies[:user_id])
     @params_hash[:book] = Book.find(params[:book][:id])
+    @params_hash[:cover_url] = params[:review][:cover_url]
+    @params_hash[:rating] = params[:rating]
+    @params_hash[:book_opinion] = params[:book_opinion]
+    @params_hash[:status] = params[:status]
     @params_hash
   end
 end
