@@ -24,8 +24,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    render json: { message: "Book deleted successfully" }
+    if set_user
+      @book.destroy
+      render json: { message: "Book deleted successfully" }
+    end
   end
 
   def edit
@@ -33,10 +35,12 @@ class BooksController < ApplicationController
 
   def update
     author = Author.where(name: params[:book][:author]).first_or_create!
-    if @book.update(book_params.merge(author: author))
-      render json: @book
-    else
-      render json: @book.errors, status: :unprocessable_entity
+    if set_user
+      if @book.update(book_params.merge(author: author))
+        render json: @book
+      else
+        render json: @book.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -46,10 +50,12 @@ class BooksController < ApplicationController
     author = Author.where(name: author_name).first_or_create!
     @book = Book.new(book_params.merge(author: author))
     @book.errors.full_messages
-    if @book.save
-      render json: @book, status: :created
-    else
-      render json: @book.errors, status: :unprocessable_entity
+    if set_user
+      if @book.save
+        render json: @book, status: :created
+      else
+        render json: @book.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -61,5 +67,12 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def set_user
+    if @user = User.find_by(id: cookies[:user_id])
+      return true
+    end
+    return false
   end
 end

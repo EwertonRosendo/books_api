@@ -35,6 +35,7 @@ const Reviews = (props) => {
   const showAllReviews = (reviews) => {
     return reviews.map((review, index) => {
       const author = review.book.author.name;
+      const rating = review.rating;
       return (
         <div key={index} className="review">
           <div className="user-info">
@@ -66,7 +67,7 @@ const Reviews = (props) => {
               <Rate
                 style={{ fontSize: "30px" }}
                 disabled
-                defaultValue={review.rating}
+                value={rating}
               />
             </div>
             <div className="review-buttons">

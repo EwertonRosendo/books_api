@@ -40,6 +40,7 @@ const ListBooks = (props) => {
       )
       .then(() => setShowModal(false))
       .catch((e) => console.log(e));
+      window.location.reload()
   };
 
   const allBooks = props.books.map((book, index) => (
@@ -90,7 +91,7 @@ const ListBooks = (props) => {
         <ConfirmationModal
           showModal={showModal}
           setShowModal={setShowModal}
-          onConfirm={confirmAddBook}
+          onConfirm={confirmAddBook()}
           message="Book added successfully :)"
         />
       )}

@@ -47,7 +47,7 @@ export default function Modal() {
 
   const handleAddBook = (data) => {
     axios
-      .post("http://localhost:3000/Books/", data, {
+      .post("http://localhost:3000/Books", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']")
