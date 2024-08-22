@@ -15,7 +15,7 @@ export default function Modal() {
     author: "",
     publisher: "",
     published_at: "",
-    url_image: "",
+    url_image: "no_url",
     description: "",
     cover: null,
   });
@@ -105,7 +105,7 @@ export default function Modal() {
                   <div className="left-inputs">
                     <div>
                       <p>
-                        <FontSizeOutlined /> Title
+                        <FontSizeOutlined /> Title*
                       </p>
                       <input
                         id="title"
@@ -113,11 +113,12 @@ export default function Modal() {
                         value={formData.title}
                         onChange={handleInputChange}
                         placeholder={"Book title.."}
+                        required
                       />
                     </div>
                     <div>
                       <p>
-                        <TiPencil /> Author
+                        <TiPencil /> Author*
                       </p>
                       <input
                         id="author"
@@ -125,11 +126,12 @@ export default function Modal() {
                         value={formData.author}
                         onChange={handleInputChange}
                         placeholder={"Author.."}
+                        required
                       />
                     </div>
                     <div>
                       <p>
-                        <FaRegBuilding /> Publisher
+                        <FaRegBuilding /> Publisher*
                       </p>
                       <input
                         id="publisher"
@@ -137,11 +139,12 @@ export default function Modal() {
                         value={formData.publisher}
                         onChange={handleInputChange}
                         placeholder={"Publisher.."}
+                        required
                       />
                     </div>
                     <div>
                       <p>
-                        <FaRegCalendarAlt /> Published at
+                        <FaRegCalendarAlt /> Published at*
                       </p>
                       <input
                         id="published_at"
@@ -149,6 +152,7 @@ export default function Modal() {
                         value={formData.published_at}
                         onChange={handleInputChange}
                         placeholder={"Published at.."}
+                        required
                       />
                     </div>
                     <br />
@@ -167,12 +171,14 @@ export default function Modal() {
                         id="cover"
                         accept="image/png, image/jpeg"
                         onChange={handleFileChange}
+                        max={new Date().toISOString().split("T")[0]}
+                        required
                       />
                     </div>
                   </div>
                   <div className="descrip">
                     <p>
-                      <LuTextSelect /> Description
+                      <LuTextSelect /> Description*
                     </p>
                     <textarea
                       id="description"
@@ -180,6 +186,7 @@ export default function Modal() {
                       value={formData.description}
                       onChange={handleInputChange}
                       placeholder={"Book description.."}
+                      required
                     ></textarea>
                   </div>
                 </div>

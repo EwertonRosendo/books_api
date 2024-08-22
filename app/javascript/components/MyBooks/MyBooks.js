@@ -40,7 +40,6 @@ const MyBooks = (props) => {
 
   const allMyBooks = currentPosts.map((book, index) => {
     book = book.attributes;
-    console.log(book);
     return (
       <div key={index} className="box">
         <div className="book-box">

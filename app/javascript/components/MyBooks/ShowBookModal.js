@@ -37,12 +37,6 @@ export default function Modal(props) {
                   <div className="title">
                     <p>{props.book.title}</p>
                   </div>
-                  <div className="average-rating">
-                    <p>
-                      Average rating:{" "}
-                      {props.rating ? props.rating : "no average rating yet"}
-                    </p>
-                  </div>
                   <div>
                     <p>Author: {props.book.author.name}</p>
                   </div>

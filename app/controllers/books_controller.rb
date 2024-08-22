@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: CoverSerializer.new(Book.all).serializable_hash[:data] }
+      format.json { render json: CoverSerializer.new(Book.all.order("created_at")).serializable_hash[:data] }
     end
   end
 

@@ -125,7 +125,7 @@ const ReviewById = (props) => {
             <div className="comment-now">
               <div style={{ width: "100%" }}>
                 <textarea
-                  maxlength="200"
+                  maxLength="200"
                   minLength="10"
                   name=""
                   id=""

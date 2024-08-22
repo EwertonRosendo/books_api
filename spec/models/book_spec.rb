@@ -34,13 +34,24 @@ RSpec.describe Book, type: :model do
     expect(book).to be_invalid
   end
 
-  it "must create a book" do
+  it "must be created" do
+    author = Author.where(name: "ewerton rosendo").first_or_create!
+    book = Book.new(
+      title: "rspec book",
+      author: author,
+      url_image: "http://books.google.com/books/content?id=OqQbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      description: "rspec é a good thing to learn"
+    )
+    expect(book).to be_valid
+  end
+
+  it "must not be created" do
     author = Author.where(name: "ewerton rosendo").first_or_create!
     book = Book.new(
       title: "rspec book",
       author: author,
       description: "rspec é a good thing to learn"
     )
-    expect(book).to be_valid
+    expect(book).to be_invalid
   end
 end

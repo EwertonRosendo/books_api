@@ -1,7 +1,7 @@
 require "simplecov"
 
 SimpleCov.start 'rails' do
-  add_filter ["/app/channels", "/app/jobs", "/app/mailers"]
+  add_filter ["/app/channels", "/app/jobs", "/app/mailers", "/app/helpers"]
 end
 
 RSpec.configure do |config|

@@ -76,7 +76,7 @@ export default function Modal(props) {
                   <div>
                     <select id="status" onChange={handleInputChange}>
                       <option className="option" value="999">
-                        Select your status
+                        Select your status*
                       </option>
                       <option className="option" value="to_read">
                         To Read
@@ -91,13 +91,13 @@ export default function Modal(props) {
                   </div>
                   <div>
                     <select id="rating" onChange={handleInputChange}>
-                      <option value="999">Set your rating</option>
+                      <option value="999">Set your rating*</option>
                       {handleRatings}
                     </select>
                   </div>
                 </div>
                 <div className="book-opinion">
-                  <label htmlFor="">Describe your opinion here *</label>
+                  <label htmlFor="">Describe your opinion here*</label>
                   <textarea
                     onChange={handleInputChange}
                     name="book_opinion"
